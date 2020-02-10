@@ -32,6 +32,13 @@ export default [
                 icon: 'home',
                 component: './Dashboard/Index',
             },
+            /*----------------- 摸排工作统计表 -------------------*/
+            {
+                path: '/touchStatisticsPage',
+                name: 'touchStatisticsPage',
+                icon: 'home',
+                component: './TouchStatisticsPage/StatisticsList',
+            },
             /*----------------- 元数据管理 -------------------*/
             {
                 path: '/metadataManage',

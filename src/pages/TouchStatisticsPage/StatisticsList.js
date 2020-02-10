@@ -1,25 +1,18 @@
 import React, {PureComponent, Fragment} from 'react';
 import {connect} from 'dva';
-import styles from './DataDistributionList.less';
+import styles from './StatisticsList.less';
 import T from './../../utils/T';
 import router from 'umi/router';
 import {formatMessage} from 'umi-plugin-react/locale';
 
-import {EnumPluginListPageInfo, EnumDataSyncPageInfo} from './../../constants/EnumPageInfo';
+import {EnumPluginListPageInfo} from './../../constants/EnumPageInfo';
 
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import {
     Button,
-    Icon,
-    Input,
     Row,
-    Divider,
     Col,
     Table,
-    Popconfirm,
-    Card,
-    List,
-    Badge,
 } from 'antd';
 
 //数据分发页面
@@ -44,7 +37,6 @@ class StatisticsList extends PureComponent {
     }
 
     componentDidMount() {
-        T.storage.setStorage('HtmlType', {'modalType':'dataDestination','isProcessorEdit':false});
         const {dispatch} = this.props;
         const {clusterActiveColor} = this.state;
         new Promise((resolve, reject) => {
@@ -72,11 +64,6 @@ class StatisticsList extends PureComponent {
 
     componentWillUnmount(){
         const {dispatch} = this.props;
-        //组件卸载的时候要重置成本地平台
-        /*dispatch({
-            type: 'dataDistribution/setPlatformTypeAction',
-            platformType: 'local',
-        });*/
     }
 
     //获取当前页数数据
@@ -117,84 +104,9 @@ class StatisticsList extends PureComponent {
         });
     };
 
-    //查询功能
-    searchDataSource = () => {
-        this.fetchDataList();
-    };
+    //导出功能
+    exportData = () => {
 
-    //重置功能
-    resetDataSource = () => {
-        let self = this;
-        this.setState({
-            inputValue: "",
-            currentPage: EnumPluginListPageInfo.defaultPage
-        }, () => {
-            //重置之后重新获取首页数据
-            self.fetchDataList()
-        });
-    };
-
-    //详情功能
-    showDetailModal = (data) => {
-        const {dispatch, dataDistribution} = this.props;
-        const {platformType} = dataDistribution;
-        //远程数据接入没有uuid，是取id吗？
-        // console.log(data,'data');
-        /*
-        *   createBy: "system"
-            createDate: "2019-10-07 19:51"
-            des: ""
-            desc: ""
-            id: "08236a1e0903421ab8a468038ca6610b"
-            isNewRecord: false
-            key: 1
-            name: "jdbc-test1"
-            plugin: {id: "1153876697261858816", isNewRecord: false, pluginType: "source", icon: "mysql"}
-            status: "0"
-            taskId: "dcd3a273aef84c10b86a0c4a66275894"
-            updateBy: ""
-            updatedAt: "2019-10-07 19:51"
-            uuid: "08236a1e0903421ab8a468038ca6610b"
-        * */
-        // //设置缓存里
-        // T.storage.setStorage('taskId', data.taskId);
-        // //跳路由
-        // router.push({
-        //     pathname: '/dataTask/missionDetail',
-        //     params: {
-        //         data: data,
-        //         isRouterPush: true,
-        //     },
-        // });
-        //将uuid放到缓存里
-        T.storage.setStorage('processorId', platformType === 'local' ? data.uuid : data.id);
-        // dataSyncNewMission根据checkType类型来访问不同的接口
-        dispatch({
-            type: 'dataSyncNewMission/changeDataSourceType',
-            checkType: platformType,
-        });
-
-        router.push({
-            pathname: '/dataDistribution/accessDetail',
-            params: {
-                isRouterPush: true,
-            },
-        });
-    };
-
-    //分发配置功能
-    showSingleDistributionModal = (data) => {
-        const {dispatch,dataDistribution} = this.props;
-        const {platformType} = dataDistribution;
-        T.storage.setStorage('processorId', platformType === 'local' ? data.uuid : data.id);
-        //跳路由
-        router.push({
-            pathname: '/dataDistribution/distributeConfig',
-            params: {
-                data: data,
-                isRouterPush: true
-            },
-        });
     };
 
     //页码变换
@@ -202,80 +114,6 @@ class StatisticsList extends PureComponent {
         this.setState({
             currentPage: page.current,
         }, () => {
-            this.fetchDataList();
-        });
-    };
-
-    //更改输入框
-    onInputChange = (e) => {
-        this.setState({
-            inputValue: e.target.value,
-        });
-    };
-
-    /**
-     * 插入新建按钮数据
-     * @param list {array}
-     * @returns {*}
-     */
-    unshiftArr = (list) => {
-        const {platformExpand, localResourcesAccessed} = this.state;
-        if (list.length === 0) {
-            list.unshift({
-                isNew: true,
-                name: "本地平台",
-                numberResourcesAccessed: localResourcesAccessed,
-                remarks: "本地平台",
-                id: '000',
-            });
-        } else {
-            !list[0].hasOwnProperty('isNew')
-                ? list.unshift({
-                    isNew: true,
-                    name: "本地平台",
-                    numberResourcesAccessed: localResourcesAccessed,
-                    remarks: "本地平台",
-                    id: '000',
-                })
-                : '';
-        }
-        return this.changeList(list, platformExpand);
-    };
-    /**
-     * 展开操作
-     */
-    handleExpand = () => {
-        const {platformExpand} = this.state;
-        this.setState({
-            platformExpand: !platformExpand,
-        });
-    };
-    /**
-     * 根据up/down的状态来控制显示的数据的数量
-     * @param list {array}
-     * @param expand {boolean}
-     * @returns {*} {array}
-     */
-    changeList = (list, expand) => {
-        if (list.length > 4 && !expand) {
-            return list.slice(0, 4);
-        } else {
-            return list;
-        }
-    };
-
-    //切换数据平台
-    onSelectPlatform = (key) => {
-        const {dispatch} = this.props;
-        dispatch({
-            type: 'dataDistribution/setPlatformTypeAction',
-            platformType: key.id === '000' ? 'local' : 'cluster',
-        });
-        this.setState({
-            clusterActiveColor: key.id,
-            currentPage: EnumDataSyncPageInfo.defaultPage,  //切换平台，每次从第一页开始
-        }, () => {
-            //获取当前页数数据
             this.fetchDataList();
         });
     };
@@ -290,124 +128,104 @@ class StatisticsList extends PureComponent {
         const {sourceData, platformType} = dataDistribution;
         const {clusterPlatformList} = dataSyncNewMission;
         const {currentPage, pageSize, inputValue, clusterActiveColor, platformExpand} = this.state;
+        const dataSource = [
+            {
+                key: 1,
+                totalNum: 10,
+                returnNum: 20,
+                closeContactsNum: 30,
+                partyNum: 40,
+                keyEpidemicAreasNum: 50,
+                abnormalPhysicalConditionsNum: 60,
+                quarantinedOnThatDayNum: 70,
+                isolatedTotalNum: 80,
+                quarantinedAtHomeOnThatDayNum: 90,
+                atHomeTotalNum: 100,
+            }
+        ];
         const columns = [
             {
-                title: '序号',
-                dataIndex: 'key',
+                title: '摸排总人数',
+                dataIndex: 'totalNum',
             },
             {
-                title: '数据源名称',
-                dataIndex: 'name',
+                title: '来烟（返烟）人数',
+                dataIndex: 'returnNum',
             },
             {
-                title: '描述',
-                dataIndex: 'description',
+                title: '与确诊、疑似病例有过密切接触的人数',
+                dataIndex: 'closeContactsNum',
             },
             {
-                title: '接入时间',
-                dataIndex: 'create_date',
-                render: val => <span>{T.helper.dateFormat(val, 'YYYY-MM-DD HH:mm:ss')}</span>,
+                title: '与密切接触者有过共同生活、工作、学习、聚会的人数',
+                dataIndex: 'partyNum',
             },
             {
-                title: '操作',
-                render: (text, record) => (
-                    <Fragment>
-                        <a onClick={() => this.showDetailModal(record)}>详情</a>
-                        <Divider type="vertical"/>
-                        <a onClick={() => this.showSingleDistributionModal(record)}>分发配置</a>
-                    </Fragment>
-                ),
+                title: '与重点疫区人员有过接触的人数',
+                dataIndex: ' keyEpidemicAreasNum',
             },
+            {
+                title: '身体状况异常的人数',
+                dataIndex: 'abnormalPhysicalConditionsNum',
+            },
+            {
+                title: '当日集中隔离人数',
+                dataIndex: 'quarantinedOnThatDayNum',
+            },
+            {
+                title: '累计集中隔离人数（1月24日至今）',
+                dataIndex: 'isolatedTotalNum',
+            },
+            {
+                title: '当日居家隔离人数',
+                dataIndex: 'quarantinedAtHomeOnThatDayNum',
+            },
+            {
+                title: '累计居家隔离人数（1月24日至今）',
+                dataIndex: 'atHomeTotalNum',
+            },
+            // {
+            //     title: '操作',
+            //     render: (text, record) => (
+            //         <Fragment>
+            //             <a onClick={() => this.showDetailModal(record)}>详情</a>
+            //             <Divider type="vertical"/>
+            //             <a onClick={() => this.showSingleDistributionModal(record)}>分发配置</a>
+            //         </Fragment>
+            //     ),
+            // },
         ];
         return (
-            <PageHeaderWrapper title={"数据分发"}>
-                <Row className={styles.distributeTitle}>
-                    <Col span={8}>
-                        <span>数据源名称</span>
-                        <Input
-                            className={styles.distributeInput}
-                            value={inputValue}
-                            placeholder={formatMessage({id: 'dataDistribution.index.PlaceHolder',})}
-                            onChange={this.onInputChange}
-                        />
-                    </Col>
-                    <Col span={8} className={styles.distributeBtns}>
-                        <Button onClick={this.searchDataSource}>查询</Button>
-                        <Button onClick={this.resetDataSource} type="primary">重置</Button>
+            <PageHeaderWrapper title={"摸排工作统计表"}>
+                <Row className={styles.title}>
+                    摸排工作统计表
+                </Row>
+                <Row className={styles.exportBtn}>
+                    <Col span={2} gutter={20}>
+                        <a onClick={this.exportData}>导出</a>
                     </Col>
                 </Row>
-                <div className={styles.cardPlatform}>
-                    <Card>
-                        <List
-                            rowKey="id"
-                            // loading={getAllProcessorListStatus}
-                            grid={{gutter: 24, lg: 4, md: 4, sm: 4, xs: 4}}
-                            dataSource={this.unshiftArr(
-                                T.lodash.orderBy(clusterPlatformList, 'create_date', 'desc')
-                            )}
-                            renderItem={item =>
-                                <List.Item
-                                    key={item.uuid}
-                                    onClick={this.onSelectPlatform.bind(this, item)}
-                                    className={styles.card}
-                                >
-                                    <Card
-                                        hoverable
-                                        size="default"
-                                        id={item.hasOwnProperty('id') ? item.id : ''}
-                                        style={{height: '82px'}}
-                                        className={
-                                            clusterActiveColor === item.id ? styles.activeColor : null
-                                        }
-                                    >
-                                        <div className={styles.platformContent}>
-                                            <div className={styles.platformLeft}>{item.name}</div>
-                                            {item.hasOwnProperty('isNew') ?
-                                                <div className={styles.platformRight} style={{lineHeight: '40px'}}>
-                                                    <p>
-                                                        <Badge color="#4ecb73"/>
-                                                        已接入资源数：<span
-                                                        className={styles.platformRightText}>{item.numberResourcesAccessed}</span>个
-                                                    </p>
-                                                </div>
-                                                : <div className={styles.platformRight}>
-                                                    <p>
-                                                        <Badge color="#4ecb73"/>
-                                                        已接入资源数：<span
-                                                        className={styles.platformRightText}>{item.numberResourcesAccessed}</span>个
-                                                    </p>
-                                                    <p>
-                                                        <Badge color="#36cbcb"/>
-                                                        可接入资源数：<span
-                                                        className={styles.platformRightText}>{item.numberResourcesAccessible}</span>个
-                                                    </p>
-                                                </div>
-                                            }
-                                        </div>
-                                    </Card>
-                                </List.Item>
-                            }
-                        />
-                        <div className={styles.upOrDown}>
-                            <a className={styles.trigger} onClick={this.handleExpand.bind(this)}>
-                                <Icon
-                                    type={platformExpand ? 'up' : 'down'}
-                                />
-                            </a>
-                        </div>
-                    </Card>
-                </div>
+                <Row className={styles.distributeTitle}>
+                    <Col span={12}>
+                        <span>县市区：</span>
+                        <span>芝罘区</span>
+                    </Col>
+                    <Col span={12}>
+                        <span>填报日期：</span>
+                        <span>1192.23.23</span>
+                    </Col>
+                </Row>
                 <Table
                     className={styles.distributeTable}
-                    loading={platformType === 'local' ? fetchLocalListStatus : fetchRemoteListStatus}
-                    dataSource={sourceData.sourceList}
+                    // loading={platformType === 'local' ? fetchLocalListStatus : fetchRemoteListStatus}
+                    dataSource={dataSource}
                     pagination={{
-                        current: currentPage,
-                        pageSize: pageSize,
-                        total: sourceData.hasOwnProperty("count") ? sourceData.count : 0,
-                        showTotal: (total) => {
-                            return `共${total}条`
-                        },
+                        // current: currentPage,
+                        // pageSize: pageSize,
+                        // total: sourceData.hasOwnProperty("count") ? sourceData.count : 0,
+                        // showTotal: (total) => {
+                        //     return `共${total}条`
+                        // },
                         showSizeChanger: false,
                         showQuickJumper: false
                     }}
@@ -419,4 +237,4 @@ class StatisticsList extends PureComponent {
     }
 }
 
-export default DataDistributionList;
+export default StatisticsList;

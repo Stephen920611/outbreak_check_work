@@ -2,10 +2,30 @@
 @import '~@/utils/utils.less';
 
 //数据分发列表页头部样式
+.title {
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+}
+.exportBtn {
+    a {
+        color: #fff;
+        background-color: #1890FF;
+        border-color: #1890FF;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    }
+
+}
 .distributeTitle {
     width: 100%;
     margin-bottom: 24px;
     background: none;
+    :global {
+        .ant-col-12 {
+            text-align: left;
+        }
+    }
     .distributeInput {
         width: 50%;
         margin-left: 3%;
