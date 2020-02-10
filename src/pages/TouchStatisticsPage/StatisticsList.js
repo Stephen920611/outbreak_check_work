@@ -10,6 +10,7 @@ import {EnumPluginListPageInfo} from './../../constants/EnumPageInfo';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import {
     Button,
+    Input,
     Row,
     Col,
     Table,
@@ -33,6 +34,22 @@ class StatisticsList extends PureComponent {
             platformExpand: false,  //是否展开
             localResourcesAccessed: 0 ,//本地资源数
             clusterActiveColor: '000',//选中的颜色，本地的自己造成000， 为了满足list的id需求
+            editing: false,
+            dataSource: [
+                {
+                    key: 1,
+                    totalNum: 10,
+                    returnNum: 20,
+                    closeContactsNum: 30,
+                    partyNum: 40,
+                    keyEpidemicAreasNum: 50,
+                    abnormalPhysicalConditionsNum: 60,
+                    quarantinedOnThatDayNum: 70,
+                    isolatedTotalNum: 80,
+                    quarantinedAtHomeOnThatDayNum: 90,
+                    atHomeTotalNum: 100,
+                }
+            ],
         };
     }
 
@@ -64,6 +81,22 @@ class StatisticsList extends PureComponent {
 
     componentWillUnmount(){
         const {dispatch} = this.props;
+    }
+
+    //
+    handleMapChange(e, fieldName, key) {
+        const {dataSource} = this.state;
+        const newData = dataSource.map(item => ({...item}));
+        const target = this.getRowByKey(key, newData);
+        if (target) {
+            target[fieldName] = e.target.value;
+            this.setState({dataSource: newData});
+        }
+    };
+
+    getRowByKey(key, newData) {
+        const {dataSource} = this.state;
+        return (newData || dataSource).filter(item => item.key === key)[0];
     }
 
     //获取当前页数数据
@@ -106,7 +139,7 @@ class StatisticsList extends PureComponent {
 
     //导出功能
     exportData = () => {
-
+        console.log("导出");
     };
 
     //页码变换
@@ -127,22 +160,7 @@ class StatisticsList extends PureComponent {
         } = this.props;
         const {sourceData, platformType} = dataDistribution;
         const {clusterPlatformList} = dataSyncNewMission;
-        const {currentPage, pageSize, inputValue, clusterActiveColor, platformExpand} = this.state;
-        const dataSource = [
-            {
-                key: 1,
-                totalNum: 10,
-                returnNum: 20,
-                closeContactsNum: 30,
-                partyNum: 40,
-                keyEpidemicAreasNum: 50,
-                abnormalPhysicalConditionsNum: 60,
-                quarantinedOnThatDayNum: 70,
-                isolatedTotalNum: 80,
-                quarantinedAtHomeOnThatDayNum: 90,
-                atHomeTotalNum: 100,
-            }
-        ];
+        const {dataSource, currentPage, pageSize, inputValue, clusterActiveColor, platformExpand} = this.state;
         const columns = [
             {
                 title: '摸排总人数',
@@ -162,7 +180,7 @@ class StatisticsList extends PureComponent {
             },
             {
                 title: '与重点疫区人员有过接触的人数',
-                dataIndex: ' keyEpidemicAreasNum',
+                dataIndex: 'keyEpidemicAreasNum',
             },
             {
                 title: '身体状况异常的人数',
@@ -175,6 +193,16 @@ class StatisticsList extends PureComponent {
             {
                 title: '累计集中隔离人数（1月24日至今）',
                 dataIndex: 'isolatedTotalNum',
+                render: (text, record) => {
+                    return (
+                        <Input
+                            value={text}
+                            autoFocus
+                            onChange={e => this.handleMapChange(e, 'isolatedTotalNum', record.key)}
+                            placeholder="请输入累计集中隔离人数"
+                        />
+                    );
+                },
             },
             {
                 title: '当日居家隔离人数',
@@ -183,6 +211,16 @@ class StatisticsList extends PureComponent {
             {
                 title: '累计居家隔离人数（1月24日至今）',
                 dataIndex: 'atHomeTotalNum',
+                render: (text, record) => {
+                    return (
+                        <Input
+                            value={text}
+                            autoFocus
+                            onChange={e => this.handleMapChange(e, 'atHomeTotalNum', record.key)}
+                            placeholder="请输入累计居家隔离人数"
+                        />
+                    );
+                },
             },
             // {
             //     title: '操作',
@@ -201,8 +239,8 @@ class StatisticsList extends PureComponent {
                     摸排工作统计表
                 </Row>
                 <Row className={styles.exportBtn}>
-                    <Col span={2} gutter={20}>
-                        <a onClick={this.exportData}>导出</a>
+                    <Col span={2} offset={22}>
+                        <Button type="primary"><a onClick={this.exportData}>导出</a></Button>
                     </Col>
                 </Row>
                 <Row className={styles.distributeTitle}>
@@ -219,16 +257,7 @@ class StatisticsList extends PureComponent {
                     className={styles.distributeTable}
                     // loading={platformType === 'local' ? fetchLocalListStatus : fetchRemoteListStatus}
                     dataSource={dataSource}
-                    pagination={{
-                        // current: currentPage,
-                        // pageSize: pageSize,
-                        // total: sourceData.hasOwnProperty("count") ? sourceData.count : 0,
-                        // showTotal: (total) => {
-                        //     return `共${total}条`
-                        // },
-                        showSizeChanger: false,
-                        showQuickJumper: false
-                    }}
+                    pagination={false}
                     columns={columns}
                     onChange={this.pageChange}
                 />
