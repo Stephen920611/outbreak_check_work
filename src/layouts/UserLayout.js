@@ -32,7 +32,7 @@ const links = [];
 
 const copyright = (
   <Fragment>
-    Copyright <Icon type="copyright" /> 2019 智慧警务实验室
+    Copyright <Icon type="copyright" /> 2020 大数据局
   </Fragment>
 );
 
@@ -62,13 +62,13 @@ class UserLayout extends Component {
           </div>
           <div className={styles.content}>
             <div className={styles.top}>
-              <div className={styles.header}>
+              <div className={styles.header} style={{marginBottom: 30}}>
                 {/*<Link to="/">*/}
                   <img alt="logo" className={styles.logo} src={logo} />
-                  <span className={styles.title}>数据分发平台</span>
+                  <span className={styles.title}>摸排数据平台</span>
                 {/*</Link>*/}
               </div>
-              <div className={styles.desc}>智慧警务实验室</div>
+              {/*<div className={styles.desc}>智慧警务实验室</div>*/}
             </div>
             {children}
           </div>

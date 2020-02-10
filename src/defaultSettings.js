@@ -9,7 +9,7 @@ module.exports = {
   menu: {
     disableLocal: false,
   },
-  title: '数据分发平台',
+  title: '摸排数据平台',
   pwa: false,
   // Your custom iconfont Symbol script Url
   // eg：//at.alicdn.com/t/font_1039637_btcrd5co4w.js

@@ -96,11 +96,11 @@ class Center extends PureComponent {
         const currentUserInfo =  T.auth.getLoginInfo();
 
         const noticeMockData = [
-            {
-                id: 1,
-                href: "",
-                member: "穆晓飞",
-            },
+            // {
+            //     id: 1,
+            //     href: "",
+            //     member: "穆晓飞",
+            // },
             {
                 id: 2,
                 href: "",
@@ -165,7 +165,7 @@ class Center extends PureComponent {
                                     <div className={styles.detail}>
                                         <p>
                                             <i className={styles.group}/>
-                                            数据分发组
+                                            大数据
                                         </p>
                                         <p>
                                             <i className={styles.address}/>
@@ -222,18 +222,18 @@ class Center extends PureComponent {
                             )}
                         </Card>
                     </Col>
-                    <Col lg={17} md={24}>
-                        <Card
-                            className={styles.tabsCard}
-                            bordered={false}
-                            tabList={operationTabList}
-                            activeTabKey={location.pathname.replace(`${match.path}/`, '')}
-                            onTabChange={this.onTabChange}
-                            loading={listLoading}
-                        >
-                            {children}
-                        </Card>
-                    </Col>
+                    {/*<Col lg={17} md={24}>*/}
+                        {/*<Card*/}
+                            {/*className={styles.tabsCard}*/}
+                            {/*bordered={false}*/}
+                            {/*tabList={operationTabList}*/}
+                            {/*activeTabKey={location.pathname.replace(`${match.path}/`, '')}*/}
+                            {/*onTabChange={this.onTabChange}*/}
+                            {/*loading={listLoading}*/}
+                        {/*>*/}
+                            {/*{children}*/}
+                        {/*</Card>*/}
+                    {/*</Col>*/}
                 </Row>
             </GridContent>
         );

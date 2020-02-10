@@ -408,7 +408,7 @@ class SourceStep4 extends PureComponent {
                         :
                         <div>
                             <Form hideRequiredMark className={[styles.stepForm, styles.stepForm4]}>
-                                <Form.Item label="数据分发平台">
+                                <Form.Item label="摸排数据平台">
                                     <Row gutter={24}>
                                         <Col xl={6} lg={6} md={6} sm={6} xs={6}>
                                             <Card hoverable size="default">
