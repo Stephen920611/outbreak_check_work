@@ -238,6 +238,7 @@ class CheckRecordDetail extends PureComponent {
         return (
             <PageHeaderWrapper
                 title={"疫情防控调查详情查看"}
+                isSpecialBreadcrumb={true}
             >
                 <div>
                     <div className={styles.detailItem}>
