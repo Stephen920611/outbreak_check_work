@@ -18,11 +18,9 @@ import {
 
 //数据分发页面
 /* eslint react/no-multi-comp:0 */
-@connect(({dataDistribution, dataSyncNewMission, loading}) => ({
-    dataDistribution,
-    dataSyncNewMission,
-    fetchLocalListStatus: loading.effects['dataDistribution/fetchSourceListAction'],
-    fetchRemoteListStatus: loading.effects['dataDistribution/fetchRemoteClusterListAction'],
+@connect(({touchStatisticsPageList, loading}) => ({
+    touchStatisticsPageList,
+    fetchStatisticsListStatus: loading.effects['touchStatisticsPageList/fetchStatisticsListAction'],
 }))
 class StatisticsList extends PureComponent {
     constructor() {
@@ -58,25 +56,18 @@ class StatisticsList extends PureComponent {
         const {clusterActiveColor} = this.state;
         new Promise((resolve, reject) => {
             dispatch({
-                type: 'dataSyncNewMission/fetchClusterManageListServicesAction',
+                type: 'touchStatisticsPageList/fetchStatisticsListAction',
                 params: {},
                 resolve,
                 reject,
             });
         }).then(response => {
-            if (response.result === 'true') {
-                // 默认获取数据
-                this.fetchDataList();
+            if (response.code === 0) {
+
             } else {
-                T.prompt.error(response.message);
+                T.prompt.error(response.msg);
             }
         });
-        if(clusterActiveColor==='000'){
-            dispatch({
-                type: 'dataDistribution/setPlatformTypeAction',
-                platformType: 'local',
-            });
-        }
     }
 
     componentWillUnmount(){
@@ -153,13 +144,10 @@ class StatisticsList extends PureComponent {
 
     render() {
         const {
-            fetchLocalListStatus,
-            fetchRemoteListStatus,
-            dataSyncNewMission,
-            dataDistribution
+            fetchStatisticsListStatus,
+            touchStatisticsPageList,
         } = this.props;
-        const {sourceData, platformType} = dataDistribution;
-        const {clusterPlatformList} = dataSyncNewMission;
+        const {statisticsList} = touchStatisticsPageList;
         const {dataSource, currentPage, pageSize, inputValue, clusterActiveColor, platformExpand} = this.state;
         const columns = [
             {
@@ -256,7 +244,7 @@ class StatisticsList extends PureComponent {
                 <Table
                     className={styles.distributeTable}
                     // loading={platformType === 'local' ? fetchLocalListStatus : fetchRemoteListStatus}
-                    dataSource={dataSource}
+                    dataSource={statisticsList}
                     pagination={false}
                     columns={columns}
                     onChange={this.pageChange}

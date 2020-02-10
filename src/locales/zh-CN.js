@@ -16,6 +16,7 @@ import webTools from './zh-CN/webTools';
 import dataDistribution from './zh-CN/dataDistribution';
 import dashboard from './zh-CN/dashboard';
 import clusterManage from './zh-CN/clusterManage';
+import checkRecord from './zh-CN/checkRecord';
 
 export default {
     'navBar.lang': '语言',
@@ -48,4 +49,5 @@ export default {
     ...dashboard,
     //集群管理
     ...clusterManage,
+    ...checkRecord
 };

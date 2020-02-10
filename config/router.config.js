@@ -24,14 +24,14 @@ export default [
         Routes: ['src/pages/Authorized'],
         routes: [
             // dashboard
-            {path: '/', redirect: '/dashboard', authority: ['admin', 'user']},
+            {path: '/', redirect: '/touchStatisticsPage', authority: ['admin', 'user']},
             /*----------------- 首页 -------------------*/
-            {
-                path: '/dashboard',
-                name: 'dashboard',
-                icon: 'home',
-                component: './Dashboard/Index',
-            },
+            // {
+            //     path: '/dashboard',
+            //     name: 'dashboard',
+            //     icon: 'home',
+            //     component: './Dashboard/Index',
+            // },
             /*----------------- 摸排工作统计表 -------------------*/
             {
                 path: '/touchStatisticsPage',

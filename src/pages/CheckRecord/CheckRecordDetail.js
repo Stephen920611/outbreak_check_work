@@ -290,52 +290,159 @@ class CheckRecordDetail extends PureComponent {
                             </Row>
                         </Card>
                         <div className={styles.detailTitleName}>
-                            人员基本信息
+                            人员活动信息
                         </div>
                         <Card style={{marginBottom: 20}}>
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
-                                    <span>县市区：</span>
+                                    <span>从何地来烟(返烟)：</span>
                                     <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
                                 </Col>
                                 <Col span={6} className={styles.detailBtns}>
-                                    <span>姓名：</span>
+                                    <span>来烟(返烟)时间：</span>
                                     <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createDate') ? T.helper.dateFormat(basicPersonnelInformation.createDate) : '---' : '---'}</span>
                                 </Col>
                                 <Col span={6}>
-                                    <span>年龄：</span>
+                                    <span>来烟(返烟)方式：</span>
                                     <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
                                 </Col>
                                 <Col span={6}>
-                                    <span>性别：</span>
+                                    <span>航班/车次/船次/车牌号：</span>
                                     <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
                                 </Col>
                             </Row>
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
-                                    <span>籍贯：</span>
-                                    <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>住址：</span>
-                                    <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createDate') ? T.helper.dateFormat(basicPersonnelInformation.createDate) : '---' : '---'}</span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>身份证号码：</span>
-                                    <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>联系电话：</span>
-                                    <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>被调查人基本情况：</span>
+                                    <span>期间还到过哪些城市：</span>
                                     <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
                                 </Col>
                             </Row>
                         </Card>
+                      <div className={styles.detailTitleName}>
+                        人员接触信息
+                      </div>
+                      <Card style={{marginBottom: 20}}>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>是否与确诊、疑似病例密切接触过：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>接触者姓名：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>接触者身份证号：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6} className={styles.detailBtns}>
+                            <span>来接触时间</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createDate') ? T.helper.dateFormat(basicPersonnelInformation.createDate) : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>接触地点：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>是否与密切接触者共同生活、工作、学习、聚会过：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>接触者姓名：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>接触者身份证号：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6} className={styles.detailBtns}>
+                            <span>来接触时间</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createDate') ? T.helper.dateFormat(basicPersonnelInformation.createDate) : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>接触地点：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>是否与重点疫区人员接触过：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>接触者姓名：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>接触者身份证号：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6} className={styles.detailBtns}>
+                            <span>来接触时间</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createDate') ? T.helper.dateFormat(basicPersonnelInformation.createDate) : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>接触地点：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                      </Card>
+                      <div className={styles.detailTitleName}>
+                        人员接触新信息
+                      </div>
+                      <Card style={{marginBottom: 20}}>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>身体状况：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6} className={styles.detailBtns}>
+                            <span>是否就医：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createDate') ? T.helper.dateFormat(basicPersonnelInformation.createDate) : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>就医医院：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>就医时间</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>是否采取过防护措施：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={12} className={styles.detailBtns}>
+                            <span>什么时间内采取的防护措施：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createDate') ? T.helper.dateFormat(basicPersonnelInformation.createDate) : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>下步拟采取措施：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+
+                        </Row>
+                        <Row className={styles.detailTitle}>
+                          <Col span={6}>
+                            <span>填报日期：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                          <Col span={6}>
+                            <span>摸排人：</span>
+                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('createBy') ? basicPersonnelInformation.createBy : '---' : '---'}</span>
+                          </Col>
+                        </Row>
+                      </Card>
                     </div>
                 </div>
             </PageHeaderWrapper>
