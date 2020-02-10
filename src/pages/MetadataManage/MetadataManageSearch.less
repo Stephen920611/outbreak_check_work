@@ -1,0 +1,68 @@
+@import '~antd/lib/style/themes/default.less';
+//@import '~@/utils/utils.less';
+
+.optional {
+    color: @text-color-secondary;
+    font-style: normal;
+}
+
+.card {
+  margin-bottom: 24px;
+}
+
+.heading {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.editable {
+  td {
+    padding-top: 13px !important;
+    padding-bottom: 12.5px !important;
+  }
+}
+.tableColor{
+  tr{
+    background-color: #fff;
+  }
+}
+  :global {
+    .antd-pro-components-standard-form-row-index-standardFormRow{
+      margin-bottom: -10px;
+      border-bottom: 0 dashed #e8e8e8;
+    }
+  }
+.allBtn{
+  width: 100%;
+  margin-top: 30px;
+  padding-top: 30px;
+  text-align: center;
+}
+.btn{
+  height: 40px;
+  margin-bottom: 15px;
+  padding: 0 25px;
+  font-size: 15px;
+  border-radius:20px;
+}
+
+// custom footer for fixed footer toolbar
+
+@media screen and (max-width: @screen-lg) {
+  .tableListForm :global(.ant-form-item) {
+    margin-right: 24px;
+  }
+}
+
+
+@media screen and (max-width: @screen-md) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 8px;
+    }
+}
+
+
+
+
+

@@ -1,0 +1,1076 @@
+[33mcommit 43c006cc243a7cdbfd28124a8657d0cbb85b17ff[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Qn <qina6050@163.com>
+Date:   Mon Sep 16 09:00:43 2019 +0800
+
+    '修改选中问题'
+
+[33mcommit 53f5ce17b9429a2059e4ea05044a820fb6ea4d9c[m
+Author: Qn <qina6050@163.com>
+Date:   Mon Sep 16 08:58:19 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit 1b44f5df0eae4603f6be25954dff0d44887e0d72[m
+Author: Qn <qina6050@163.com>
+Date:   Mon Sep 16 08:52:08 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit c28c1cfc5c91f6b10f442979a5cc48997d583617[m
+Author: Qn <qina6050@163.com>
+Date:   Mon Sep 16 08:41:36 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit f9b1d66e7a2bfc40d9430f0d87995fd777e57b67[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:52:03 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit eede0328004f80d5fb88ca3e8d577b20b81e3ba8[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:48:16 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit 48e031e0c6105ae3da87507e2c13662c793a1dee[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:44:52 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit d02a9d2175d04874d71605a62cc7c9cf607ff71c[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:43:45 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit 3a69532c913b00937429adbc6b27d84840859ec8[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:40:24 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit 19aaeef6543acdb4c54a34670e4b4ee73bd2f422[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:38:54 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit cc94ceef3f3b553a3e171e5162356d29688874db[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:33:40 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit 5912022abae3bbb73b7b5628ec1d0e113d42d2f0[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 17:28:13 2019 +0800
+
+    去完善跳转界面，数据源、目的地默认选中
+
+[33mcommit 70404cba646768c4b48f2a2563f20e67b1125b44[m
+Merge: 0ac3590 9c016d8
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 15:11:58 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 9c016d82ebeccd2212c1e4fccb054983dafc7d2f[m
+Merge: af4d7c6 caa63fe
+Author: stephen <13105208266@163.com>
+Date:   Thu Sep 12 14:58:44 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit af4d7c618592714e05cd357f6884d4f451007638[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Sep 12 14:58:26 2019 +0800
+
+    ftp输入和输出，微调完善代码
+
+[33mcommit 0ac35908de74a05baf8a51ee7f3cf2e6f07126cc[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 12:18:35 2019 +0800
+
+    修改状态
+
+[33mcommit caa63fef092c4c64f59936137df13552be00ee92[m
+Author: Qn <qina6050@163.com>
+Date:   Thu Sep 12 09:30:00 2019 +0800
+
+    修改状态
+
+[33mcommit 3e968bea340adf830c935eee69854d4771ca48f2[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 11 17:55:22 2019 +0800
+
+    websocket 联调，接受数据
+
+[33mcommit f757b701aba2b1fa29a1e34fce75c3c048f1f4b0[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 11 16:37:37 2019 +0800
+
+    任务详情页面更改需求大体完成，没有联调
+
+[33mcommit 7fc78eba6201bdf86deee4b3343d2c9bff969616[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 11 16:20:42 2019 +0800
+
+    试验websocket 成功
+
+[33mcommit 283eb183b3732cbd1c95a30efed49e11580b0cc1[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 11 15:25:29 2019 +0800
+
+    更改首页任务状态
+
+[33mcommit 2dcdbfd3ad5aec9663b4f251c5f12a38178b2d49[m
+Merge: 2bc6e41 9c019cc
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 11 15:04:16 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 2bc6e415783e90333113700eeaa70d9c39d9c2c3[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 11 15:04:03 2019 +0800
+
+    去掉websocket
+
+[33mcommit 70543156dc5438a1da80d0beba39e8cb2486f08c[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 11 15:03:33 2019 +0800
+
+    暂时提交，更改数据任务状态
+
+[33mcommit 9c019cc81684d9a06e8cd2ed6f6f4c20975e022f[m
+Author: Gn <Qina6050@163.com>
+Date:   Wed Sep 11 09:50:46 2019 +0800
+
+    rabbitmq数据目的地固定数据修改，jdbc数据源界面修改以及单选按钮所触发的事件代码优化
+
+[33mcommit 6ba3251dd93768a50cdf1355d27a81341e284bdb[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Sep 10 11:27:37 2019 +0800
+
+    封装获取详情的公共方法
+
+[33mcommit 3931ad17ddc6cbb569e341056d7974d831fee77e[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Sep 10 10:43:44 2019 +0800
+
+    修复任务id没更新问题
+
+[33mcommit e8aa83708d4960342e04eb30fea1bc3e556a390c[m
+Merge: f570d7a f53c5a4
+Author: stephen <13105208266@163.com>
+Date:   Tue Sep 10 10:32:52 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit f570d7a1b67777573846e6e6e7c194ab642c4cdc[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Sep 10 10:32:36 2019 +0800
+
+    数据分发页面
+
+[33mcommit f53c5a40a763e3a2f7a680af4595ff4d02404152[m
+Author: Gn <Qina6050@163.com>
+Date:   Mon Sep 9 19:20:44 2019 +0800
+
+    合并代码
+
+[33mcommit f45633c80c3f95077fd8669ee80c8b130c0a7747[m
+Merge: b5e47df 4930115
+Author: Gn <Qina6050@163.com>
+Date:   Mon Sep 9 19:20:04 2019 +0800
+
+    合并代码
+
+[33mcommit b5e47dfb0b5c83ea487b02fbbf8383f119654412[m
+Author: Gn <Qina6050@163.com>
+Date:   Mon Sep 9 18:44:48 2019 +0800
+
+    debezium-mysql 输入新建编辑完成，数据源详情显示相关的变量优化
+
+[33mcommit 49301154d9f09faeaa1a79b008bf79efd209ec96[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Sep 9 17:37:10 2019 +0800
+
+    新增图片，枚举kafka输入和 可能过期的kafka输入，
+    测试这两个接口
+
+[33mcommit 880c1057312a0c96c17f17f9799526e4165298fa[m
+Author: Gn <Qina6050@163.com>
+Date:   Mon Sep 9 10:54:36 2019 +0800
+
+    修复jdbc编辑界面
+
+[33mcommit 0a3d9537fd2d06ebfc0c97af1a7fc50fb38c049b[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Sep 6 17:10:15 2019 +0800
+
+    修改页面页数bug
+
+[33mcommit be297a8680c38996d96d8a8227121712343aa0b5[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Sep 6 16:03:09 2019 +0800
+
+    更改公共方法bug
+
+[33mcommit b4ab7fe6da4a0a4e989a2c945e2587b7697ee936[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Sep 6 15:17:20 2019 +0800
+
+    jdbc数据目的地新建完成
+
+[33mcommit 431487091f6b4ce7b13a30bc9933f8f729b63f9a[m
+Merge: c91e09e 1774ae0
+Author: Gn <Qina6050@163.com>
+Date:   Fri Sep 6 14:45:23 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit c91e09eb9069688f60248f34caa9f25186f17216[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Sep 6 14:44:59 2019 +0800
+
+    jdbc数据源新建完成
+
+[33mcommit 1774ae0493c41fbb6c36ab74a473365e428ef76d[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Sep 6 12:06:44 2019 +0800
+
+    做详情容错，更改编辑接口的topic公共代码
+
+[33mcommit 8e3e9633a44b6cf6b0faa02ffd3120e211bea603[m
+Merge: af68b8d f01d40e
+Author: stephen <13105208266@163.com>
+Date:   Fri Sep 6 10:24:56 2019 +0800
+
+    合并form代码
+
+[33mcommit af68b8da9dbee8512337f715e1e24369ba42c995[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Sep 6 10:19:22 2019 +0800
+
+    kafka页面
+
+[33mcommit f01d40e0abc2db398fb1c97719dca81b6635e170[m
+Merge: 0820bbe 10c5769
+Author: Gn <Qina6050@163.com>
+Date:   Fri Sep 6 10:01:48 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 0820bbee685d00204cb6475a50227438665e3271[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Sep 6 10:01:36 2019 +0800
+
+    RabbitMQ新建、编辑完成
+
+[33mcommit 10c576964115996d91c8e6dc5bfe493dc3cfaf43[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Sep 6 09:06:41 2019 +0800
+
+    任务详情页面提高容错，如果没有任务id踢回数据列表页面
+
+[33mcommit a2e54d3f28616e50b56d32ff0071b1cc8c3027cd[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Sep 5 19:13:07 2019 +0800
+
+    修改文字显示
+
+[33mcommit 6cfb2b7aa1ce3cfb84ad012adddc05fce42a5623[m
+Merge: a1f1a9b 711e575
+Author: Gn <Qina6050@163.com>
+Date:   Thu Sep 5 18:28:16 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit a1f1a9bf1f5c65ef0123d87cc9a99159c79b4fee[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Sep 5 18:27:16 2019 +0800
+
+    RabbitMQ接口对接(详情未测试)，JDBC数据源和数据目的地界面（接口未对接）
+
+[33mcommit 711e5756c641de759dd9310fb59b21a9e7ed0e85[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Sep 5 15:15:52 2019 +0800
+
+    websocket实验
+
+[33mcommit 4b557805dad502068fdf3ed8f5289d21000cbe8d[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 4 17:02:37 2019 +0800
+
+    步骤页面如果刷新，就跳到开始页面
+
+[33mcommit 63367df94d3454205ff32e1f8526c1e0b3a8f491[m
+Merge: 43b1af2 ae1ab86
+Author: Gn <Qina6050@163.com>
+Date:   Wed Sep 4 10:46:46 2019 +0800
+
+    合并代码
+
+[33mcommit 43b1af2b8084370f787c7fad2d5f746446a250cd[m
+Author: Gn <Qina6050@163.com>
+Date:   Wed Sep 4 10:38:15 2019 +0800
+
+    RabbitMQ界面编写
+
+[33mcommit ae1ab86d1247b0ba9ccd7c561d6687974c499727[m
+Merge: 498c382 af54cbd
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 4 10:34:59 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+    
+    # Conflicts:
+    #       src/pages/DataSync/NewTaskFlow.js
+
+[33mcommit 498c3824e8c4c28c667afbe7197ce677480dad69[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Sep 4 10:31:57 2019 +0800
+
+    新建数据源接口更改
+
+[33mcommit af54cbd395c7828d7e0d807a6c5d87b0683fd6d4[m
+Author: Gn <Qina6050@163.com>
+Date:   Tue Sep 3 16:58:39 2019 +0800
+
+    任务详情接口对接
+
+[33mcommit db3a678ea204a1f8501de83c0ff7267f6e06272f[m
+Merge: 19cf28f af5c424
+Author: Gn <Qina6050@163.com>
+Date:   Tue Sep 3 16:27:46 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 19cf28f3580b94e313ce2a72888c1e0d83ad0dc8[m
+Author: Gn <Qina6050@163.com>
+Date:   Tue Sep 3 16:24:54 2019 +0800
+
+    对接任务详情接口，更新下一步任务接口
+
+[33mcommit af5c4248c70ef5c30d4765351abd09abe71710a5[m
+Merge: f0f0176 5d06584
+Author: stephen <13105208266@163.com>
+Date:   Tue Sep 3 15:01:08 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit f0f0176d013ac8d62f6a07bae810b6fcfa53c670[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Sep 3 15:00:53 2019 +0800
+
+    封装公共socket方法，改写流程图试验
+
+[33mcommit 5d06584c9bded2abeb928e3215763a3397ce5a98[m
+Author: Gn <Qina6050@163.com>
+Date:   Mon Sep 2 11:30:40 2019 +0800
+
+    更新注释
+
+[33mcommit 3663f40e4fab2b14433aa16bb86b120550bbc17e[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Sep 2 10:49:04 2019 +0800
+
+    更新注释
+
+[33mcommit 723d794f52b25d9b2de3f994ccc5c94a5f69bf80[m
+Merge: 660f894 7217e80
+Author: Gn <Qina6050@163.com>
+Date:   Mon Sep 2 10:04:55 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 660f8948c9fd776195736c8574ad5c1bd4607483[m
+Author: Gn <Qina6050@163.com>
+Date:   Mon Sep 2 10:04:38 2019 +0800
+
+    添加注释，删除无用代码
+
+[33mcommit 7217e806cc9884b854f10312fea010c082e83a48[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Sep 2 09:59:48 2019 +0800
+
+    修复详情页面高度问题
+
+[33mcommit c527f096e70cf04d746b2d78dea4aecb4492dc0e[m
+Author: Gn <Qina6050@163.com>
+Date:   Sat Aug 31 14:59:44 2019 +0800
+
+    分部界面-添加数据源和数据目的地图标的显示，添加获取任务详情方法，接口未对接
+
+[33mcommit df4db4e3d4b2e462aeb7c38287a835476cbfeb88[m
+Merge: 1a58771 559afe6
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 30 18:01:20 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 1a587711e158f1a05e883299da885d4ae68a36d6[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 30 18:00:18 2019 +0800
+
+    修复更新接口时候不显示名字和icon的问题
+
+[33mcommit 559afe67b59195e5c229baa4c196e7c4b0004a74[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Aug 30 17:40:00 2019 +0800
+
+    添加新建目的地点击时，要判断一定有数据源
+
+[33mcommit a3c681fdb176f628a7c12ce6668bc6d4207fcfe8[m
+Merge: ef61187 655e4e3
+Author: Gn <Qina6050@163.com>
+Date:   Fri Aug 30 16:09:59 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit ef6118780c6dc3196c99640915914a5d902f82a2[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Aug 30 16:09:43 2019 +0800
+
+    修复数据详情页的显示，添加代码注释
+
+[33mcommit 655e4e38ba3e1e577256bd3f1bcf319487b41ecb[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 30 16:06:04 2019 +0800
+
+    调通新建数据目的地任务
+
+[33mcommit 708fb749853f670bf254c69392f5c4f405f678ca[m
+Merge: 8c6fe7a 1735ef6
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 30 11:52:18 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 8c6fe7a14179bfd4692b351e2f9fbdde73cd58a5[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 30 11:52:08 2019 +0800
+
+    修复更新bug
+
+[33mcommit 1735ef614bd250582aa1a0a662bc0abc183a656f[m
+Merge: 4c796b9 458054a
+Author: Gn <Qina6050@163.com>
+Date:   Fri Aug 30 10:50:02 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 4c796b96898606714e1fc96016c715e90d89e3aa[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Aug 30 10:49:45 2019 +0800
+
+    修复数据源和数据列表一致问题
+
+[33mcommit 458054a6f4dd32e018459fd82a9c7fc423099356[m
+Merge: f7adf50 2a5c7c5
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 30 10:41:33 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit f7adf50f272b1ba369bf07ad2d7b5ea9367d608a[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 30 10:40:44 2019 +0800
+
+    修复编辑时候数据带不过的bug
+
+[33mcommit 2a5c7c5effe5a3171d4008def6650e7c10327f45[m
+Merge: 9b79aed b21531c
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 29 18:59:16 2019 +0800
+
+    合并代码
+
+[33mcommit 50fffce8d566f3098046c5b41036f5c9cb2d1342[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 29 18:04:08 2019 +0800
+
+    删除接口bug修改
+
+[33mcommit 9b79aed5f950eaa060bd9435844396932c580b03[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 29 17:23:42 2019 +0800
+
+    添加删除任务功能
+
+[33mcommit b21531cfcdf76425297227dff685773300b95280[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 29 16:59:24 2019 +0800
+
+    完善代码，去掉无用代码，加上注释
+
+[33mcommit 264f2115cf7660b60bdd457fb65471c841238476[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 29 16:20:40 2019 +0800
+
+    修复编辑窗口关闭后，新建任务表单没有更新的问题，
+    注释完善
+
+[33mcommit eb36603e096865d6af559d4828035fd04cb8617b[m
+Merge: 143655b e8f401d
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 29 14:43:19 2019 +0800
+
+    合并新建刷新任务列表代码
+
+[33mcommit 143655bad7c54da65230b86af5ab46eb981c4d29[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 29 14:32:36 2019 +0800
+
+    添加下拉按钮
+
+[33mcommit e8f401d8060668824645d3357d4fca7bdcd05b31[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 29 14:29:32 2019 +0800
+
+    删除processor接口，修改前端逻辑，更新任务列表接口
+
+[33mcommit 3ac1e6de70b839744824b107ffa0d5ce216b6ba6[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 29 08:41:21 2019 +0800
+
+    修改分步界面-新建任务界面uuid固定
+
+[33mcommit be7723cd8c67140247a9007ca2b0306534bb336f[m
+Merge: b057ad2 d01cd2b
+Author: Gn <Qina6050@163.com>
+Date:   Wed Aug 28 18:26:10 2019 +0800
+
+    合并dataSyncNewMission代码
+
+[33mcommit b057ad2da80aca1ce55fec5df2aa09ae1d5b1591[m
+Author: Gn <Qina6050@163.com>
+Date:   Wed Aug 28 18:13:27 2019 +0800
+
+    分步界面、接口修改，添加立即激活按钮
+
+[33mcommit d01cd2b3a37c5a316441a65fa63242277fe9361b[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 28 18:09:15 2019 +0800
+
+    封装公共uuid 方法， 更新接口改完， 连接接口完成
+
+[33mcommit f867051e7413cba8fccf4e3c6ce89c1f1b7a2e27[m
+Merge: 4499ded 5fa8a9f
+Author: Gn <Qina6050@163.com>
+Date:   Wed Aug 28 17:56:46 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 5fa8a9f84407c136ebdb754962622fd5e7c037d6[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 28 11:26:44 2019 +0800
+
+    修复编辑时候的bug
+
+[33mcommit 4499dedf4b5f098ce1e7673d4da46a5da1a66f13[m
+Merge: 4fcc756 92a88ae
+Author: Gn <Qina6050@163.com>
+Date:   Wed Aug 28 10:33:44 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 92a88aed33af980112746db7a018ee68fcfe475f[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 28 10:21:05 2019 +0800
+
+    编辑接口和更新接口完成
+
+[33mcommit 4fcc75607ac232af14ff087ec14dd9a27362c9a7[m
+Merge: 69a493d df8b101
+Author: Gn <Qina6050@163.com>
+Date:   Wed Aug 28 10:15:23 2019 +0800
+
+    更新任务修改
+
+[33mcommit 69a493d9d68342be03a7b6b3eb116a9c8199ebbd[m
+Author: Gn <Qina6050@163.com>
+Date:   Wed Aug 28 09:32:35 2019 +0800
+
+    更新任务修改
+
+[33mcommit df8b1013e32ec249ced03f9ec93102d3ddb790e8[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 28 09:01:32 2019 +0800
+
+    获取详情页面和接口
+
+[33mcommit 675ddcba16cfd63d9871a73b9f70b997a62c12e6[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 22:28:47 2019 +0800
+
+    提交测试
+
+[33mcommit b96dcb696e30a7adb94063a5630eeb84637c995a[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 20:22:35 2019 +0800
+
+    新建接口完成
+
+[33mcommit fc2454d3ac3efb577b4542f523bae895e4a60b6e[m
+Merge: b87690b a453661
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 27 19:55:43 2019 +0800
+
+    合并代码
+
+[33mcommit b87690bc1e127866988e69b7d81e04426953047a[m
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 27 19:49:58 2019 +0800
+
+    分部界面接口对接修改
+
+[33mcommit a453661d702d9ead62c4d4ca3d1090e6453154f0[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 19:47:53 2019 +0800
+
+    新建接口
+
+[33mcommit fe57804bc58572807943b7550b705d3d6d93313a[m
+Merge: 5dd2dc7 85c54be
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 27 15:37:22 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 5dd2dc7a276330b2af9825a855dd05516f182746[m
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 27 15:37:13 2019 +0800
+
+    更新任务修改
+
+[33mcommit 85c54bebef3828f70e32073fe2cc0582f4a9a7a5[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 15:27:13 2019 +0800
+
+    更新枚举值
+
+[33mcommit 1da6a1f0510381e030941ae7c2fa34a1773e7f6d[m
+Merge: 71caa9e 77b7820
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 11:40:36 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 71caa9ebbd79c29973224ba64d69b475f3a528b8[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 11:39:53 2019 +0800
+
+    枚举图片路径，封装公共json方法，任务列表页面调试接口完成
+
+[33mcommit 77b7820d10aff50ffbb23ef7964525dc30769204[m
+Merge: ac8ce8e e02aeca
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 27 10:05:38 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit ac8ce8e51fe83b530b56e32dc263b02e3712ed81[m
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 27 10:05:28 2019 +0800
+
+    新建任务修改
+
+[33mcommit e02aeca965e2550891797e4577eeece57a089512[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 08:57:16 2019 +0800
+
+    更新注释
+
+[33mcommit 64d39251e59c128c72e9c18364084b2e4aa65d47[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 27 08:55:57 2019 +0800
+
+    枚举数据任务公共文件
+
+[33mcommit 5bf6fd44acf002dacd7d718400a4f8b154a1e7f0[m
+Merge: 2fa18dd 1c08f49
+Author: Gn <Qina6050@163.com>
+Date:   Mon Aug 26 18:38:46 2019 +0800
+
+    合并新建任务界面代码
+
+[33mcommit 2fa18dd5bcc9f87fbb02546164fb7669a79becb9[m
+Author: Gn <Qina6050@163.com>
+Date:   Mon Aug 26 18:33:09 2019 +0800
+
+    新建任务界面接口对接，获取数据源和数据目的地列表
+
+[33mcommit 1c08f49a39ac71178621ef0530908cdb2acfb804[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Aug 26 17:43:29 2019 +0800
+
+    任务详情静态页面
+
+[33mcommit 0704a53f9d82b56c762ba4a0e5844ed9970c18e7[m
+Merge: 279f498 af4f956
+Author: Gn <Qina6050@163.com>
+Date:   Sat Aug 24 17:21:24 2019 +0800
+
+    合并api，数据任务页面冲突代码
+
+[33mcommit 279f498489b7a123b2ec003d8b36818dfbb63632[m
+Author: Gn <Qina6050@163.com>
+Date:   Sat Aug 24 17:07:44 2019 +0800
+
+    数据任务分步界面修改
+
+[33mcommit af4f956de11f7f0ca93eea53ace6fe8873e49ce4[m
+Author: stephen <13105208266@163.com>
+Date:   Sat Aug 24 16:39:27 2019 +0800
+
+    快速注册页面接口加参数完成
+
+[33mcommit 4b25c13784c06ed3fe47fdd10f4bf53e0e75bc87[m
+Merge: 80cb683 d2fa34d
+Author: stephen <13105208266@163.com>
+Date:   Sat Aug 24 16:27:49 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 80cb683b9d9813dc16404a8bc96163b76df5d586[m
+Author: stephen <13105208266@163.com>
+Date:   Sat Aug 24 16:27:23 2019 +0800
+
+    新建数据源和目的地接口联调， 元数据管理接口完善，（提交按钮需要加一个账户名参数，未完成）
+
+[33mcommit d2fa34d9f647789d9ec70a088c7ee241aea664ee[m
+Author: adamfei <121090984@qq.com>
+Date:   Sat Aug 24 15:58:02 2019 +0800
+
+    提交icon
+
+[33mcommit 4e5fe9b48ce40678ec1c012445e8c1ae0a3dfce3[m
+Merge: 90a65eb fd52093
+Author: Gn <Qina6050@163.com>
+Date:   Sat Aug 24 11:18:20 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 90a65ebe47486cd7d853792f07fc63543e0834b5[m
+Author: Gn <Qina6050@163.com>
+Date:   Sat Aug 24 11:18:10 2019 +0800
+
+    数据任务分步界面修改
+
+[33mcommit 86f0483e5a0d8cb8e823b4e55400b821deacd6ec[m
+Author: Gn <Qina6050@163.com>
+Date:   Sat Aug 24 10:45:19 2019 +0800
+
+    元数据管理界面修改
+
+[33mcommit fd5209346126a1da3ead35b69e72c07f7b413b32[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 23 20:19:12 2019 +0800
+
+    元数据管理快速注册三个接口完成，公共接口代码改写
+
+[33mcommit 0e088abb142cd6fbde6e22e4c9f6dd2e8bac920a[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 23 17:57:22 2019 +0800
+
+    快速注册获取树接口
+
+[33mcommit 46c6e831ff4e2745dff811479a7ac4d6fcf4bc40[m
+Merge: e8a6f65 f0a04a2
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 23 16:54:30 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit e8a6f658a04fde6362247e479b22b90c9a57faf0[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 23 16:54:12 2019 +0800
+
+    编辑窗口完成
+
+[33mcommit f0a04a230989bfe7044cfc69cf38bf6bc8947d42[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Aug 23 16:47:11 2019 +0800
+
+    数据任务分步界面修改
+
+[33mcommit be3e8a571e2db03b49a4809386637679d567c679[m
+Author: Gn <Qina6050@163.com>
+Date:   Fri Aug 23 14:45:49 2019 +0800
+
+    元数据管理对接接口
+
+[33mcommit ed48d73dad55e3a5d902e1fd7912ff8f0455b725[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 23 10:55:07 2019 +0800
+
+    ftp更新
+
+[33mcommit 30b3d565cac8bf9427978da636ce10df1a144268[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 23 10:47:05 2019 +0800
+
+    oracle，sql server ，ftp数据源完成，
+
+[33mcommit d9c7ce5437988244f59ef61380add1c0b170a46b[m
+Merge: c60140b 3e0ec7b
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 22 18:03:01 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit c60140b309dc72a520831773bf44348e141d6fc3[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 22 18:02:29 2019 +0800
+
+    新建数据源模态框
+
+[33mcommit 3e0ec7bd209f5595cfa596e528e996df0ea3770c[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 22 15:33:39 2019 +0800
+
+    元数据搜索对接接口
+
+[33mcommit 82562a35ea391e6a8c99a571f587087410cbcba6[m
+Merge: 5521268 777c9b9
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 22 15:31:19 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit 55212684ed8090345a5d9a0eb5abe1e6a009303a[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 22 15:31:11 2019 +0800
+
+    元数据搜索对接接口
+
+[33mcommit 777c9b9cdce852f6d5ce55abf1c372cc3f17da3b[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 21 16:54:40 2019 +0800
+
+    数据源和目的地模态框实现
+
+[33mcommit be41a1900457221d4ba27bff1d754976e8cd7b0a[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 21 15:20:46 2019 +0800
+
+    封装helper，moment格式化成时间戳
+
+[33mcommit c7013a85c10264bca7ce3a2cc396a1f0973cb702[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 21 14:06:31 2019 +0800
+
+    模态框
+
+[33mcommit d7596d7776cf9e607613a0a9f71f3255e5cd7075[m
+Merge: be35592 6ce0f92
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 21 10:35:22 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit be3559219a87259e6478755becd221f370e65824[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 21 10:35:09 2019 +0800
+
+    临时提交，增加模态框
+
+[33mcommit 6ce0f9265fa3b5ceb984ca1a2fc937babcaa5e86[m
+Author: Gn <Qina6050@163.com>
+Date:   Wed Aug 21 10:31:14 2019 +0800
+
+    分步界面的新建任务界面完善
+
+[33mcommit e7da1f98fb527c3b4108c055112a498c44492a2d[m
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 20 19:01:14 2019 +0800
+
+    新建任务页面完成，分步界面初步搭建
+
+[33mcommit 3957dcfc3f6391f08da21424178ed7512d4eeb8b[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 20 18:43:42 2019 +0800
+
+    数据任务首页完成
+
+[33mcommit 9dc39a9b115d93805ee006d3dbd8b05e2d2773f9[m
+Merge: f041938 5c10f1b
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 20 11:19:18 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit f0419387bb29b9ccbd660116bbc93801f507dad0[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 20 11:19:00 2019 +0800
+
+    数据任务首页搭建
+
+[33mcommit 5c10f1b0096e6c3952239103acf4c6a766acfee3[m
+Author: Gn <Qina6050@163.com>
+Date:   Tue Aug 20 11:01:12 2019 +0800
+
+    增加元数据搜索界面（未完成）
+
+[33mcommit bed63ba5142f6ba41cdfff966e664121be37a419[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Aug 19 15:56:35 2019 +0800
+
+    表格初步搭建
+
+[33mcommit 96915b1c3d868b455163d122992ba9c5f8898c36[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Aug 19 08:37:22 2019 +0800
+
+    快速注册代码完善，提交注释
+
+[33mcommit 64c6045a0c0a0f8e1367263b6e1d650c9f07574a[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 16 17:11:09 2019 +0800
+
+    元数据管理快速注册页面-测试接口
+
+[33mcommit 772bdd855c92320f335b572374b4d459d6fbd2a3[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 16 16:50:05 2019 +0800
+
+    快速注册提交接口完成
+
+[33mcommit c7c79847c428413e5b980e20dd161e26d9422702[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 16 11:46:33 2019 +0800
+
+    搭建接口文档规范，搭建接口模板，调通快速注册接口
+
+[33mcommit f91ea983d2335d72324eb6913f525bd98edd60c2[m
+Merge: a4a40ae 8d407f5
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 15 15:00:46 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit a4a40aebdddcdc6048b0eca68aa539be7ebc7232[m
+Author: stephen <13105208266@163.com>
+Date:   Thu Aug 15 15:00:33 2019 +0800
+
+    更改个人设置
+
+[33mcommit 8d407f581dcec80edf623ac87cf456ef85cbaf51[m
+Author: lujun0625 <lujun0625@gmail.com>
+Date:   Thu Aug 15 10:10:15 2019 +0800
+
+    元数据管理v1.0
+
+[33mcommit 57791a93f07f6b9b359e5cd958dc90c01b6402c7[m
+Author: Gn <Qina6050@163.com>
+Date:   Thu Aug 15 09:00:51 2019 +0800
+
+    增加元数据管理界面
+
+[33mcommit 76e6a7b046f94ad1b44b3e700e3a73a223041776[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 14 16:52:35 2019 +0800
+
+    修复hasOwnproperty的菜单bug
+
+[33mcommit bd40015d670d7b86780cfd3b949ff9e819270b9d[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 14 16:49:52 2019 +0800
+
+    个人中心页面
+
+[33mcommit c51fd7c3e38ac0af8a238888712d37ba629e14d3[m
+Author: stephen <13105208266@163.com>
+Date:   Wed Aug 14 11:55:20 2019 +0800
+
+    登录接口完成
+
+[33mcommit f9ac9192e702a3813755d34d3d189ab0e2eb7564[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 13 18:48:11 2019 +0800
+
+    登录接口（未完成，需要校验）
+
+[33mcommit 1c1be7c835a925ae9e041c08d943c833e73362f1[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 13 10:04:19 2019 +0800
+
+    更改所有路由，增加路由配置
+
+[33mcommit 30e4ff609b86aa6aef3535f3803e3d4e706a85d9[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 13 09:26:42 2019 +0800
+
+    快速注册页面接口
+
+[33mcommit b3f33bde84b0f51c1206742a55a5be29dfa3dfb4[m
+Merge: c3b8e18 3815f91
+Author: stephen <13105208266@163.com>
+Date:   Mon Aug 12 09:13:01 2019 +0800
+
+    Merge branch 'master' of https://gitee.com/adamfei6899/datadist-web
+
+[33mcommit c3b8e184b732c8dc81d02aed11be6eba20db8259[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Aug 12 09:12:43 2019 +0800
+
+    快速注册页面完善
+
+[33mcommit 3815f91c3ac635b5f6e416cac15549ecfc7fc9ff[m
+Author: Gn <Qina6050@163.com>
+Date:   Mon Aug 12 08:34:05 2019 +0800
+
+    前端路由合并，修改路由合并后找不到情况
+
+[33mcommit 270feceaa5ce3b5632455c3fac1c0417cabfd89d[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 9 18:18:31 2019 +0800
+
+    快速注册页面调成现有的结构
+
+[33mcommit 03a73e87278837381e138201f59b4462d59f1b27[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 9 14:58:01 2019 +0800
+
+    合并前端路由
+
+[33mcommit d4dac79c1269577f1e24267f545a8a7761ec8376[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 9 11:39:47 2019 +0800
+
+    说明文档屏蔽
+
+[33mcommit b16ad57014889e6de651a3277ff5ddeed87875e9[m
+Author: adamfei <121090984@qq.com>
+Date:   Fri Aug 9 09:06:49 2019 +0800
+
+    自动修改提交
+
+[33mcommit 8ddf2a9e7c0e31d40ef7d42e7ad42e6ca929571a[m
+Author: stephen <13105208266@163.com>
+Date:   Fri Aug 9 08:51:08 2019 +0800
+
+    元数据管理页面搭建，默认页面修改
+
+[33mcommit f25b17022036fb919465ad89e52fc221606042c9[m
+Author: stephen <13105208266@163.com>
+Date:   Tue Aug 6 17:26:10 2019 +0800
+
+    提交config
+
+[33mcommit 4766c7bad2d5c738f3c1946ed009cf2ffb5ce318[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Aug 5 18:17:20 2019 +0800
+
+    '第一次提交'
+
+[33mcommit 15907b682f7981b0b059bb05eb46a10db8802e91[m
+Author: stephen <13105208266@163.com>
+Date:   Mon Aug 5 18:02:56 2019 +0800
+
+    first commit

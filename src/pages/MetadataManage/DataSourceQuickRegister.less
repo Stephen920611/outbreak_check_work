@@ -1,0 +1,41 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+.optional {
+    color: @text-color-secondary;
+    font-style: normal;
+}
+
+
+.quickRegisterModal {
+    background: #fff;
+    .subTitle {
+        min-height: 48px;
+        margin-bottom: 24px;
+        padding: 0 24px;
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 500;
+        font-size: 16px;
+        border-bottom: 1px solid #e8e8e8;
+        border-radius: 2px 2px 0 0;
+        :global {
+            .ant-col {
+                padding: 16px 0;
+                font-size: 16px;
+                text-align: right;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: @screen-lg) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 24px;
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 8px;
+    }
+}

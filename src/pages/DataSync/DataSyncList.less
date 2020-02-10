@@ -1,0 +1,326 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+//数据同步列表页头部样式
+.syncTitle {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+    background: none;
+    .syncTitleName {
+        float: left;
+        width: 100%;
+        height: 100%;
+        font-weight: bold;
+        font-size: 18px;
+        span {
+            color: #999;
+            font-size: 14px;
+        }
+    }
+    .syncTitleBtn {
+        width: 100%;
+        height: 100%;
+        .syncTitleSearch {
+            float: right;
+            margin-right: 20px;
+        }
+        .syncTitleSelect {
+            float: right;
+        }
+    }
+
+}
+
+//平台卡片样式
+.cardPlatform{
+    margin-bottom:33px;
+    :global{
+        .ant-col > .ant-list-item{
+            height: 82px;
+            background-color: #f4faff;
+        }
+        .ant-card-body{
+            padding-bottom: 0;
+        }
+    }
+    .card{
+        :global{
+            .ant-card-body{
+                height: 100%;
+                padding: 10px 17px;
+            }
+
+        }
+        .platformContent{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            .platformLeft,.platformRight{
+                height: 100%;
+            }
+            .platformLeft{
+                width: 33%;
+                color:#fff;
+                border-radius: 4px;
+                font-size: 18px;
+                line-height:60px;
+                text-align: center;
+                background-color: #3aa1ff;
+            }
+            .platformRight{
+                width: 66%;
+                padding: 10px;
+                line-height: 20px;
+                p{
+                    margin-bottom: 0;
+                    color: #595959;
+                    :global {
+                        .ant-badge-status-dot {
+                            width: 8px;
+                            height: 8px;
+                        }
+                    }
+                    .platformRightText {
+                        color: #3aa1ff;
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+    }
+    .upOrDown {
+        //position: absolute;
+        //bottom: 0;
+        height: 30px;
+        text-align: center;
+        .trigger {
+            i {
+                font-size: 16px;
+            }
+        }
+    }
+    .activeColor {
+        background-color: #f4faff;
+        border: 1px solid #1890FF;
+    }
+
+}
+
+//数据同步列表页卡片样式
+.cardList {
+    margin-bottom: -24px;
+
+    .syncList {
+        height: 100%;
+        :global {
+            .ant-row {
+                height: 650px;
+                min-height: 650px;
+                .ant-col {
+                    height: 28%;
+                    margin-bottom: 22px;
+                    .ant-list-item {
+                        height: 100%;
+                        .ant-card {
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            .ant-list-pagination {
+                //position: fixed;
+                //bottom: 6%;
+                //left: 0;
+                width: 100%;
+                margin-top: 0;
+                .ant-pagination {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+    .specialCard {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card {
+        .cardTitle {
+            display: flex;
+            button {
+                margin-right: 5px;
+            }
+        }
+        .syncCardContent {
+            width: 100%;
+            height: 100%;
+            .syncCardSource {
+                display: flex;
+                align-items: center;
+                height: 74%;
+                padding: 0 24px;
+                img {
+                    width: 32px;
+                    height: 32px;
+                    margin-right: 10px;
+                }
+                div {
+                    word-wrap: break-word;
+                    word-break: break-all;
+                    width: 80%;
+                }
+            }
+            .syncCardLine {
+                height: 1px;
+                background: #e8e8e8;
+                border: none;
+                width: 100%;
+            }
+            .syncBtnContent {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                //padding: 0 10%;
+                padding: 0 0 0 24px;
+                height: 25%;
+            }
+        }
+        :global {
+            .ant-card-head {
+                height: 25%;
+                min-height: 36px;
+                padding: 0 14px 0 24px;
+                .ant-card-head-wrapper {
+                    height: 100%;
+                }
+                .ant-card-head-title,
+                .ant-card-extra {
+                    padding: 0;
+                    .ant-btn-group {
+                        a {
+                            button {
+                                //border-left: 0;
+                                border-top-right-radius: 4px;
+                                border-bottom-right-radius: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+            .ant-card-body {
+                height: 75%;
+                padding: 0;
+            }
+            .ant-card-meta-title {
+                margin-bottom: 12px;
+                & > a {
+                    display: inline-block;
+                    max-width: 100%;
+                    color: @heading-color;
+                }
+            }
+            .ant-card-actions {
+                background: #f7f9fa;
+            }
+            .ant-card-body:hover {
+                .ant-card-meta-title > a {
+                    color: @primary-color;
+                }
+            }
+            .ant-card-extra {
+              font-size:17px;
+              i {
+              color:#434e59;
+                &:hover{
+                  color: #1890FF;
+                }
+              }
+            }
+        }
+    }
+    .item {
+        height: 64px;
+    }
+
+    :global {
+        .ant-list .ant-list-item-content-single {
+            max-width: 100%;
+        }
+    }
+}
+
+.extraImg {
+    width: 195px;
+    margin-top: -60px;
+    text-align: center;
+    img {
+        width: 100%;
+    }
+}
+
+.cardAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+}
+
+.cardDescription {
+    .textOverflowMulti();
+}
+
+.pageHeaderContent {
+    position: relative;
+}
+
+.contentLink {
+    margin-top: 16px;
+    a {
+        margin-right: 32px;
+        img {
+            width: 24px;
+        }
+    }
+    img {
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+}
+
+@media screen and (max-width: @screen-lg) {
+    .contentLink {
+        a {
+            margin-right: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .extraImg {
+        display: none;
+    }
+}
+
+@media screen and (max-width: @screen-sm) {
+    .pageHeaderContent {
+        padding-bottom: 30px;
+    }
+
+    .contentLink {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 1000px;
+        a {
+            margin-right: 16px;
+        }
+        img {
+            margin-right: 4px;
+        }
+    }
+}

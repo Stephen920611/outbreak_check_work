@@ -1,0 +1,82 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+.dataResourceModal{
+    width: 720px !important;
+
+    .dataResourceCheckbox{
+        height: 300px;
+        overflow-y:scroll;
+        :global{
+            .ant-col{
+                height: 30px;
+            }
+        }
+    }
+    .dataResourceSubmit{
+        padding-top: 24px;
+        text-align: right;
+        border-top: 1px solid rgb(233, 233, 233);
+
+
+    }
+    :global{
+        .ant-form-item{
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+.syncTitleName {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 24px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.quickRegisterModal {
+    background: #fff;
+    .subTitle {
+        min-height: 48px;
+        margin-bottom: 24px;
+        padding: 0 24px;
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 500;
+        font-size: 16px;
+        border-bottom: 1px solid #e8e8e8;
+        border-radius: 2px 2px 0 0;
+        :global {
+            .ant-col {
+                padding: 16px 0;
+                font-size: 16px;
+                text-align: left;
+            }
+        }
+    }
+    .dataResourceChoice{
+        display: flex;
+        justify-content: space-between;
+        .dataResourceInput{
+            width: 80%;
+        }
+        .dataResourceBtn{
+            width: 15%;
+        }
+    }
+
+}
+
+@media screen and (max-width: @screen-lg) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 24px;
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 8px;
+    }
+}

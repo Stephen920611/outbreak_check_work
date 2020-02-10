@@ -1,0 +1,390 @@
+@import '~antd/lib/style/themes/default.less';
+
+//选择数据源类型样式（第一步）
+.step1 {
+    display: flex;
+    align-items: center;
+    :global {
+        .ant-form-item-control {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+//数据源配置（第二步）
+.configForm {
+    margin-top: 30px;
+    :global {
+        .ant-select-dropdown {
+            z-index: 1;
+        }
+    }
+}
+
+//数据源模态框样式
+.dataOriginModal {
+    :global {
+        .ant-modal-body {
+            padding: 0 0 30px 0;
+        }
+    }
+    .dataOrigin {
+        height: 530px;
+        padding: 15px 35px;
+        overflow-y: auto;
+        li {
+            display: flex;
+            align-items: center;
+            float: left;
+            width: 49%;
+            height: 90px;
+            margin-bottom: 10px;
+            padding-left: 7%;
+            border: 1px solid #eee;
+            cursor: pointer;
+            img {
+                width: 30px;
+                height: 30px;
+                margin-right: 5%;
+            }
+        }
+        li:nth-child(2n) {
+            margin-left: 2%;
+        }
+        li:hover {
+            color: #40a9ff;
+            border: 1px solid #40a9ff;
+        }
+    }
+}
+
+.stepForm {
+    max-width: 100%;
+    margin: 40px auto 0;
+    input {
+        border-width: 0;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    :global {
+        .ant-form-item-label {
+            //width: 10%;
+            text-align: left;
+        }
+    }
+}
+
+.stepFormText {
+    margin-bottom: 24px;
+    :global {
+        .ant-form-item-label,
+        .ant-form-item-control {
+            line-height: 22px;
+        }
+    }
+}
+
+.result {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 24px 0 8px;
+}
+
+.desc {
+    padding: 0 56px;
+    color: @text-color-secondary;
+    h3 {
+        margin: 0 0 12px 0;
+        color: @text-color-secondary;
+        font-size: 16px;
+        line-height: 32px;
+    }
+    h4 {
+        margin: 0 0 4px 0;
+        color: @text-color-secondary;
+        font-size: 14px;
+        line-height: 22px;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 12px;
+        line-height: 22px;
+    }
+}
+
+.sInput {
+    :global {
+        .ant-input {
+            border: 0 solid #d9d9d9;
+            border-bottom: 1px solid #d9d9d9;
+            border-radius: 0;
+            &:focus {
+                border: 0 !important;
+                border-bottom: 1px solid #1890FF;
+            }
+        }
+        .ant-input:hover {
+            border-right-width: 0 !important;
+            border-bottom: 1px solid #1890FF;
+        }
+        .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+            border: 0;
+            border-color: #40a9ff;
+            border-bottom: 1px solid #1890FF !important;
+        }
+    }
+}
+
+//step 3
+.missionStep {
+    display: block;
+    margin: 100px;
+    .subTitle {
+        min-height: 48px;
+        margin-bottom: 24px;
+        padding: 0 24px;
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 500;
+        font-size: 16px;
+        border-bottom: 1px solid #e8e8e8;
+        border-radius: 2px 2px 0 0;
+        :global {
+            .ant-col {
+                padding: 16px 0;
+                font-size: 16px;
+                text-align: left;
+            }
+        }
+    }
+
+}
+.dataResourceChoice{
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    .dataResourceInput{
+        width: 60%;
+    }
+}
+
+.ruleStep {
+    :global {
+        .ant-table-thead > tr > th {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ant-card-body {
+            padding: 0;
+        }
+    }
+    .tableTitle {
+        padding: 16px;
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .desc {
+        padding: 0;
+    }
+}
+
+.information {
+    line-height: 22px;
+    :global {
+        .ant-row:not(:last-child) {
+            margin-bottom: 24px;
+        }
+    }
+    .label {
+        padding-right: 8px;
+        color: @heading-color;
+        text-align: right;
+        @media screen and (max-width: @screen-sm) {
+            text-align: left;
+        }
+    }
+}
+
+.money {
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 14px;
+}
+
+.uppercase {
+    font-size: 12px;
+}
+
+.cardList {
+    position: relative;
+    margin-bottom: -24px;
+    .activeColor {
+        border: 1px solid #1890FF;
+    }
+    .card {
+        :global {
+            .ant-card-meta-title {
+                //margin-bottom: 12px;
+                font-size: 14px;
+                & > a {
+                    //display: inline-block;
+                    max-width: 100%;
+                    color: @heading-color;
+                }
+                a {
+                    float: right;
+                    font-size: 12px;
+                }
+                p {
+                    margin-bottom: 0;
+                }
+            }
+            .ant-card-actions {
+                background: #f7f9fa;
+            }
+            .ant-card-body:hover {
+                .ant-card-meta-title > a {
+                    color: @primary-color;
+                }
+            }
+        }
+    }
+    .item {
+        height: 64px;
+    }
+    :global {
+        .ant-card-hoverable:focus {
+            border-color: #1890FF;
+            //box-shadow: 0 2px 8px #1890FF
+        }
+        .ant-list .ant-list-item-content-single {
+            max-width: 100%;
+        }
+        .ant-card-body {
+            display: flex;
+            align-items: center;
+            padding: 0 0 0 10%;
+            width: 100%;
+            height: 100%;
+            .ant-card-meta {
+                width: 100%;
+            }
+        }
+        .ant-btn {
+            height: auto;
+            font-size: 13px;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            transition: none;
+        }
+        [ant-click-animating-without-extra-node='true']::after,
+        .ant-click-animating-node {
+            box-shadow: none;
+            animation: none;
+            animation-fill-mode: none
+        }
+        .ant-card-hoverable {
+            height: 100px;
+        }
+        .ant-card-meta-avatar {
+            padding-right: 6px;
+        }
+    }
+    .trigger {
+        i {
+            font-size: 12px;
+        }
+    }
+    .upOrDown {
+        //position: absolute;
+        //bottom: 0;
+        height: 30px;
+        text-align: center;
+    }
+
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+}
+
+.name {
+    width: 70%;
+    overflow: hidden;
+    line-height: 1.7;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.detail {
+    width: 30%;
+    color: #1890FF;
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: right;
+}
+
+.cardAvatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 48px;
+}
+
+.newButton {
+    width: 100%;
+    border: 0 !important;
+}
+
+.readingStart, .frequency {
+    padding-top: 24px;
+}
+
+.frequencyInput, .subTaskInput {
+    margin: 0 10px;
+}
+
+.subTaskInput {
+    height: 27px;
+}
+
+.setting {
+    :global {
+        .ant-select-selection {
+            border: 0;
+        }
+        .ant-select-focused .ant-select-selection,
+        .ant-select-selection:focus,
+        .ant-select-selection:active {
+            border: 0;
+            border-right-width: 1px !important;
+            outline: 0;
+            box-shadow: none;
+        }
+    }
+}
+
+.stepForm4 {
+    :global {
+        .ant-input-group-wrapper {
+            width: auto;
+        }
+        .ant-input-group-addon .ant-select .ant-select-selection {
+            background-color: white;
+        }
+        .ant-input, .ant-input-group .ant-input {
+            width: auto;
+            margin: 0 10px
+        }
+        .ant-input-group {
+            line-height: 2;
+        }
+    }
+}
+

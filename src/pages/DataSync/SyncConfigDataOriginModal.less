@@ -1,0 +1,46 @@
+/**
+ * @description 
+ * @Version Created by Stephen on 2019/8/22.
+ * @Author Stephen
+ * @license dongfangdianzi
+ */
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+.configModal {
+    :global {
+        .ant-modal-content {
+            .ant-modal-header {
+                .ant-modal-title {
+                    text-align: center;
+                }
+            }
+            .ant-modal-body {
+                padding: 0;
+            }
+        }
+    }
+    .modalTips {
+        padding-left: 13%;
+        font-size: 12px;
+        width: 100%;
+        height: 38px;
+        line-height: 38px;
+        background: #eceff5;
+    }
+    .configModalForm {
+        margin-top: 5%;
+    }
+}
+
+@media screen and (max-width: @screen-lg) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 24px;
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 8px;
+    }
+}

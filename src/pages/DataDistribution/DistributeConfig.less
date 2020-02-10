@@ -1,0 +1,92 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+//数据分发列表页头部样式
+.distributeTitle {
+    width: 100%;
+    margin-bottom: 24px;
+    background: none;
+    .distributeInput {
+        width: 50%;
+        margin-left: 3%;
+    }
+    .distributeBtns {
+        button:nth-child(1){
+            margin-right: 3%;
+        }
+    }
+    .toPage {
+        cursor: pointer;
+    }
+    .toPage:hover {
+        color: #40a9ff;
+    }
+}
+
+//表格样式
+.distributeTable {
+    :global {
+        .ant-table {
+            .ant-table-body {
+                .ant-table-tbody {
+                    tr {
+                        td {
+                            background: #fff;
+                            i {
+                                //margin-right: 5px;
+                                //font-size: 12px;
+                                &:hover{
+                                    color: #1890FF;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ant-pagination  {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}
+.syncTitleName{
+    width: 100%;
+    margin-bottom:20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@media screen and (max-width: @screen-lg) {
+    .contentLink {
+        a {
+            margin-right: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .extraImg {
+        display: none;
+    }
+}
+
+@media screen and (max-width: @screen-sm) {
+    .pageHeaderContent {
+        padding-bottom: 30px;
+    }
+
+    .contentLink {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 1000px;
+        a {
+            margin-right: 16px;
+        }
+        img {
+            margin-right: 4px;
+        }
+    }
+}

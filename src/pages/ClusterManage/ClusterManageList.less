@@ -1,0 +1,70 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+//数据分发列表页头部样式
+.dataSourceTitle {
+    width: 100%;
+    margin-bottom: 24px;
+    background: none;
+    .dataSourceInput {
+        width: 50%;
+        margin-left: 3%;
+    }
+    .dataSourceBtns {
+        button:nth-child(1){
+            margin-right: 3%;
+        }
+    }
+    :global{
+        .ant-card-body{
+            padding: 0;
+        }
+        .ant-form-item {
+            display: flex;
+            margin-right: 0;
+            margin-bottom: 24px;
+            > .ant-form-item-label {
+                width: auto;
+                padding-right: 8px;
+                line-height: 32px;
+            }
+            .ant-form-item-control {
+                line-height: 32px;
+            }
+        }
+        .ant-form-item-control-wrapper {
+            flex: 1;
+        }
+    }
+    .searchBtnWrapper{
+        :global{
+            .ant-form-item-control-wrapper{
+                width: 100% !important;
+            }
+        }
+    }
+}
+.dataSourceTableList{
+    :global{
+        .ant-card-body{
+            padding: 0;
+        }
+        .ant-table-pagination,.ant-pagination{
+            float: none;
+            text-align: center !important;
+        }
+    }
+
+}
+
+@media screen and (max-width: @screen-lg) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 24px;
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .tableListForm :global(.ant-form-item) {
+        margin-right: 8px;
+    }
+}
