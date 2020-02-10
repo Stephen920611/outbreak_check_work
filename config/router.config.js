@@ -39,6 +39,25 @@ export default [
                 icon: 'home',
                 component: './TouchStatisticsPage/StatisticsList',
             },
+            /*----------------- 摸排记录查询 -------------------*/
+            {
+                path: '/checkRecord',
+                name: 'checkRecord',
+                icon: 'home',
+                component: './CheckRecord/CheckRecordList',
+            },
+            {
+                path: '/checkRecord/showDetail',
+                component: './CheckRecord/CheckRecordDetail',
+            },
+            // {
+            //     path: '/dataTask/newTaskFlow',
+            //     component: './DataSync/NewTaskFlow',
+            // },
+            // {
+            //     path: '/dataTask/accessDetail',
+            //     component: './DataSync/AccessDetail',
+            // },
             /*----------------- 元数据管理 -------------------*/
             {
                 path: '/metadataManage',
