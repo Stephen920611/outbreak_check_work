@@ -50,14 +50,17 @@ export default [
                 path: '/checkRecord/showDetail',
                 component: './CheckRecord/CheckRecordDetail',
             },
-            // {
-            //     path: '/dataTask/newTaskFlow',
-            //     component: './DataSync/NewTaskFlow',
-            // },
-            // {
-            //     path: '/dataTask/accessDetail',
-            //     component: './DataSync/AccessDetail',
-            // },
+            /*----------------- 摸排工作统计 -------------------*/
+            {
+                path: '/jobStatistics',
+                name: 'jobStatistics',
+                icon: 'home',
+                component: './JobStatistics/JobStatisticsList',
+            },
+            {
+                path: '/checkRecord/showDetail',
+                component: './CheckRecord/CheckRecordDetail',
+            },
             /*----------------- 元数据管理 -------------------*/
             {
                 path: '/metadataManage',

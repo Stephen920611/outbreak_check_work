@@ -6,6 +6,7 @@ export default {
     'menu.dashboard': '首页',
     'menu.touchStatisticsPage': '摸排工作统计表',
     'menu.checkRecord': '摸排记录查询',
+    'menu.jobStatistics': '摸排工作统计',
     'menu.metadataManage': '元数据管理',
     'menu.metadataManage.dataSourceManagement': '数据源管理',
     'menu.metadataManage.dataSourceManagement.dataSourceManagementIndex': '数据源管理1',
