@@ -1,0 +1,164 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+//数据分发列表页头部样式
+.distributeTitle {
+    width: 100%;
+    margin-bottom: 24px;
+    background: none;
+    .distributeInput {
+        width: 50%;
+        margin-left: 3%;
+    }
+    .distributeBtns {
+        button:nth-child(1){
+            margin-right: 3%;
+        }
+    }
+}
+
+//平台卡片样式
+.cardPlatform{
+    margin-bottom:33px;
+    :global{
+        .ant-col > .ant-list-item{
+            height: 82px;
+            background-color: #f4faff;
+        }
+        .ant-card-body{
+            padding-bottom: 0;
+        }
+    }
+    .card{
+        :global{
+            .ant-card-body{
+                height: 100%;
+                padding: 10px 17px;
+            }
+
+        }
+        .platformContent{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            .platformLeft,.platformRight{
+                height: 100%;
+            }
+            .platformLeft{
+                width: 33%;
+                color:#fff;
+                border-radius: 4px;
+                font-size: 18px;
+                line-height:60px;
+                text-align: center;
+                background-color: #3aa1ff;
+            }
+            .platformRight{
+                width: 66%;
+                padding: 10px;
+                line-height: 20px;
+                p{
+                    margin-bottom: 0;
+                    color: #595959;
+                    :global {
+                        .ant-badge-status-dot {
+                            width: 8px;
+                            height: 8px;
+                        }
+                    }
+                    .platformRightText {
+                        color: #3aa1ff;
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+    }
+    .upOrDown {
+        //position: absolute;
+        //bottom: 0;
+        height: 30px;
+        text-align: center;
+        .trigger {
+            i {
+                font-size: 16px;
+            }
+        }
+    }
+    .activeColor {
+        background-color: #f4faff;
+        border: 1px solid #1890FF;
+    }
+
+}
+
+//表格样式
+.distributeTable {
+    :global {
+        .ant-table {
+            .ant-table-body {
+                .ant-table-tbody {
+                    tr {
+                        td {
+                            background: #fff;
+                            i {
+                                margin-right: 5px;
+                                font-size: 16px;
+                                &:hover{
+                                    color: #1890FF;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ant-pagination  {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}
+.syncTitleName{
+    width: 100%;
+    margin-bottom:20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@media screen and (max-width: @screen-lg) {
+    .contentLink {
+        a {
+            margin-right: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: @screen-md) {
+    .extraImg {
+        display: none;
+    }
+}
+
+@media screen and (max-width: @screen-sm) {
+    .pageHeaderContent {
+        padding-bottom: 30px;
+    }
+
+    .contentLink {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 1000px;
+        a {
+            margin-right: 16px;
+        }
+        img {
+            margin-right: 4px;
+        }
+    }
+}
