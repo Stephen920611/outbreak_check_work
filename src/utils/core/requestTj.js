@@ -14,7 +14,8 @@ import T from './../T';
 // 解决IE报warning Unhandled Rejections Error 参数书不正确的问题
 Promise._unhandledRejectionFn = function (rejectError) {};
 
-const apiDomain = "http://192.168.10.122:8080/datadist/a/login";
+const apiDomain = "http://192.168.2.101:8081/api";
+// const apiDomain = "http://192.168.10.122:8080/datadist/a/login";
 // const loginUrl = "http://192.168.10.122:8080/datadist/a/login";
 
 const Singleton = (function () {
@@ -68,8 +69,9 @@ const _request = (options = {}, isLogin = false) => {
         Singleton.getInstance().request(options).then((resp) => {
             //前端自己判断是不是登录，如果不是的话返回的参数跟登录的接口返回的参数不一致
             if (isLogin) {
-                const {result, user, sessionid, message} = resp.data;
-                resolve({result, sessionid, user, message});
+                console.log(resp,'resp');
+                const {data, token, code, msg} = resp.data;
+                resolve({data, token, code, msg});
             } else {
                 const {result, data, message} = resp.data;
                 // 判断是否登录
@@ -175,11 +177,12 @@ export function postJSON(url, params = {}, options = {}, isLogin = false, urlHas
         hasSidParams = Object.assign(params, T.auth.getCurrentSessionId());
     }
     //取sid
-    let sid = T.auth.getCurrentSessionId();
+    // let sid = T.auth.getCurrentSessionId();
     options = Object.assign({
-        url: urlHasSid ? `${url}?__sid=${sid['__sid']}` : url,
+        url: url,
         method: 'post',
-        data: urlHasSid ? params : hasSidParams,
+        // data: urlHasSid ? params : hasSidParams,
+        data: params,
         headers: {
             'Content-Type': 'application/json'
         }

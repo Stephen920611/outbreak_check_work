@@ -10,7 +10,7 @@ import EnumAPI from './../constants/EnumAPI';
  */
 //post和get方法都可以
 export async function accountLogin(params) {
-    return post(EnumAPI.login, {
+    return postJSON(EnumAPI.login, {
         ...params
     },{},true);
 }

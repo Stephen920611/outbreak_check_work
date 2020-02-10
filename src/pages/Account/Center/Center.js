@@ -159,8 +159,8 @@ class Center extends PureComponent {
                                 <div>
                                     <div className={styles.avatarHolder}>
                                         {/*<img alt="" src={currentUser.avatar}/>*/}
-                                        <div className={styles.name}>{currentUserInfo.user.userName}</div>
-                                        <div>{currentUserInfo.user.remarks}</div>
+                                        <div className={styles.name}>{currentUserInfo.data.name}</div>
+                                        {/*<div>{currentUserInfo.data.name}</div>*/}
                                     </div>
                                     <div className={styles.detail}>
                                         <p>
@@ -171,6 +171,9 @@ class Center extends PureComponent {
                                             <i className={styles.address}/>
                                             {"山东省"}
                                             {"烟台市"}
+                                            {
+                                                currentUserInfo.data.area
+                                            }
                                         </p>
                                     </div>
                                     <Divider dashed/>

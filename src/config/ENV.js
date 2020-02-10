@@ -9,7 +9,8 @@ window.ENV = (function () {
     let rootPath = '/pw/';     // 路由的根路径
     // let apiDomain = 'http://192.168.10.122:8080/datadist/a/';    // api请求接口
     // let apiDomain = 'http://56.82.130.19:8080/datadist/a/';    // 公安网
-    let apiDomain = 'http://117.51.140.147:8080/datadist/a/';    //线上api接口
+    // let apiDomain = 'http://117.51.140.147:8080/datadist/a/';    //线上api接口
+    let apiDomain = "http://192.168.2.101:8081/api";
 
     return {
         apiDomain: apiDomain,         // api请求接口   测试服务器

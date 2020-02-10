@@ -73,6 +73,7 @@ export default class GlobalHeaderRight extends PureComponent {
             theme,
         } = this.props;
         const currentUserInfo =  T.auth.getLoginInfo();
+        console.log(currentUserInfo,'currentUserInfo');
         // console.log(currentUserInfo, 'currentUserInfo');
         const menu = (
             <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
@@ -176,7 +177,7 @@ export default class GlobalHeaderRight extends PureComponent {
                         showViewMore
                     />
                 </NoticeIcon>*/}
-                {currentUserInfo && currentUserInfo.hasOwnProperty("result") ? currentUserInfo.result === "true" ? (
+                {currentUserInfo && currentUserInfo.hasOwnProperty("data") ? currentUserInfo.code === 0 ? (
                     <HeaderDropdown overlay={menu}>
                         <span className={`${styles.action} ${styles.account}`}>
                             <Avatar
@@ -185,7 +186,7 @@ export default class GlobalHeaderRight extends PureComponent {
                                 icon="user"
                                 alt="avatar"
                             />
-                          <span className={styles.name}>{currentUserInfo.user.userName}</span>
+                          <span className={styles.name}>{currentUserInfo.data.name}</span>
                         </span>
                     </HeaderDropdown>
                 ) : (

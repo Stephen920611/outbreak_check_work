@@ -110,10 +110,9 @@ class LoginPage extends Component {
         const {type} = this.state;
 
         let loginInfo = {
-            "username": username,
-            "password": password,
-            "__login":true,
-            "__ajax":"json",
+            "username": values["userName"],
+            "password": values["password"],
+            // "__ajax":"json",
         };
         if (!err) {
             const {dispatch} = this.props;
@@ -121,7 +120,7 @@ class LoginPage extends Component {
                 type: 'login/login',
                 payload: {
                     ...loginInfo,
-                    type,
+                    // type,
                 },
             });
         }
