@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2fcb3a5-df2d-47af-8708-6a8e2fb7ce07" name="Default" comment="修改公共东西">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/router.config.js" afterPath="$PROJECT_DIR$/config/router.config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/locales/zh-CN/menu.js" afterPath="$PROJECT_DIR$/src/locales/zh-CN/menu.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -24,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/config/router.config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
-              <caret line="55" column="36" lean-forward="false" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="36" />
+              <caret line="49" column="48" lean-forward="true" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -33,8 +30,8 @@
       <file leaf-file-name="menu.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/locales/zh-CN/menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+            <state relative-caret-position="300">
+              <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -43,21 +40,19 @@
       <file leaf-file-name="JobStatisticsList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="55" column="11" lean-forward="true" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
+            <state relative-caret-position="-3647">
+              <caret line="357" column="84" lean-forward="false" selection-start-line="357" selection-start-column="84" selection-end-line="357" selection-end-column="84" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatisticsList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js">
+      <file leaf-file-name="JobStatisticsList.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="58" column="72" lean-forward="false" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="72" />
-              <folding>
-                <element signature="e#0#53#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="375">
+              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,7 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Input</find>
       <find>dataSource</find>
       <find>Table</find>
       <find>title</find>
@@ -160,6 +154,7 @@
       <find>fetchStatisticsListAction</find>
       <find>CheckRecordList</find>
       <find>checkRecord</find>
+      <find>被调查人姓名</find>
     </findStrings>
     <replaceStrings>
       <replace>CheckRecordDetail</replace>
@@ -452,7 +447,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25883000" />
+    <option name="totallyTimeSpent" value="26667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -504,16 +499,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/PageHeaderWrapper/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="46" column="23" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/api.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -921,14 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="55" column="11" lean-forward="true" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -937,18 +914,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3647">
+          <caret line="357" column="84" lean-forward="false" selection-start-line="357" selection-start-column="84" selection-end-line="357" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/router.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="55" column="36" lean-forward="false" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="36" />
+          <caret line="49" column="48" lean-forward="true" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locales/zh-CN/menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        <state relative-caret-position="300">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding />
         </state>
       </provider>

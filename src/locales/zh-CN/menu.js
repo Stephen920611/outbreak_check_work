@@ -4,7 +4,7 @@ export default {
     'menu.register': '注册',
     'menu.register.result': '注册结果',
     'menu.dashboard': '首页',
-    'menu.touchStatisticsPage': '摸排工作统计表',
+    'menu.touchStatisticsPage': '摸排统计页面',
     'menu.checkRecord': '摸排记录查询',
     'menu.jobStatistics': '摸排工作统计',
     'menu.metadataManage': '元数据管理',
