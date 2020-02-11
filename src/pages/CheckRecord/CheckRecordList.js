@@ -412,7 +412,6 @@ class CheckRecordList extends PureComponent {
         let self = this;
 
         form.validateFieldsAndScroll((err, values) => {
-            console.log(values, 'values');
             if (!err) {
                 //地区分类
                 let categoryCode = '';
@@ -425,11 +424,11 @@ class CheckRecordList extends PureComponent {
                 let params = {
                     current: currentPage,
                     size: EnumDataSyncPageInfo.defaultPageSize,
-                    startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate),      //开始时间
-                    endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate),        //结束时间
+                    startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
+                    endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate,'YYYY-MM-DD'),        //结束时间
                     area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
                     name: T.lodash.isUndefined(values.person) ? '' : values.person,           //被调查人姓名
-                    gender: T.lodash.isUndefined(values.sex) ? '' : values.sex,         //性别
+                    gender: T.lodash.isUndefined(values.sex) ? '' : values.sex === 'all' ? '' : values.sex,         //性别
                     // idCard: "",         //身份证号
                     baseInfo: T.lodash.isUndefined(values.base) ? '' : values.base,         //被调查人基本情况
                     bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status,         //身体状况
@@ -444,7 +443,6 @@ class CheckRecordList extends PureComponent {
                         reject,
                     });
                 }).then(response => {
-                    console.log(response, 'response');
                     if (response.code === 0) {
                         const { total, members } = response.data;
                         let endData = members.map( (val,idx) => {
@@ -735,10 +733,13 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.sex.label"/>}
                                     >
-                                        {getFieldDecorator('sex', {})(
+                                        {getFieldDecorator('sex', {
+                                            initialValue: "all",
+                                        })(
                                             <Radio.Group onChange={this.onChange}>
                                                 <Radio value={"男"}>男</Radio>
                                                 <Radio value={"女"}>女</Radio>
+                                                <Radio value={"all"}>全部</Radio>
                                             </Radio.Group>
                                         )}
                                     </Form.Item>
@@ -749,12 +750,10 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.startDate.label"/>}
                                     >
                                         {getFieldDecorator('startDate', {
-                                            rules: [{required: true, message: '请选择开始时间！'}],
-                                            initialValue: T.moment(new Date(new Date(new Date().toLocaleDateString()).getTime()).getTime()),
+                                            // rules: [{required: true, message: '请选择开始时间！'}],
+                                            // initialValue: T.moment(new Date(new Date(new Date().toLocaleDateString()).getTime()).getTime()),
                                         })(
-                                            <DatePicker
-                                                showTime={true}
-                                            />
+                                            <DatePicker/>
                                         )}
                                     </Form.Item>
                                 </Col>
@@ -764,12 +763,10 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.endDate.label"/>}
                                     >
                                         {getFieldDecorator('endDate', {
-                                            rules: [{required: true, message: '请选择结束时间！'}],
-                                            initialValue: T.moment(new Date().getTime()),
+                                            // rules: [{required: true, message: '请选择结束时间！'}],
+                                            // initialValue: T.moment(new Date().getTime()),
                                         })(
-                                            <DatePicker
-                                                showTime={true}
-                                            />
+                                            <DatePicker/>
                                         )}
                                     </Form.Item>
                                 </Col>

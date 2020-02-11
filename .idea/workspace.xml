@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" line="575" />
+    <bookmark url="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" line="573" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2fcb3a5-df2d-47af-8708-6a8e2fb7ce07" name="Default" comment="修改公共东西">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/jobStatistics/jobStatistics.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/services/jobStatistics/jobStatistics.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants/EnumAPI.js" afterPath="$PROJECT_DIR$/src/constants/EnumAPI.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" afterPath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" afterPath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" />
     </list>
@@ -27,8 +24,8 @@
       <file leaf-file-name="CheckRecordList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="404" column="29" lean-forward="false" selection-start-line="404" selection-start-column="29" selection-end-line="404" selection-end-column="29" />
+            <state relative-caret-position="269">
+              <caret line="436" column="23" lean-forward="false" selection-start-line="436" selection-start-column="16" selection-end-line="436" selection-end-column="23" />
               <folding>
                 <element signature="e#16#59#0" expanded="true" />
                 <element signature="e#1701#5613#0" expanded="false" />
@@ -41,11 +38,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="helper.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/core/helper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="279" column="53" lean-forward="false" selection-start-line="279" selection-start-column="43" selection-end-line="279" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="JobStatisticsList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="302" column="14" lean-forward="true" selection-start-line="302" selection-start-column="14" selection-end-line="302" selection-end-column="14" />
+            <state relative-caret-position="194">
+              <caret line="217" column="37" lean-forward="true" selection-start-line="217" selection-start-column="37" selection-end-line="217" selection-end-column="37" />
               <folding>
                 <element signature="e#1577#5489#0" expanded="false" />
                 <element signature="e#5511#6138#0" expanded="false" />
@@ -138,8 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>currentPage</find>
-      <find>loading</find>
       <find>checkRecord.resourceList.person.placeholder</find>
       <find>填报日期</find>
       <find>摸排人</find>
@@ -166,8 +171,10 @@
       <find>showMetadataManage</find>
       <find>renderSelectOption</find>
       <find>onSelect</find>
-      <find>handleMapChange</find>
       <find>selectedKey</find>
+      <find>性别</find>
+      <find>handleMapChange</find>
+      <find>console</find>
     </findStrings>
     <replaceStrings>
       <replace>CheckRecordDetail</replace>
@@ -455,7 +462,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61746000" />
+    <option name="totallyTimeSpent" value="62666000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1688" y="13" width="1696" height="1026" extended-state="6" />
@@ -783,14 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/core/helper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="279" column="53" lean-forward="false" selection-start-line="279" selection-start-column="43" selection-end-line="279" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/T.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -881,10 +880,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/core/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="279" column="53" lean-forward="false" selection-start-line="279" selection-start-column="43" selection-end-line="279" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="404" column="29" lean-forward="false" selection-start-line="404" selection-start-column="29" selection-end-line="404" selection-end-column="29" />
+        <state relative-caret-position="269">
+          <caret line="436" column="23" lean-forward="false" selection-start-line="436" selection-start-column="16" selection-end-line="436" selection-end-column="23" />
           <folding>
             <element signature="e#16#59#0" expanded="true" />
             <element signature="e#1701#5613#0" expanded="false" />
@@ -898,8 +905,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="302" column="14" lean-forward="true" selection-start-line="302" selection-start-column="14" selection-end-line="302" selection-end-column="14" />
+        <state relative-caret-position="194">
+          <caret line="217" column="37" lean-forward="true" selection-start-line="217" selection-start-column="37" selection-end-line="217" selection-end-column="37" />
           <folding>
             <element signature="e#1577#5489#0" expanded="false" />
             <element signature="e#5511#6138#0" expanded="false" />

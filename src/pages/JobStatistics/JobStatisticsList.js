@@ -227,7 +227,6 @@ class JobStatisticsList extends PureComponent {
                         reject,
                     });
                 }).then(response => {
-                    console.log(response, 'response');
                     if (response.code === 0) {
                         let endData = response.data.map( (val,idx) => {
                             return {
@@ -297,10 +296,10 @@ class JobStatisticsList extends PureComponent {
 
     //重置表单
     resetDataSource = () => {
-        // this.props.form.setFieldsValue({
-        //     startDate: "",
-        // });
-        this.props.form.resetFields();
+        this.props.form.setFieldsValue({
+            startDate: T.moment(""),
+        });
+        // this.props.form.resetFields();
         this.fetchDataList();
     };
 
