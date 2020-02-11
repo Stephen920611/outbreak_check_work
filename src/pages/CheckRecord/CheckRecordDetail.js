@@ -2,38 +2,29 @@ import React, {PureComponent, Fragment} from 'react';
 import {connect} from 'dva';
 import styles from './CheckRecordDetail.less';
 import T from './../../utils/T';
-import router from 'umi/router';
-import {formatMessage} from 'umi-plugin-react/locale';
-
-import {EnumPluginListPageInfo} from './../../constants/EnumPageInfo';
 
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import CustomBreadcrumb from '@/templates/ToolComponents/CustomBreadcrumb';
 
 import {
-    Button,
-    Input,
     Row,
     Col,
-    Icon,
-    Table,
     Card,
-    List,
-    Spin,
-    DatePicker,
 } from 'antd';
 
 /* eslint react/no-multi-comp:0 */
-@connect(({dataDistribution, dataSyncNewMission, loading}) => ({
-    dataDistribution,
-    dataSyncNewMission,
+@connect(({checkRecord, loading}) => ({
+    checkRecord,
+    fetchStatus: loading.effects['checkRecord/fetchMemberInfoAction'],
 }))
 class CheckRecordDetail extends PureComponent {
     constructor() {
         super();
         this.state = {
-            currentPage: EnumPluginListPageInfo.defaultPage,
-            pageSize: EnumPluginListPageInfo.defaultPageSize,
+            activities: {},
+            currentInfo: {},
+            member: {},
+            touch: [],
             basicPersonnelInformation: {
                 "msg": "success",
                 "code": 0,
@@ -112,36 +103,36 @@ class CheckRecordDetail extends PureComponent {
 
     componentDidMount() {
         const {dispatch} = this.props;
-
-    }
-
-    componentWillUnmount(){
-        const {dispatch} = this.props;
-    }
-
-    //获取当前页数数据
-    fetchDataList = () => {
-        const {dispatch, dataDistribution} = this.props;
-        const {platformType} = dataDistribution;
-        const {currentPage, inputValue, clusterActiveColor} = this.state;
         let self = this;
-        //后台发送的参数
-        let sendParams = {}
-    };
-
-
-
-    //页码变换
-    pageChange = (page) => {
-        this.setState({
-            currentPage: page.current,
-        }, () => {
-            this.fetchDataList();
+        new Promise((resolve, reject) => {
+            dispatch({
+                type: 'checkRecord/fetchMemberInfoAction',
+                id: 2476,
+                resolve,
+                reject,
+            });
+        }).then(response => {
+            const {currnets, member, touch, activities} = response.data;
+            if (response.code === 0) {
+                self.setState({
+                    activities: T.lodash.isUndefined(activities[0]) ? {} : activities[0],
+                    currentInfo: T.lodash.isUndefined(currnets[0]) ? {} : currnets[0],
+                    member,
+                    touch: T.lodash.isUndefined(touch[0]) ? {} : touch[0],
+                })
+            } else {
+                T.prompt.error(response.msg);
+            }
         });
-    };
+    }
 
     render() {
-        const {basicPersonnelInformation, currentPage, pageSize, } = this.state;
+        const {
+            activities,
+            currentInfo,
+            member,
+            touch,
+        } = this.state;
         return (
             <PageHeaderWrapper
                 title={"疫情防控调查详情查看"}
@@ -156,70 +147,71 @@ class CheckRecordDetail extends PureComponent {
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>县市区：</span>
-                                    <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                      ? basicPersonnelInformation.member.hasOwnProperty('area')
-                                        ?  basicPersonnelInformation.member.area : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {
+                                            member.hasOwnProperty('area') ? member.area : '---'
+                                        }
+                                    </span>
                                 </Col>
                                 <Col span={6} className={styles.detailBtns}>
                                     <span>姓名：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('name')
-                                      ?  basicPersonnelInformation.member.name : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {
+                                            member.hasOwnProperty('name') ? member.name : '---'
+                                        }
+                                    </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>年龄：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('age')
-                                      ?  basicPersonnelInformation.member.age : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {
+                                            member.hasOwnProperty('age') ? member.age : '---'
+                                        }
+                                    </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>性别：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('gender')
-                                      ?  basicPersonnelInformation.member.gender : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {
+                                            member.hasOwnProperty('gender') ? member.gender : '---'
+                                        }
+                                    </span>
                                 </Col>
                             </Row>
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>籍贯：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('nativePlace')
-                                      ?  basicPersonnelInformation.member.nativePlace : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {
+                                            member.hasOwnProperty('nativePlace') ? member.nativePlace : '---'
+                                        }
+                                    </span>
                                 </Col>
                                 <Col span={6} className={styles.detailBtns}>
                                     <span>住址：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('address')
-                                      ?  basicPersonnelInformation.member.address : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {member.hasOwnProperty('address') ? member.address : '---'}
+                                    </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>身份证号码：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('idCard')
-                                      ?  basicPersonnelInformation.member.idCard : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {member.hasOwnProperty('idCard') ? member.idCard : '---'}
+                                    </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>联系电话：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('phoneNum')
-                                      ?  basicPersonnelInformation.member.phoneNum : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {member.hasOwnProperty('phoneNum') ? member.phoneNum : '---'}
+                                    </span>
                                 </Col>
                             </Row>
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>被调查人基本情况：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('member')
-                                    ? basicPersonnelInformation.member.hasOwnProperty('baseInfo')
-                                      ?  basicPersonnelInformation.member.baseInfo : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {member.hasOwnProperty('baseInfo') ? member.baseInfo : '---'}
+                                    </span>
                                 </Col>
                             </Row>
                         </Card>
@@ -230,264 +222,211 @@ class CheckRecordDetail extends PureComponent {
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>从何地来烟(返烟)：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('activities')
-                                    ? basicPersonnelInformation.activities.hasOwnProperty('backFromWhere')
-                                      ?  basicPersonnelInformation.activities.backFromWhere : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {activities.hasOwnProperty('backFromWhere') ? activities.backFromWhere : '---'}
+                                    </span>
                                 </Col>
                                 <Col span={6} className={styles.detailBtns}>
                                     <span>来烟(返烟)时间：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('activities')
-                                    ? basicPersonnelInformation.activities.hasOwnProperty('backTime')
-                                      ?  basicPersonnelInformation.activities.backTime : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {activities.hasOwnProperty('backTime') ? activities.backTime : '---'}
+                                    </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>来烟(返烟)方式：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('activities')
-                                    ? basicPersonnelInformation.activities.hasOwnProperty('backType')
-                                      ?  basicPersonnelInformation.activities.backType : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {activities.hasOwnProperty('backType') ? activities.backType : '---'}
+                                    </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>航班/车次/船次/车牌号：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('activities')
-                                    ? basicPersonnelInformation.activities.hasOwnProperty('carNum')
-                                      ?  basicPersonnelInformation.activities.carNum : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {activities.hasOwnProperty('carNum') ? activities.carNum : '---'}
+                                    </span>
                                 </Col>
                             </Row>
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>期间还到过哪些城市：</span>
-                                  <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('activities')
-                                    ? basicPersonnelInformation.activities.hasOwnProperty('wayCity')
-                                      ?  basicPersonnelInformation.activities.wayCity : '---' : '---':'---'}
-                                        </span>
+                                    <span>
+                                        {activities.hasOwnProperty('wayCity') ? activities.wayCity : '---'}
+                                    </span>
                                 </Col>
                             </Row>
                         </Card>
-                      <div className={styles.detailTitleName}>
-                        人员接触信息
-                      </div>
-                      <Card style={{marginBottom: 20}}>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>是否与确诊、疑似病例密切接触过：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('isTouchSuspect')
-                                ?  basicPersonnelInformation.touch[0].isTouchSuspect : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>接触者姓名：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('suspectName')
-                                  ?  basicPersonnelInformation.touch[0].suspectName : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>接触者身份证号：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('suspectIdCard')
-                                  ?  basicPersonnelInformation.touch[0].suspectIdCard : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6} className={styles.detailBtns}>
-                            <span>来接触时间</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('suspectTime')
-                                  ?  basicPersonnelInformation.touch[0].suspectTime : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>接触地点：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('suspectPoint')
-                                  ?  basicPersonnelInformation.touch[0].suspectPoint : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>是否与密切接触者共同生活、工作、学习、聚会过：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('isTouchIntimate')
-                                  ?  basicPersonnelInformation.touch[0].isTouchIntimate : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>接触者姓名：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('intimateName')
-                                  ?  basicPersonnelInformation.touch[0].intimateName : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>接触者身份证号：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('intimateIdCard')
-                                  ?  basicPersonnelInformation.touch[0].intimateIdCard : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6} className={styles.detailBtns}>
-                            <span>来接触时间</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('intimateTime')
-                                  ?  basicPersonnelInformation.touch[0].intimateTime : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>接触地点：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('intimatePoint')
-                                  ?  basicPersonnelInformation.touch[0].intimatePoint : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>是否与重点疫区人员接触过：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('isTouchInfector')
-                                  ?  basicPersonnelInformation.touch[0].isTouchInfector : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>接触者姓名：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('infectorName')
-                                  ?  basicPersonnelInformation.touch[0].infectorName : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>接触者身份证号：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('infectorIdCard')
-                                  ?  basicPersonnelInformation.touch[0].infectorIdCard : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6} className={styles.detailBtns}>
-                            <span>来接触时间</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('infectorTime')
-                                  ?  basicPersonnelInformation.touch[0].infectorTime : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>接触地点：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('touch')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.touch[0].hasOwnProperty('infectorPoint')
-                                  ?  basicPersonnelInformation.touch[0].infectorPoint : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                      </Card>
-                      <div className={styles.detailTitleName}>
-                        人员当前状态
-                      </div>
-                      <Card style={{marginBottom: 20}}>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>身体状况：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('bodyCondition')
-                                  ?  basicPersonnelInformation.currnets[0].bodyCondition : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6} className={styles.detailBtns}>
-                            <span>是否就医：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('hasSeek')
-                                  ?  basicPersonnelInformation.currnets[0].hasSeek : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>就医医院：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('seekHospital')
-                                  ?  basicPersonnelInformation.currnets[0].seekHospital : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>就医时间</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('seekTime')
-                                  ?  basicPersonnelInformation.currnets[0].seekTime : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>是否采取过防护措施：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('controlMeasures')
-                                  ?  basicPersonnelInformation.currnets[0].controlMeasures : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={12} className={styles.detailBtns}>
-                            <span>什么时间内采取的防护措施：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('controlTime')
-                                  ?  basicPersonnelInformation.currnets[0].controlTime : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>下步拟采取措施：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('nextMeasures')
-                                  ?  basicPersonnelInformation.currnets[0].nextMeasures : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
+                        <div className={styles.detailTitleName}>
+                            人员接触信息
+                        </div>
+                        <Card style={{marginBottom: 20}}>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>是否与确诊、疑似病例密切接触过：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('isTouchSuspect') ? touch.isTouchSuspect : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>接触者姓名：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('suspectName') ? touch.suspectName : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>接触者身份证号：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('suspectIdCard') ? touch.suspectIdCard : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6} className={styles.detailBtns}>
+                                    <span>接触时间：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('suspectTime') ? touch.suspectTime : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>接触地点：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('suspectPoint') ? touch.suspectPoint : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>是否与密切接触者共同生活、工作、学习、聚会过：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('isTouchIntimate') ? touch.isTouchIntimate : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>接触者姓名：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('intimateName') ? touch.intimateName : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>接触者身份证号：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('intimateIdCard') ? touch.intimateIdCard : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6} className={styles.detailBtns}>
+                                    <span>接触时间：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('intimateTime') ? touch.intimateTime  : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>接触地点：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('intimatePoint') ? touch.intimatePoint  : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>是否与重点疫区人员接触过：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('isTouchInfector') ? touch.isTouchInfector  : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>接触者姓名：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('infectorName') ? touch.infectorName  : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>接触者身份证号：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('infectorIdCard') ? touch.infectorIdCard  : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6} className={styles.detailBtns}>
+                                    <span>接触时间：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('infectorTime') ? touch.infectorTime  : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>接触地点：</span>
+                                    <span>
+                                        {touch.hasOwnProperty('infectorPoint') ? touch.infectorPoint  : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                        </Card>
+                        <div className={styles.detailTitleName}>
+                            人员当前状态
+                        </div>
+                        <Card style={{marginBottom: 20}}>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>身体状况：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('bodyCondition') ? currentInfo.bodyCondition : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6} className={styles.detailBtns}>
+                                    <span>是否就医：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('hasSeek') ? currentInfo.hasSeek : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>就医医院：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('seekHospital') ? currentInfo.seekHospital : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>就医时间</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('seekTime') ? currentInfo.seekTime : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>是否采取过防护措施：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('controlMeasures') ? currentInfo.controlMeasures : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={12} className={styles.detailBtns}>
+                                    <span>什么时间内采取的防护措施：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('controlTime') ? currentInfo.controlTime : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>下步拟采取措施：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('nextMeasures') ? currentInfo.nextMeasures : '---'}
+                                    </span>
+                                </Col>
 
-                        </Row>
-                        <Row className={styles.detailTitle}>
-                          <Col span={6}>
-                            <span>填报日期：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('createTime')
-                                  ?  basicPersonnelInformation.currnets[0].createTime : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                          <Col span={6}>
-                            <span>摸排人：</span>
-                            <span>{basicPersonnelInformation ? basicPersonnelInformation.hasOwnProperty('currnets')
-                              ? basicPersonnelInformation.touch.length > 0
-                                ? basicPersonnelInformation.currnets[0].hasOwnProperty('fillUserName')
-                                  ?  basicPersonnelInformation.currnets[0].fillUserName : '---' : '---':'---':'---'}
-                                        </span>
-                          </Col>
-                        </Row>
-                      </Card>
+                            </Row>
+                            <Row className={styles.detailTitle}>
+                                <Col span={6}>
+                                    <span>填报日期：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('createTime') ? currentInfo.createTime : '---'}
+                                    </span>
+                                </Col>
+                                <Col span={6}>
+                                    <span>摸排人：</span>
+                                    <span>
+                                        {currentInfo.hasOwnProperty('fillUserName') ? currentInfo.fillUserName : '---'}
+                                    </span>
+                                </Col>
+                            </Row>
+                        </Card>
                     </div>
                 </div>
             </PageHeaderWrapper>

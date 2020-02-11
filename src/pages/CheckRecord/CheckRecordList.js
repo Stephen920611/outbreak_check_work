@@ -356,56 +356,40 @@ class CheckRecordList extends PureComponent {
     };
 
     componentDidMount() {
-        const {dispatch, location} = this.props;
-        //判断是不是从详情页跳转的
-        if (location.hasOwnProperty('params') && location['params'].hasOwnProperty('name') && location['params']['name']) {
-            this.props.form.setFieldsValue({
-                resourceName: location['params']['name']
-            });
-        }
-        // //默认获取数据资源树接口
-        // new Promise((resolve, reject) => {
-        //     dispatch({
-        //         type: 'metadataManage/getDataResourceTreeAction',
-        //         resolve,
-        //         reject,
-        //     });
-        // }).then(response => {
-        //     if (response.result === 'true') {
-        //         //获取数据源列表
-        //         this.fetchDataList();
-        //     } else {
-        //         T.prompt.error(response.message);
-        //     }
-        // });
+
+
     }
 
     //获取当前页数数据
     fetchDataList = () => {
         const {dispatch, form, metadataManage} = this.props;
         const {dataSourceTypeTreeOldData} = metadataManage;
-        const {currentPage} = this.state;
+        const {currentPage,selectedKey,treeData} = this.state;
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                //数据资源分类
+                //地区分类
                 let categoryCode = '';
-                dataSourceTypeTreeOldData.map(val => {
+                treeData.map(val => {
                     if (values.resourceType === val.name) {
                         categoryCode = val.id;
                     }
                 });
-                dispatch({
-                    type: 'metadataManage/getDataResourceManagementListAction',
-                    params: {
-                        page: currentPage,
-                        pageSize: EnumDataSyncPageInfo.defaultPageSize,
-                        "dataSourceId": T.lodash.isUndefined(values.dataSourceName) ? '' : values.dataSourceName, //数据源ID 非必填
-                        "categoryCode": categoryCode, //数据资源分类 非必填
-                        "code": T.lodash.isUndefined(values.resourceCode) ? '' : values.resourceCode, //资源编码 非必填
-                        "name": T.lodash.isUndefined(values.resourceName) ? '' : values.resourceName, //资源名称 非必填
-                        "status": T.lodash.isUndefined(values.status) ? '' : values.status, //资源名称 非必填
-                    },
-                });
+                let  params = {
+                    page: currentPage,
+                    pageSize: EnumDataSyncPageInfo.defaultPageSize,
+                    "selectedKey":selectedKey,//categoryCode  点击的树节点
+                    "person": T.lodash.isUndefined(values.person) ? '' : values.person, //被调查人姓名
+                    "sex": T.lodash.isUndefined(values.sex) ? '' : values.sex, //被调查人性别
+                    "startDate": T.lodash.isUndefined(values.startDate) ? '' : values.startDate, //开始时间
+                    "endDate": T.lodash.isUndefined(values.endDate) ? '' : values.endDate, //结束时间
+                    "base": T.lodash.isUndefined(values.base) ? '' : values.base, //被调查人基本情况
+                    "status": T.lodash.isUndefined(values.status) ? '' : values.status, //身体状况
+                    "head": T.lodas.isUndefined(values.head) ? '' : values.head, //摸排人
+                };
+                /* dispatch({
+                     type: 'metadataManage/getDataResourceManagementListAction',
+                     params,
+                 });*/
             }
         });
 
@@ -482,16 +466,7 @@ class CheckRecordList extends PureComponent {
 
     //导出
     exportData = () => {
-        const {selectRows} = this.state;
-        if (selectRows.length > 0) {
-            let ids = selectRows.map(val => {
-                return val.id
-            });
-            let key = ids.join(',');
-            this.removeData(key);
-        } else {
-            T.prompt.error("请选择需要删除的行");
-        }
+
     };
 
 
@@ -648,15 +623,7 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.person.label"/>}
                                     >
-                                        {getFieldDecorator('person', {
-                                            rules: [
-                                                {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.person.placeholder',
-                                                    }),
-                                                },
-                                            ],
-                                        })(
+                                        {getFieldDecorator('person', {})(
                                             <Input
                                                 autoComplete="off"
                                                 placeholder={formatMessage({
@@ -685,15 +652,7 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.startDate.label"/>}
                                     >
 
-                                        {getFieldDecorator('startDate', {
-                                            rules: [
-                                                {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.startDate.placeholder',
-                                                    }),
-                                                },
-                                            ],
-                                        })(
+                                        {getFieldDecorator('startDate', {})(
                                             <DatePicker/>
                                         )}
                                     </Form.Item>
@@ -704,15 +663,7 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.endDate.label"/>}
                                     >
 
-                                        {getFieldDecorator('endDate', {
-                                            rules: [
-                                                {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.endDate.placeholder',
-                                                    }),
-                                                },
-                                            ],
-                                        })(
+                                        {getFieldDecorator('endDate', {})(
                                             <DatePicker/>
                                         )}
                                     </Form.Item>
@@ -779,15 +730,7 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.head.label"/>}
                                     >
 
-                                        {getFieldDecorator('head', {
-                                            rules: [
-                                                {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.head.placeholder',
-                                                    }),
-                                                },
-                                            ],
-                                        })(
+                                        {getFieldDecorator('head', {})(
                                             <Input
                                                 autoComplete="off"
                                                 placeholder={formatMessage({

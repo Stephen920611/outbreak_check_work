@@ -73,7 +73,6 @@ export default class GlobalHeaderRight extends PureComponent {
             theme,
         } = this.props;
         const currentUserInfo =  T.auth.getLoginInfo();
-        console.log(currentUserInfo,'currentUserInfo');
         // console.log(currentUserInfo, 'currentUserInfo');
         const menu = (
             <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>

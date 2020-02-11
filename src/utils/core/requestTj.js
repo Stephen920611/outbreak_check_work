@@ -69,20 +69,19 @@ const _request = (options = {}, isLogin = false) => {
         Singleton.getInstance().request(options).then((resp) => {
             //前端自己判断是不是登录，如果不是的话返回的参数跟登录的接口返回的参数不一致
             if (isLogin) {
-                console.log(resp,'resp');
                 const {data, token, code, msg} = resp.data;
                 resolve({data, token, code, msg});
             } else {
-                const {result, data, message} = resp.data;
+                const {data, code, msg} = resp.data;
                 // 判断是否登录
-                if (result === "login") {
-                    // window.location.href = "login";
-                    T.prompt.error(message);
-                    window.g_app._store.dispatch({
-                        type: 'login/logout',
-                    });
-                }
-                resolve({result, data, message});
+                // if (result === "login") {
+                //     // window.location.href = "login";
+                //     T.prompt.error(message);
+                //     window.g_app._store.dispatch({
+                //         type: 'login/logout',
+                //     });
+                // }
+                resolve({data, code, msg});
             }
         }).catch((error) => {
             console.log(error, 'error');
