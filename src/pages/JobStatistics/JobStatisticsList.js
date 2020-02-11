@@ -41,7 +41,6 @@ const {Panel} = Collapse;
 import styles from './JobStatisticsList.less';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper'; // @ 表示相对于源文件根目录
 
-
 //数据分发页面
 /* eslint react/no-multi-comp:0 */
 @connect(({metadataManage, loading}) => ({
@@ -61,13 +60,117 @@ class JobStatisticsList extends PureComponent {
             {
                 children: [
                     {
-                        children: [],
                         id: "GA001",
                         key: "GA001",
                         name: "芝罘区",
                         pId: "GA",
                         title: "芝罘区",
-                    }
+                    },
+                    {
+                        id: "GA002",
+                        key: "GA002",
+                        name: "福山区",
+                        pId: "GA",
+                        title: "福山区",
+                    },
+                    {
+                        id: "GA003",
+                        key: "GA003",
+                        name: "莱山区",
+                        pId: "GA",
+                        title: "莱山区",
+                    },
+                    {
+                        id: "GA004",
+                        key: "GA004",
+                        name: "牟平区",
+                        pId: "GA",
+                        title: "牟平区",
+                    },
+                    {
+                        id: "GA005",
+                        key: "GA005",
+                        name: "海阳市",
+                        pId: "GA",
+                        title: "海阳市",
+                    },
+                    {
+                        id: "GA006",
+                        key: "GA006",
+                        name: "莱阳市",
+                        pId: "GA",
+                        title: "莱阳市",
+                    },
+                    {
+                        id: "GA007",
+                        key: "GA007",
+                        name: "栖霞市",
+                        pId: "GA",
+                        title: "栖霞市",
+                    },
+                    {
+                        id: "GA008",
+                        key: "GA008",
+                        name: "蓬莱市",
+                        pId: "GA",
+                        title: "蓬莱市",
+                    },
+                    {
+                        id: "GA009",
+                        key: "GA009",
+                        name: "长岛县",
+                        pId: "GA",
+                        title: "长岛县",
+                    },
+                    {
+                        id: "GA010",
+                        key: "GA010",
+                        name: "龙口市",
+                        pId: "GA",
+                        title: "龙口市",
+                    },
+                    {
+                        id: "GA011",
+                        key: "GA011",
+                        name: "招远市",
+                        pId: "GA",
+                        title: "招远市",
+                    },
+                    {
+                        id: "GA012",
+                        key: "GA012",
+                        name: "莱州市",
+                        pId: "GA",
+                        title: "莱州市",
+                    },
+                    {
+                        id: "GA013",
+                        key: "GA013",
+                        name: "开发区",
+                        pId: "GA",
+                        title: "开发区",
+                    },
+                    {
+                        id: "GA014",
+                        key: "GA014",
+                        name: "高新区",
+                        pId: "GA",
+                        title: "高新区",
+                    },
+                    {
+                        id: "GA015",
+                        key: "GA015",
+                        name: "保税港区",
+                        pId: "GA",
+                        title: "保税港区",
+                    },
+                    {
+                        id: "GA016",
+                        key: "GA016",
+                        name: "昆嵛山保护区",
+                        pId: "GA",
+                        title: "昆嵛山保护区",
+                    },
                 ],
                 id: "GA",
                 key: "GA",
@@ -76,44 +179,32 @@ class JobStatisticsList extends PureComponent {
                 title: "烟台市",
             }
         ],
-        tableData: [
+        dataSource: [
             {
                 key: 1,
-                address: '县市区',
-                name: '姓名',
-                age: 18,
-                sex: '性别',
-                createDate: '创建时间',
-                pId: '123456787',
-                status: '基本状况',
+                totalNum: 10,
+                returnNum: 20,
+                closeContactsNum: 30,
+                partyNum: 40,
+                keyEpidemicAreasNum: 50,
+                abnormalPhysicalConditionsNum: 60,
+                quarantinedOnThatDayNum: 70,
+                isolatedTotalNum: 80,
+                quarantinedAtHomeOnThatDayNum: 90,
+                atHomeTotalNum: 100,
+                isolatedTotalNumEdit:false,
+                isolatedTotalNumFirst:true,
+                atHomeTotalNumEdit:false,
+                atHomeTotalNumFirst:true,
             }
-        ]
+        ],
     };
 
     componentDidMount() {
         const {dispatch, location} = this.props;
         //判断是不是从详情页跳转的
-        if (location.hasOwnProperty('params') && location['params'].hasOwnProperty('name') && location['params']['name']) {
-            this.props.form.setFieldsValue({
-                resourceName: location['params']['name']
-            });
-        }
-        // //默认获取数据资源树接口
-        // new Promise((resolve, reject) => {
-        //   dispatch({
-        //     type: 'metadataManage/getDataResourceTreeAction',
-        //     resolve,
-        //     reject,
-        //   });
-        // }).then(response => {
-        //   if (response.result === 'true') {
-        //     //获取数据源列表
-        //     this.fetchDataList();
-        //   } else {
-        //     T.prompt.error(response.message);
-        //   }
-        // });
     }
+
 
     //获取当前页数数据
     fetchDataList = () => {
@@ -144,6 +235,52 @@ class JobStatisticsList extends PureComponent {
             }
         });
 
+    };
+    handleMapChange(e, fieldName, key) {
+        const {dataSource} = this.state;
+        const newData = dataSource.map(item => ({...item}));
+        const target = this.getRowByKey(key, newData);
+        if (target) {
+            target[fieldName] = e.target.value;
+            this.setState({dataSource: newData});
+        }
+    };
+
+    getRowByKey(key, newData) {
+        const {dataSource} = this.state;
+        return (newData || dataSource).filter(item => item.key === key)[0];
+    }
+    handleKeyPress(e,fieldName,key){
+        const {dataSource} = this.state;
+        const newData = dataSource.map(item => ({...item}));
+        const target = this.getRowByKey(key, newData);
+        if (target) {
+            if(fieldName==='isolatedTotalNum'){
+                target['isolatedTotalNumEdit'] = false;
+                target['isolatedTotalNumFirst'] = false;
+            }else{
+                target['atHomeTotalNumEdit'] = false;
+                target['atHomeTotalNumFirst'] = false;
+            }
+
+            this.setState({dataSource: newData});
+        }
+    }
+    showEdit(e,fieldName, key) {
+        const {dataSource} = this.state;
+        const newData = dataSource.map(item => ({...item}));
+        const target = this.getRowByKey(key, newData);
+        if (target) {
+            if(fieldName==='isolatedTotalNum'){
+                target['isolatedTotalNumEdit'] = true;
+                // target['isolatedTotalNumFirst'] = false;
+            }else{
+                target['atHomeTotalNumEdit'] = true;
+                // target['atHomeTotalNumFirst'] = false;
+            }
+            // target['edit'] = true;
+            this.setState({dataSource: newData});
+        }
     };
 
     //重置表单
@@ -284,63 +421,79 @@ class JobStatisticsList extends PureComponent {
                 key: 'key',
             },
             {
-                title: '县市区',
-                dataIndex: '',
-                key: 'address',
+                title: '摸排总人数',
+                dataIndex: 'totalNum',
             },
             {
-                title: '姓名',
-                dataIndex: 'name',
-                key: 'name',
+                title: '来烟（返烟）人数',
+                dataIndex: 'returnNum',
             },
             {
-                title: '年龄',
-                dataIndex: 'age',
-                key: 'age',
+                title: '与确诊、疑似病例有过密切接触的人数',
+                dataIndex: 'closeContactsNum',
             },
             {
-                title: '性别',
-                dataIndex: 'sex',
-                key: 'sex',
+                title: '与密切接触者有过共同生活、工作、学习、聚会的人数',
+                dataIndex: 'partyNum',
             },
             {
-                title: '创建时间',
-                dataIndex: 'createDate',
-                key: 'createDate',
+                title: '与重点疫区人员有过接触的人数',
+                dataIndex: 'keyEpidemicAreasNum',
             },
             {
-                title: '身份证号',
-                dataIndex: 'pId',
-                key: 'pId',
-            },
-
-            {
-                title: '被调查人基本情况',
-                dataIndex: 'base',
-                key: 'base',
+                title: '身体状况异常的人数',
+                dataIndex: 'abnormalPhysicalConditionsNum',
             },
             {
-                title: '身体状况',
-                dataIndex: 'status',
-                key: 'status',
+                title: '当日集中隔离人数',
+                dataIndex: 'quarantinedOnThatDayNum',
             },
             {
-                title: '摸排人',
-                dataIndex: 'head',
-                key: 'head',
-            },
-            {
-                title: '操作',
-                key: 'action',
-                // width: '15%',
+                title: '累计集中隔离人数（1月24日至今）',
+                dataIndex: 'isolatedTotalNum',
                 render: (text, record) => {
+                    if (record.isolatedTotalNumEdit && record.isolatedTotalNumFirst) {
+                        return (
+                            <Input
+                                value={text}
+                                autoFocus
+                                onChange={e => this.handleMapChange(e, 'isolatedTotalNum', record.key)}
+                                // onKeyPress={e => this.handleKeyPress(e, record.key)}
+                                onBlur={e => this.handleKeyPress(e, 'isolatedTotalNum',record.key)}
+                                placeholder="初始值录入"
+                            />
+                        );
+                    }
                     return (
-                        <span>
-                            <a onClick={e => this.showMetadataManage(e, record)}>查看详情</a>
-                        </span>
+                        <a onClick={(e) => this.showEdit(e,'isolatedTotalNum',record.key)}>{text}</a>
                     );
                 },
-            }
+            },
+            {
+                title: '当日居家隔离人数',
+                dataIndex: 'quarantinedAtHomeOnThatDayNum',
+            },
+            {
+                title: '累计居家隔离人数（1月24日至今）',
+                dataIndex: 'atHomeTotalNum',
+                render: (text, record) => {
+                    if (record.atHomeTotalNumEdit && record.atHomeTotalNumFirst) {
+                        return (
+                            <Input
+                                value={text}
+                                autoFocus
+                                onChange={e => this.handleMapChange(e, 'atHomeTotalNum', record.key)}
+                                // onKeyPress={e => this.handleKeyPress(e, record.key)}
+                                onBlur={e => this.handleKeyPress(e, 'atHomeTotalNum',record.key)}
+                                placeholder="初始值录入"
+                            />
+                        );
+                    }
+                    return (
+                        <a onClick={(e) => this.showEdit(e,'atHomeTotalNum',record.key)}>{text}</a>
+                    );
+                },
+            },
 
         ];
         const rowSelection = {
@@ -355,9 +508,9 @@ class JobStatisticsList extends PureComponent {
                 name: record.name,
             }),
         };
-        const {currentPage, selectedKey} = this.state;
+        const {currentPage, selectedKey,dataSource} = this.state;
         return (
-            <PageHeaderWrapper title="摸排记录查询">
+            <PageHeaderWrapper title="摸排工作统计">
                 <Row gutter={24}>
                     <Col xl={5} lg={5} md={5} sm={24} xs={24}>
                         <Card
@@ -388,184 +541,46 @@ class JobStatisticsList extends PureComponent {
                                  style={{marginBottom: 10}}>
                                 <Col xl={6} lg={6} md={6} sm={6} xs={24}>
                                     <Form.Item
-                                        label={<FormattedMessage
-                                            id="checkRecord.resourceList.person.label"/>}
-                                    >
-
-                                        {getFieldDecorator('person', {
-                                            rules: [
-                                                {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.person.placeholder',
-                                                    }),
-                                                },
-                                            ],
-                                        })(
-                                            <Input
-                                                autoComplete="off"
-                                                placeholder={formatMessage({
-                                                    id: 'checkRecord.resourceList.person.placeholder',
-                                                })}
-                                            />
-                                        )}
-                                    </Form.Item>
-                                </Col>
-                                <Col xl={6} lg={6} md={6} sm={6} xs={24} style={{textAlign: 'left'}}>
-                                    <Form.Item
-                                        label={<FormattedMessage
-                                            id="checkRecord.resourceList.sex.label"/>}
-                                    >
-                                        {getFieldDecorator('sex', {})(
-                                            <Radio.Group onChange={this.onChange} value={this.state.value}>
-                                                <Radio value={1}>男</Radio>
-                                                <Radio value={2}>女</Radio>
-                                            </Radio.Group>
-                                        )}
-                                    </Form.Item>
-                                </Col>
-                                <Col xl={6} lg={6} md={6} sm={6} xs={24}>
-                                    <Form.Item
-                                        label={<FormattedMessage
-                                            id="checkRecord.resourceList.startDate.label"/>}
+                                        label='查询时间'
                                     >
 
                                         {getFieldDecorator('startDate', {
                                             rules: [
                                                 {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.startDate.placeholder',
-                                                    }),
+                                                    message:'请选择查询时间'
                                                 },
                                             ],
                                         })(
                                             <DatePicker/>
-                                        )}
-                                    </Form.Item>
-                                </Col>
-                                <Col xl={6} lg={6} md={6} sm={6} xs={24}>
-                                    <Form.Item
-                                        label={<FormattedMessage
-                                            id="checkRecord.resourceList.endDate.label"/>}
-                                    >
-
-                                        {getFieldDecorator('endDate', {
-                                            rules: [
-                                                {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.endDate.placeholder',
-                                                    }),
-                                                },
-                                            ],
-                                        })(
-                                            <DatePicker/>
-                                        )}
-                                    </Form.Item>
-                                </Col>
-                            </Row>
-                            <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
-                                 style={{marginBottom: 10}}>
-
-                                <Col xl={6} lg={6} md={6} sm={6} xs={24}>
-                                    <Form.Item
-                                        label={<FormattedMessage
-                                            id="checkRecord.resourceList.base.label"/>}
-                                    >
-
-                                        {getFieldDecorator('base', {
-                                            initialValue: 'normal'
-                                        })(
-                                            <Select
-                                                getPopupContainer={triggerNode => triggerNode.parentNode}
-                                            >
-                                                <Option key='normal' value='normal'>
-                                                    <FormattedMessage id="checkRecord.resourceList.base.option.normal"/>
-                                                </Option>
-                                                <Option key='abnormal' value='abnormal'>
-                                                    <FormattedMessage
-                                                        id="checkRecord.resourceList.base.option.abnormal"/>
-                                                </Option>
-
-                                                {/*{this.renderSelectOption(EnumDataSourceStatus)}*/}
-
-                                            </Select>
-                                        )}
-                                    </Form.Item>
-                                </Col>
-                                <Col xl={6} lg={6} md={6} sm={6} xs={24}>
-                                    <Form.Item
-                                        label={<FormattedMessage
-                                            id="checkRecord.resourceList.status.label"/>}
-                                    >
-
-                                        {getFieldDecorator('status', {
-                                            initialValue: 'normal'
-                                        })(
-                                            <Select
-                                                getPopupContainer={triggerNode => triggerNode.parentNode}
-                                            >
-                                                <Option key='normal' value='normal'>
-                                                    <FormattedMessage id="checkRecord.resourceList.base.option.normal"/>
-                                                </Option>
-                                                <Option key='abnormal' value='abnormal'>
-                                                    <FormattedMessage
-                                                        id="checkRecord.resourceList.base.option.abnormal"/>
-                                                </Option>
-
-                                                {/*{this.renderSelectOption(EnumDataSourceStatus)}*/}
-
-                                            </Select>
-                                        )}
-                                    </Form.Item>
-                                </Col>
-                                <Col xl={6} lg={6} md={6} sm={6} xs={24}>
-                                    <Form.Item
-                                        label={<FormattedMessage
-                                            id="checkRecord.resourceList.head.label"/>}
-                                    >
-
-                                        {getFieldDecorator('head', {
-                                            rules: [
-                                                {
-                                                    message: formatMessage({
-                                                        id: 'checkRecord.resourceList.head.placeholder',
-                                                    }),
-                                                },
-                                            ],
-                                        })(
-                                            <Input
-                                                autoComplete="off"
-                                                placeholder={formatMessage({
-                                                    id: 'checkRecord.resourceList.person.placeholder',
-                                                })}
-                                            />
                                         )}
                                     </Form.Item>
                                 </Col>
                                 <Col xl={6} lg={8} md={8} sm={8} xs={24} style={{textAlign: 'left'}}>
                                     <Form.Item className={styles.searchBtnWrapper}>
                                         <Button htmlType="submit" style={{marginRight: 10}}>
-                                            <FormattedMessage id="checkRecord.btn.search"/>
+                                            查询
                                         </Button>
                                         <Button onClick={this.resetDataSource} type="primary" style={{marginRight: 10}}>
-                                            <FormattedMessage id="checkRecord.btn.reset"/>
+                                            重置
                                         </Button>
                                         <Button onClick={this.exportData} type="primary">
-                                            <FormattedMessage id="checkRecord.btn.output"/>
+                                            导出
                                         </Button>
                                     </Form.Item>
                                 </Col>
                             </Row>
+
                         </Form>
                         <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                              style={{marginBottom: 10}}>
-                            检索结果：1024
+                            统计结果
                         </Row>
 
                         <Row>
                             <Card bordered={false}>
                                 <Table
                                     columns={columns}
-                                    dataSource={tableData}
+                                    dataSource={dataSource}
                                     rowSelection={rowSelection}
                                     pagination={{
                                         current: currentPage,

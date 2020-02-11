@@ -13,7 +13,7 @@ export const EnumPluginListPageInfo = {
 
 //枚举数据任务-数据同步的page信息
 export const EnumDataSyncPageInfo = {
-    defaultPageSize: 18,
+    defaultPageSize: 10,
     defaultPage: 1,
 };
 

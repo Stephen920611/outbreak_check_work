@@ -57,17 +57,122 @@ class CheckRecordList extends PureComponent {
         currentPage: EnumDataSyncPageInfo.defaultPage,//分页
         selectRows: [], //选择的数据列
         selectedKey: '',//树节点默认选中的值
+        selectedArea: '',//树节点默认选中的地区名字，用来后台获取参数
         treeData: [
             {
                 children: [
                     {
-                        children: [],
                         id: "GA001",
                         key: "GA001",
                         name: "芝罘区",
                         pId: "GA",
                         title: "芝罘区",
-                    }
+                    },
+                    {
+                        id: "GA002",
+                        key: "GA002",
+                        name: "福山区",
+                        pId: "GA",
+                        title: "福山区",
+                    },
+                    {
+                        id: "GA003",
+                        key: "GA003",
+                        name: "莱山区",
+                        pId: "GA",
+                        title: "莱山区",
+                    },
+                    {
+                        id: "GA004",
+                        key: "GA004",
+                        name: "牟平区",
+                        pId: "GA",
+                        title: "牟平区",
+                    },
+                    {
+                        id: "GA005",
+                        key: "GA005",
+                        name: "海阳市",
+                        pId: "GA",
+                        title: "海阳市",
+                    },
+                    {
+                        id: "GA006",
+                        key: "GA006",
+                        name: "莱阳市",
+                        pId: "GA",
+                        title: "莱阳市",
+                    },
+                    {
+                        id: "GA007",
+                        key: "GA007",
+                        name: "栖霞市",
+                        pId: "GA",
+                        title: "栖霞市",
+                    },
+                    {
+                        id: "GA008",
+                        key: "GA008",
+                        name: "蓬莱市",
+                        pId: "GA",
+                        title: "蓬莱市",
+                    },
+                    {
+                        id: "GA009",
+                        key: "GA009",
+                        name: "长岛县",
+                        pId: "GA",
+                        title: "长岛县",
+                    },
+                    {
+                        id: "GA010",
+                        key: "GA010",
+                        name: "龙口市",
+                        pId: "GA",
+                        title: "龙口市",
+                    },
+                    {
+                        id: "GA011",
+                        key: "GA011",
+                        name: "招远市",
+                        pId: "GA",
+                        title: "招远市",
+                    },
+                    {
+                        id: "GA012",
+                        key: "GA012",
+                        name: "莱州市",
+                        pId: "GA",
+                        title: "莱州市",
+                    },
+                    {
+                        id: "GA013",
+                        key: "GA013",
+                        name: "开发区",
+                        pId: "GA",
+                        title: "开发区",
+                    },
+                    {
+                        id: "GA014",
+                        key: "GA014",
+                        name: "高新区",
+                        pId: "GA",
+                        title: "高新区",
+                    },
+                    {
+                        id: "GA015",
+                        key: "GA015",
+                        name: "保税港区",
+                        pId: "GA",
+                        title: "保税港区",
+                    },
+                    {
+                        id: "GA016",
+                        key: "GA016",
+                        name: "昆嵛山保护区",
+                        pId: "GA",
+                        title: "昆嵛山保护区",
+                    },
                 ],
                 id: "GA",
                 key: "GA",
@@ -76,6 +181,165 @@ class CheckRecordList extends PureComponent {
                 title: "烟台市",
             }
         ],
+        fakeData: {
+            "total": 2371,
+            "pages": null,
+            "members": [
+                {
+                    "id": 2456,
+                    "area": "莱阳市",
+                    "name": "柳爱玲",
+                    "address": "古柳街道柳沟村",
+                    "idCard": "370682198711291121",
+                    "phoneNum": "13361324284",
+                    "age": 34,
+                    "gender": "女",
+                    "nativePlace": "山东莱阳",
+                    "baseInfo": "外地来烟",
+                    "createTime": "2020-02-10 17:34",
+                    "fillUserId": 1049,
+                    "fillUserName": "梁帅帅"
+                },
+                {
+                    "id": 2455,
+                    "area": "莱阳市",
+                    "name": "柳爱玲",
+                    "address": "古柳街道柳沟村",
+                    "idCard": "370682198711291121",
+                    "phoneNum": "13361324284",
+                    "age": 34,
+                    "gender": "女",
+                    "nativePlace": "山东莱阳",
+                    "baseInfo": "外地来烟",
+                    "createTime": "2020-02-10 17:34",
+                    "fillUserId": 1049,
+                    "fillUserName": "梁帅帅"
+                },
+                {
+                    "id": 2454,
+                    "area": "莱阳市",
+                    "name": "陈国宏",
+                    "address": "山东省莱阳市城厢街道办事处盛世广场",
+                    "idCard": "532401197507052017",
+                    "phoneNum": "15106588986",
+                    "age": 45,
+                    "gender": "男",
+                    "nativePlace": "云南省玉溪市",
+                    "baseInfo": "正常",
+                    "createTime": "2020-02-10 17:34",
+                    "fillUserId": 366,
+                    "fillUserName": "王骏"
+                },
+                {
+                    "id": 2453,
+                    "area": "莱阳市",
+                    "name": "董常云",
+                    "address": "莱阳市龙旺庄街道田格庄村",
+                    "idCard": "370682198808153526",
+                    "phoneNum": "13553129100",
+                    "age": 32,
+                    "gender": "男",
+                    "nativePlace": "",
+                    "baseInfo": "外地来烟",
+                    "createTime": "2020-02-10 17:34",
+                    "fillUserId": 1094,
+                    "fillUserName": "崔雪梅"
+                },
+                {
+                    "id": 2452,
+                    "area": "莱州市",
+                    "name": "周艳磊",
+                    "address": "莱州市前北流村",
+                    "idCard": "370625197607210027",
+                    "phoneNum": "13953588225",
+                    "age": 44,
+                    "gender": "女",
+                    "nativePlace": "",
+                    "baseInfo": "已被居家隔离",
+                    "createTime": "2020-02-10 17:34",
+                    "fillUserId": 1091,
+                    "fillUserName": "宋琳"
+                },
+                {
+                    "id": 2451,
+                    "area": "海阳市",
+                    "name": "辛德泽",
+                    "address": "大辛家",
+                    "idCard": "370629195308050672",
+                    "phoneNum": "3682200",
+                    "age": null,
+                    "gender": "男",
+                    "nativePlace": "",
+                    "baseInfo": "正常",
+                    "createTime": "2020-02-10 17:34",
+                    "fillUserId": 848,
+                    "fillUserName": "辛浩"
+                },
+                {
+                    "id": 2450,
+                    "area": "龙口市",
+                    "name": "李腾",
+                    "address": "龙口市针织厂小区",
+                    "idCard": "370681199810062218",
+                    "phoneNum": "17852357218",
+                    "age": 23,
+                    "gender": "男",
+                    "nativePlace": "山东省烟台市龙口市",
+                    "baseInfo": "正常",
+                    "createTime": "2020-02-10 17:33",
+                    "fillUserId": 1093,
+                    "fillUserName": "李腾"
+                },
+                {
+                    "id": 2449,
+                    "area": "莱州市",
+                    "name": "石潇丹",
+                    "address": "莱州市永安街道花园北流082号",
+                    "idCard": "370683198905242244",
+                    "phoneNum": "15376590967",
+                    "age": 31,
+                    "gender": "女",
+                    "nativePlace": "莱州市永安街道花园北流082号",
+                    "baseInfo": "正常",
+                    "createTime": "2020-02-10 17:33",
+                    "fillUserId": 405,
+                    "fillUserName": "张莲"
+                },
+                {
+                    "id": 2448,
+                    "area": "栖霞市",
+                    "name": "路亚楠",
+                    "address": "烟台市芝罘区信达小区",
+                    "idCard": "370686199211138227",
+                    "phoneNum": "15166862381",
+                    "age": 28,
+                    "gender": "女",
+                    "nativePlace": "山东省栖霞市松山街道北路家沟村",
+                    "baseInfo": "正常",
+                    "createTime": "2020-02-10 17:33",
+                    "fillUserId": 1096,
+                    "fillUserName": "路亚楠"
+                },
+                {
+                    "id": 2447,
+                    "area": "莱州市",
+                    "name": "孙修",
+                    "address": "莱州市安邦名人家园1号楼3单元1301室",
+                    "idCard": "371323198905078411",
+                    "phoneNum": "18364458532",
+                    "age": 31,
+                    "gender": "男",
+                    "nativePlace": "临沂沂水",
+                    "baseInfo": "外出返烟",
+                    "createTime": "2020-02-10 17:33",
+                    "fillUserId": 406,
+                    "fillUserName": "潘羽敏"
+                }
+            ],
+            "activities": null,
+            "touchs": null,
+            "currnets": null
+        },
         tableData: [
             {
                 key: 1,
@@ -86,7 +350,8 @@ class CheckRecordList extends PureComponent {
                 createDate: '创建时间',
                 pId: '123456787',
                 status: '基本状况',
-            }
+            },
+
         ]
     };
 
@@ -152,20 +417,20 @@ class CheckRecordList extends PureComponent {
         this.setState({
             selectedKey: ''
         });
-        this.fetchDataList();
+        // this.fetchDataList();
     };
 
     //树选择
     onSelect = (keys, event) => {
         //点击选中事件，属性可以打印查看
         const eventData = event.node.props;
-        this.props.form.setFieldsValue({
-            resourceType: eventData.name
-        });
+        // this.props.form.setFieldsValue({
+        //     resourceType: eventData.name
+        // });
         this.setState({
-            selectedKey: keys[0]
+            selectedKey: keys[0],
+            selectedArea: eventData.name
         });
-        this.fetchDataList();
     };
 
     //渲染树节点
@@ -276,7 +541,7 @@ class CheckRecordList extends PureComponent {
             form: {getFieldDecorator, getFieldValue},
         } = this.props;
         // const {dataResourceLists, dataResourceTypeTreeList, dataSourceTypeTreeOldData} = metadataManage;
-        const {treeData, tableData} = this.state;
+        const {treeData, tableData, fakeData} = this.state;
         const columns = [
             {
                 title: '序号',
@@ -383,7 +648,6 @@ class CheckRecordList extends PureComponent {
                         </Card>
                     </Col>
                     <Col xl={19} lg={19} md={19} sm={24} xs={24} className={styles.dataSourceTableList}>
-
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>
@@ -559,14 +823,13 @@ class CheckRecordList extends PureComponent {
                         </Form>
                         <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                              style={{marginBottom: 10}}>
-                            检索结果：1024
+                            检索结果：{fakeData.hasOwnProperty("total") ? fakeData.total : '-----'}
                         </Row>
-
                         <Row>
                             <Card bordered={false}>
                                 <Table
                                     columns={columns}
-                                    dataSource={tableData}
+                                    dataSource={fakeData.hasOwnProperty("members") ? fakeData.members : []}
                                     rowSelection={rowSelection}
                                     pagination={{
                                         current: currentPage,
