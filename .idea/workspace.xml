@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" line="563" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f2fcb3a5-df2d-47af-8708-6a8e2fb7ce07" name="Default" comment="修改公共东西">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/PageHeaderWrapper/breadcrumb.js" afterPath="$PROJECT_DIR$/src/components/PageHeaderWrapper/breadcrumb.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants/EnumAPI.js" afterPath="$PROJECT_DIR$/src/constants/EnumAPI.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/checkRecord/checkRecord.js" afterPath="$PROJECT_DIR$/src/models/checkRecord/checkRecord.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js" afterPath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js" />
@@ -21,50 +25,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JobStatisticsList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
+      <file leaf-file-name="CheckRecordList.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+            <state relative-caret-position="610">
+              <caret line="744" column="43" lean-forward="true" selection-start-line="744" selection-start-column="43" selection-end-line="744" selection-end-column="43" />
               <folding>
                 <element signature="e#16#59#0" expanded="true" />
-                <element signature="e#907#953#0" expanded="true" />
-                <element signature="e#1553#5465#0" expanded="false" />
-                <element signature="e#5487#6114#0" expanded="false" />
+                <element signature="e#1696#5608#0" expanded="false" />
+                <element signature="e#11522#11801#0" expanded="false" />
+                <element signature="e#11963#12204#0" expanded="false" />
+                <element signature="e#12519#12765#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatisticsList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js">
+      <file leaf-file-name="helper.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/core/helper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-672">
-              <caret line="100" column="31" lean-forward="true" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
+            <state relative-caret-position="850">
+              <caret line="279" column="53" lean-forward="false" selection-start-line="279" selection-start-column="43" selection-end-line="279" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckRecordList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
+      <file leaf-file-name="T.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/T.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="376" column="19" lean-forward="true" selection-start-line="376" selection-start-column="19" selection-end-line="376" selection-end-column="19" />
-              <folding>
-                <element signature="e#1609#5521#0" expanded="false" />
-                <element signature="e#5620#11316#0" expanded="false" />
-                <element signature="e#11437#11716#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnumPageInfo.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/constants/EnumPageInfo.js">
+      <file leaf-file-name="breadcrumb.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/PageHeaderWrapper/breadcrumb.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="150">
+              <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -73,10 +74,10 @@
       <file leaf-file-name="checkRecord.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/checkRecord/checkRecord.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="33" column="36" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="36" />
+            <state relative-caret-position="400">
+              <caret line="57" column="39" lean-forward="false" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
               <folding>
-                <element signature="e#116#205#0" expanded="true" />
+                <element signature="e#116#236#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,8 +86,8 @@
       <file leaf-file-name="checkRecord.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/checkRecord/checkRecord.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="42" />
+            <state relative-caret-position="450">
+              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
               <folding>
                 <element signature="e#115#163#0" expanded="true" />
               </folding>
@@ -97,8 +98,8 @@
       <file leaf-file-name="EnumAPI.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/constants/EnumAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-46">
-              <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="24" />
+            <state relative-caret-position="203">
+              <caret line="47" column="60" lean-forward="true" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -107,28 +108,28 @@
       <file leaf-file-name="requestTj.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/core/requestTj.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+            <state relative-caret-position="712">
+              <caret line="145" column="5" lean-forward="true" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="metadataManage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/metadataManage.js">
+      <file leaf-file-name="checkRecord.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/locales/zh-CN/checkRecord.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="118" column="48" lean-forward="true" selection-start-line="118" selection-start-column="48" selection-end-line="118" selection-end-column="48" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckRecordDetail.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CheckRecordDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="280" column="54" lean-forward="true" selection-start-line="280" selection-start-column="54" selection-end-line="280" selection-end-column="54" />
+            <state relative-caret-position="280">
+              <caret line="453" column="22" lean-forward="true" selection-start-line="453" selection-start-column="22" selection-end-line="453" selection-end-column="22" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#776#3749#0" expanded="false" />
@@ -142,14 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>menu.systemManage.webTools.account.center</find>
-      <find>rightContent</find>
-      <find>/dashboard</find>
-      <find>setClusterSourceProcessorsList</find>
-      <find>console.log(currentUserInfo,'currentUserInfo');</find>
-      <find>fetchStatisticsListAction</find>
-      <find>checkRecord</find>
-      <find>被调查人姓名</find>
       <find>treeData</find>
       <find>selectedKey</find>
       <find>tableData</find>
@@ -157,7 +150,6 @@
       <find>isSpecialBreadcrumb</find>
       <find>specialRoutes</find>
       <find>CheckRecordList</find>
-      <find>填报日期</find>
       <find>CustomBreadcrumb</find>
       <find>saveResourceMetaData</find>
       <find>console</find>
@@ -167,11 +159,20 @@
       <find>: '---' : '---' : '---'</find>
       <find>get</find>
       <find>fakeData</find>
-      <find>fetchMemberInfoAction</find>
       <find>cacheOriginData</find>
       <find>currentPage</find>
       <find>loading</find>
+      <find>checkRecord.resourceList.person.placeholder</find>
+      <find>填报日期</find>
+      <find>摸排人</find>
       <find>Card</find>
+      <find>正常</find>
+      <find>bodyConditionSelect</find>
+      <find>renderSelect</find>
+      <find>endTime</find>
+      <find>fetchMemberInfoAction</find>
+      <find>DatePicker</find>
+      <find>endDate</find>
     </findStrings>
     <replaceStrings>
       <replace>CheckRecordDetail</replace>
@@ -183,8 +184,8 @@
       <replace>JobStatisticsList</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>E:\company(dongfangdianzi)\project\testCheckWork</dir>
       <dir>E:\company(dongfangdianzi)\project\testCheckWork\src\services</dir>
+      <dir>E:\company(dongfangdianzi)\project\testCheckWork</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -218,10 +219,10 @@
         <option value="$PROJECT_DIR$/src/components/GlobalHeader/RightContent.js" />
         <option value="$PROJECT_DIR$/src/utils/core/requestTj.js" />
         <option value="$PROJECT_DIR$/src/constants/EnumAPI.js" />
-        <option value="$PROJECT_DIR$/src/services/checkRecord/checkRecord.js" />
         <option value="$PROJECT_DIR$/src/models/checkRecord/checkRecord.js" />
-        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
         <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js" />
+        <option value="$PROJECT_DIR$/src/services/checkRecord/checkRecord.js" />
+        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
       </list>
     </option>
   </component>
@@ -303,28 +304,14 @@
               <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
               <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="GlobalHeader" type="462c0819:PsiDirectoryNode" />
+              <item name="locales" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
               <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="checkRecord" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="touchStatisticsPage" type="462c0819:PsiDirectoryNode" />
+              <item name="locales" type="462c0819:PsiDirectoryNode" />
+              <item name="zh-CN" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
@@ -343,35 +330,14 @@
               <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
               <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="JobStatistics" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
               <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="TouchStatisticsPage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="checkRecord" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="touchStatisticsPage" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -395,11 +361,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\components\PageHeaderWrapper" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\models\checkRecord" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\services\checkRecord" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\pages\CheckRecord" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\pages\JobStatistics" />
-      <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\locales\zh-CN" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -431,7 +397,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47814000" />
+    <option name="totallyTimeSpent" value="52379000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1688" y="13" width="1696" height="1026" extended-state="6" />
@@ -476,13 +442,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Login/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Login/LoginSubmit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -497,21 +456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/core/helper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/T.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Login/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -523,6 +467,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="34" column="15" lean-forward="false" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -706,13 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/locales/zh-CN/checkRecord.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/locales/zh-CN.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -746,6 +684,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="791">
           <caret line="183" column="0" lean-forward="true" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -753,6 +692,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
           <caret line="37" column="23" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -769,8 +709,8 @@
         <state relative-caret-position="900">
           <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
           <folding>
-            <element signature="e#16#59#0" expanded="true" />
-            <element signature="e#907#953#0" expanded="true" />
+            <element signature="e#16#59#0" expanded="false" />
+            <element signature="e#907#953#0" expanded="false" />
             <element signature="e#1553#5465#0" expanded="false" />
             <element signature="e#5487#6114#0" expanded="false" />
           </folding>
@@ -800,39 +740,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/core/requestTj.js">
+    <entry file="file://$PROJECT_DIR$/src/locales/zh-CN/checkRecord.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/EnumAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
-          <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/checkRecord/checkRecord.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="42" />
-          <folding>
-            <element signature="e#115#163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/checkRecord/checkRecord.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="33" column="36" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="36" />
-          <folding>
-            <element signature="e#116#205#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -844,26 +756,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="376" column="19" lean-forward="true" selection-start-line="376" selection-start-column="19" selection-end-line="376" selection-end-column="19" />
-          <folding>
-            <element signature="e#1609#5521#0" expanded="false" />
-            <element signature="e#5620#11316#0" expanded="false" />
-            <element signature="e#11437#11716#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="280" column="54" lean-forward="true" selection-start-line="280" selection-start-column="54" selection-end-line="280" selection-end-column="54" />
+        <state relative-caret-position="280">
+          <caret line="453" column="22" lean-forward="true" selection-start-line="453" selection-start-column="22" selection-end-line="453" selection-end-column="22" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#776#3749#0" expanded="false" />
             <element signature="e#869#1392#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PageHeaderWrapper/breadcrumb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/checkRecord/checkRecord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="57" column="39" lean-forward="false" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
+          <folding>
+            <element signature="e#116#236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/checkRecord/checkRecord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding>
+            <element signature="e#115#163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/EnumAPI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="47" column="60" lean-forward="true" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/core/requestTj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="712">
+          <caret line="145" column="5" lean-forward="true" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/core/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="279" column="53" lean-forward="false" selection-start-line="279" selection-start-column="43" selection-end-line="279" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/T.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="744" column="43" lean-forward="true" selection-start-line="744" selection-start-column="43" selection-end-line="744" selection-end-column="43" />
+          <folding>
+            <element signature="e#16#59#0" expanded="true" />
+            <element signature="e#1696#5608#0" expanded="false" />
+            <element signature="e#11522#11801#0" expanded="false" />
+            <element signature="e#11963#12204#0" expanded="false" />
+            <element signature="e#12519#12765#0" expanded="false" />
           </folding>
         </state>
       </provider>

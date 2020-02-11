@@ -58,6 +58,8 @@ class CheckRecordList extends PureComponent {
         selectRows: [], //选择的数据列
         selectedKey: '',//树节点默认选中的值
         selectedArea: '',//树节点默认选中的地区名字，用来后台获取参数
+        baseInfoSelect: [],     //被调查人基本情况
+        bodyConditionSelect: [],     //身体状况
         treeData: [
             {
                 children: [
@@ -182,7 +184,7 @@ class CheckRecordList extends PureComponent {
             }
         ],
         fakeData: {
-            "total": 2371,
+            "total": 11,
             "pages": null,
             "members": [
                 {
@@ -356,7 +358,48 @@ class CheckRecordList extends PureComponent {
     };
 
     componentDidMount() {
+        const {dispatch} = this.props;
+        let self = this;
 
+        //获取被调查人基本情况
+        new Promise((resolve, reject) => {
+            dispatch({
+                type: 'checkRecord/fetchSelectInfoAction',
+                params: {
+                    type: 'BASE_INFO'
+                },
+                resolve,
+                reject,
+            });
+        }).then(response => {
+            if (response.code === 0) {
+                self.setState({
+                    baseInfoSelect: response.data
+                })
+            } else {
+                T.prompt.error(response.msg);
+            }
+        });
+
+        //获取身体情况列表
+        new Promise((resolve, reject) => {
+            dispatch({
+                type: 'checkRecord/fetchSelectInfoAction',
+                params: {
+                    type: 'BODY_CONDITION'
+                },
+                resolve,
+                reject,
+            });
+        }).then(response => {
+            if (response.code === 0) {
+                self.setState({
+                    bodyConditionSelect: response.data
+                })
+            } else {
+                T.prompt.error(response.msg);
+            }
+        });
     }
 
     //获取当前页数数据
@@ -366,7 +409,7 @@ class CheckRecordList extends PureComponent {
         let self = this;
 
         form.validateFieldsAndScroll((err, values) => {
-            console.log(values,'values');
+            console.log(values, 'values');
             if (!err) {
                 //地区分类
                 let categoryCode = '';
@@ -377,36 +420,28 @@ class CheckRecordList extends PureComponent {
                 });
 
                 let params = {
-                    page: currentPage,
-                    pageSize: EnumDataSyncPageInfo.defaultPageSize,
-                    startTime: "",      //开始时间
-                    endTime: "",        //结束时间
+                    current: currentPage,
+                    size: EnumDataSyncPageInfo.defaultPageSize,
+                    startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
+                    endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate,'YYYY-MM-DD'),        //结束时间
                     area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
-                    name: "",           //被调查人姓名
-                    gender: "",         //性别
-                    idCard: "",         //身份证号
-                    baseInfo: "",         //被调查人基本情况
-                    bodyCondition: "",         //身体状况
-                    fillUserName: "",   //摸排人
-                    // "selectedKey":selectedKey,//categoryCode  点击的树节点
-                    // "person": T.lodash.isUndefined(values.person) ? '' : values.person, //被调查人姓名
-                    // "sex": T.lodash.isUndefined(values.sex) ? '' : values.sex, //被调查人性别
-                    // "startDate": T.lodash.isUndefined(values.startDate) ? '' : values.startDate, //开始时间
-                    // "endDate": T.lodash.isUndefined(values.endDate) ? '' : values.endDate, //结束时间
-                    // "base": T.lodash.isUndefined(values.base) ? '' : values.base, //被调查人基本情况
-                    // "status": T.lodash.isUndefined(values.status) ? '' : values.status, //身体状况
-                    // "head": T.lodash.isUndefined(values.head) ? '' : values.head, //摸排人
+                    name: T.lodash.isUndefined(values.person) ? '' : values.person,           //被调查人姓名
+                    gender: T.lodash.isUndefined(values.sex) ? '' : values.sex,         //性别
+                    // idCard: "",         //身份证号
+                    baseInfo: T.lodash.isUndefined(values.base) ? '' : values.base,         //被调查人基本情况
+                    bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status,         //身体状况
+                    fillUserName: T.lodash.isUndefined(values.head) ? '' : values.head,   //摸排人
                 };
+                console.log(params, 'params');
                 new Promise((resolve, reject) => {
                     dispatch({
-                        type: 'checkRecord/fetchMemberInfoAction',
+                        type: 'checkRecord/fetchCheckRecordListAction',
                         params,
                         resolve,
                         reject,
                     });
                 }).then(response => {
                     console.log(response, 'response');
-                    const {currnets, member, touch, activities} = response.data;
                     if (response.code === 0) {
                         // self.setState({
                         //     activities: T.lodash.isUndefined(activities[0]) ? {} : activities[0],
@@ -426,7 +461,7 @@ class CheckRecordList extends PureComponent {
     //重置表单
     resetDataSource = () => {
         this.props.form.resetFields();
-        // this.fetchDataList();
+        this.fetchDataList();
     };
 
     //树选择
@@ -510,7 +545,6 @@ class CheckRecordList extends PureComponent {
     };
 
     //树选择
-
     onTreeChange = (e, node) => {
         this.setState({
             selectedKey: node.props.id,
@@ -528,7 +562,19 @@ class CheckRecordList extends PureComponent {
                 )
             })
         )
+    };
 
+    //渲染不同的下拉框
+    renderSelect = (dataSource) => {
+        return (
+            dataSource.map((item,idx) => {
+                return (
+                    <Option key={item.value} value={item.name}>
+                        {item.name}
+                    </Option>
+                )
+            })
+        )
     };
 
     render() {
@@ -540,8 +586,9 @@ class CheckRecordList extends PureComponent {
             form: {getFieldDecorator, getFieldValue},
         } = this.props;
         // const {dataResourceLists, dataResourceTypeTreeList, dataSourceTypeTreeOldData} = metadataManage;
-        const {treeData, tableData, fakeData, selectedArea} = this.state;
-        console.log(selectedArea,'selectedArea');
+        const {treeData, tableData, fakeData, selectedArea, currentPage, selectedKey, bodyConditionSelect, baseInfoSelect} = this.state;
+
+        console.log(selectedArea, 'selectedArea');
         const columns = [
             {
                 title: '序号',
@@ -617,7 +664,6 @@ class CheckRecordList extends PureComponent {
                 name: record.name,
             }),
         };
-        const {currentPage, selectedKey} = this.state;
         return (
             <PageHeaderWrapper title="摸排记录查询">
                 <Row gutter={24}>
@@ -669,8 +715,8 @@ class CheckRecordList extends PureComponent {
                                     >
                                         {getFieldDecorator('sex', {})(
                                             <Radio.Group onChange={this.onChange} value={this.state.value}>
-                                                <Radio value={1}>男</Radio>
-                                                <Radio value={2}>女</Radio>
+                                                <Radio value={"男"}>男</Radio>
+                                                <Radio value={"女"}>女</Radio>
                                             </Radio.Group>
                                         )}
                                     </Form.Item>
@@ -680,8 +726,10 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.startDate.label"/>}
                                     >
-
-                                        {getFieldDecorator('startDate', {})(
+                                        {getFieldDecorator('startDate', {
+                                            rules: [{required: true, message: '请选择开始时间！'}],
+                                            initialValue: T.moment(new Date().getTime()),
+                                        })(
                                             <DatePicker/>
                                         )}
                                     </Form.Item>
@@ -691,8 +739,10 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.endDate.label"/>}
                                     >
-
-                                        {getFieldDecorator('endDate', {})(
+                                        {getFieldDecorator('endDate', {
+                                            rules: [{required: true, message: '请选择结束时间！'}],
+                                            initialValue: T.moment(new Date().getTime()),
+                                        })(
                                             <DatePicker/>
                                         )}
                                     </Form.Item>
@@ -707,22 +757,13 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.base.label"/>}
                                     >
 
-                                        {getFieldDecorator('base', {
-                                            initialValue: 'normal'
-                                        })(
+                                        {getFieldDecorator('base')(
                                             <Select
                                                 getPopupContainer={triggerNode => triggerNode.parentNode}
                                             >
-                                                <Option key='normal' value='normal'>
-                                                    <FormattedMessage id="checkRecord.resourceList.base.option.normal"/>
-                                                </Option>
-                                                <Option key='abnormal' value='abnormal'>
-                                                    <FormattedMessage
-                                                        id="checkRecord.resourceList.base.option.abnormal"/>
-                                                </Option>
-
-                                                {/*{this.renderSelectOption(EnumDataSourceStatus)}*/}
-
+                                                {
+                                                    this.renderSelect(baseInfoSelect)
+                                                }
                                             </Select>
                                         )}
                                     </Form.Item>
@@ -733,22 +774,13 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.status.label"/>}
                                     >
 
-                                        {getFieldDecorator('status', {
-                                            initialValue: 'normal'
-                                        })(
+                                        {getFieldDecorator('status')(
                                             <Select
                                                 getPopupContainer={triggerNode => triggerNode.parentNode}
                                             >
-                                                <Option key='normal' value='normal'>
-                                                    <FormattedMessage id="checkRecord.resourceList.base.option.normal"/>
-                                                </Option>
-                                                <Option key='abnormal' value='abnormal'>
-                                                    <FormattedMessage
-                                                        id="checkRecord.resourceList.base.option.abnormal"/>
-                                                </Option>
-
-                                                {/*{this.renderSelectOption(EnumDataSourceStatus)}*/}
-
+                                                {
+                                                    this.renderSelect(bodyConditionSelect)
+                                                }
                                             </Select>
                                         )}
                                     </Form.Item>
@@ -758,12 +790,11 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.head.label"/>}
                                     >
-
                                         {getFieldDecorator('head', {})(
                                             <Input
                                                 autoComplete="off"
                                                 placeholder={formatMessage({
-                                                    id: 'checkRecord.resourceList.person.placeholder',
+                                                    id: 'checkRecord.resourceList.head.placeholder',
                                                 })}
                                             />
                                         )}
@@ -798,13 +829,12 @@ class CheckRecordList extends PureComponent {
                                         current: currentPage,
                                         onChange: this.pageChange,
                                         pageSize: EnumDataSyncPageInfo.defaultPageSize,
-                                        // total: sourceProcessorsList.hasOwnProperty('total') ? Number(sourceProcessorsList.total) + 1 : 0,
+                                        total: fakeData.hasOwnProperty('total') ? Number(fakeData.total) + 1 : 0,
                                     }}
                                     // rowClassName={record => (record.editable ? styles.editable : '')}
                                 />
                             </Card>
                         </Row>
-
                     </Col>
                 </Row>
             </PageHeaderWrapper>

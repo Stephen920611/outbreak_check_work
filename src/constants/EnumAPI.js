@@ -45,6 +45,7 @@ const EnumAPI = {
    |----------------------------------------------------------------
    */
     fetchCheckRecordList: _processAPI('/member/pageByArea'),//获取摸排记录查询列表
+    fetchSelectInfo: _processAPI('/dict/getByType'),//获取下拉选项
     fetchMemberInfo: (id) => processDataList('/member/get/'+ id),//查看详情页面
     /*
     |----------------------------------------------------------------

@@ -68,7 +68,7 @@ const conversionFromLocation = (routerLocation, breadcrumbNameMap, props) => {
     // console.log(routerLocation,'routerLocation');
     // console.log(breadcrumbNameMap,'breadcrumbNameMap');
     // console.log(props,'props');
-    const {home} = props;
+    // const {home} = props;
     // Convert the url to an array
     const pathSnippets = urlToList(routerLocation.pathname);
     // Loop data mosaic routing
@@ -89,12 +89,12 @@ const conversionFromLocation = (routerLocation, breadcrumbNameMap, props) => {
         })
         .filter(item => item !== null);
     // Add home breadcrumbs to your head if defined
-    if (home) {
-        extraBreadcrumbItems.unshift({
-            path: '/',
-            breadcrumbName: home,
-        });
-    }
+    // if (home) {
+    //     extraBreadcrumbItems.unshift({
+    //         path: '/',
+    //         breadcrumbName: home,
+    //     });
+    // }
     return extraBreadcrumbItems;
 };
 

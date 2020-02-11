@@ -136,9 +136,6 @@ class CheckRecordDetail extends PureComponent {
         } = this.state;
         const breadcrumbDetail = [
             {
-                name: '首页',
-            },
-            {
                 linkTo: '/checkRecord',
                 name: '摸排记录查询',
             },

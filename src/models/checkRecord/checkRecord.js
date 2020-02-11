@@ -5,7 +5,11 @@
  * @license dongfangdianzi
  */
 
-import {fetchMemberInfo, fetchCheckRecordList} from '@/services/checkRecord/checkRecord';
+import {
+    fetchMemberInfo,
+    fetchCheckRecordList,
+    fetchSelectInfo
+} from '@/services/checkRecord/checkRecord';
 import T from '../../utils/T';
 
 export default {
@@ -30,10 +34,19 @@ export default {
     },
 
     effects: {
-        //获取人员基本信息
+        //获取摸排记录列表页面
         * fetchCheckRecordListAction({params, resolve, reject}, {call, put}) {
             try {
                 const response = yield call(fetchCheckRecordList, params);
+                resolve(response);
+            } catch (error) {
+                reject(error);
+            }
+        },
+        //获取下拉选项
+        * fetchSelectInfoAction({params, resolve, reject}, {call, put}) {
+            try {
+                const response = yield call(fetchSelectInfo, params);
                 resolve(response);
             } catch (error) {
                 reject(error);
