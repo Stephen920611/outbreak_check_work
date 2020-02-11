@@ -54,20 +54,20 @@ class StatisticsList extends PureComponent {
     componentDidMount() {
         const {dispatch} = this.props;
         const {clusterActiveColor} = this.state;
-        new Promise((resolve, reject) => {
-            dispatch({
-                type: 'touchStatisticsPageList/fetchStatisticsListAction',
-                params: {},
-                resolve,
-                reject,
-            });
-        }).then(response => {
-            if (response.code === 0) {
-
-            } else {
-                T.prompt.error(response.msg);
-            }
-        });
+        // new Promise((resolve, reject) => {
+        //     dispatch({
+        //         type: 'touchStatisticsPageList/fetchStatisticsListAction',
+        //         params: {},
+        //         resolve,
+        //         reject,
+        //     });
+        // }).then(response => {
+        //     if (response.code === 0) {
+        //
+        //     } else {
+        //         T.prompt.error(response.msg);
+        //     }
+        // });
     }
 
     componentWillUnmount(){
