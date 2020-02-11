@@ -44,15 +44,15 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper'; // @ 表示相�
 
 //数据分发页面
 /* eslint react/no-multi-comp:0 */
-@connect(({metadataManage, loading}) => ({
-    metadataManage,
-    loading: loading.models.metadataManageList,
-    fetchTreeStatus: loading.effects['metadataManage/getDataResourceTreeAction'],
+@connect(({checkRecord, loading}) => ({
+    checkRecord,
+    // fetchTreeStatus: loading.effects['checkRecord/getDataResourceTreeAction'],
+    fetchCheckRecordListStatus: loading.effects['checkRecord/fetchCheckRecordListAction'],
 }))
 // class CheckRecordList
 @Form.create()
 class CheckRecordList extends PureComponent {
-    cacheOriginData = {};
+
     state = {
         currentPage: EnumDataSyncPageInfo.defaultPage,//分页
         selectRows: [], //选择的数据列
@@ -357,15 +357,16 @@ class CheckRecordList extends PureComponent {
 
     componentDidMount() {
 
-
     }
 
     //获取当前页数数据
     fetchDataList = () => {
-        const {dispatch, form, metadataManage} = this.props;
-        const {dataSourceTypeTreeOldData} = metadataManage;
-        const {currentPage,selectedKey,treeData} = this.state;
+        const {dispatch, form, checkRecord} = this.props;
+        const {currentPage, selectedKey, treeData, selectedArea} = this.state;
+        let self = this;
+
         form.validateFieldsAndScroll((err, values) => {
+            console.log(values,'values');
             if (!err) {
                 //地区分类
                 let categoryCode = '';
@@ -374,22 +375,49 @@ class CheckRecordList extends PureComponent {
                         categoryCode = val.id;
                     }
                 });
-                let  params = {
+
+                let params = {
                     page: currentPage,
                     pageSize: EnumDataSyncPageInfo.defaultPageSize,
-                    "selectedKey":selectedKey,//categoryCode  点击的树节点
-                    "person": T.lodash.isUndefined(values.person) ? '' : values.person, //被调查人姓名
-                    "sex": T.lodash.isUndefined(values.sex) ? '' : values.sex, //被调查人性别
-                    "startDate": T.lodash.isUndefined(values.startDate) ? '' : values.startDate, //开始时间
-                    "endDate": T.lodash.isUndefined(values.endDate) ? '' : values.endDate, //结束时间
-                    "base": T.lodash.isUndefined(values.base) ? '' : values.base, //被调查人基本情况
-                    "status": T.lodash.isUndefined(values.status) ? '' : values.status, //身体状况
-                    "head": T.lodas.isUndefined(values.head) ? '' : values.head, //摸排人
+                    startTime: "",      //开始时间
+                    endTime: "",        //结束时间
+                    area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
+                    name: "",           //被调查人姓名
+                    gender: "",         //性别
+                    idCard: "",         //身份证号
+                    baseInfo: "",         //被调查人基本情况
+                    bodyCondition: "",         //身体状况
+                    fillUserName: "",   //摸排人
+                    // "selectedKey":selectedKey,//categoryCode  点击的树节点
+                    // "person": T.lodash.isUndefined(values.person) ? '' : values.person, //被调查人姓名
+                    // "sex": T.lodash.isUndefined(values.sex) ? '' : values.sex, //被调查人性别
+                    // "startDate": T.lodash.isUndefined(values.startDate) ? '' : values.startDate, //开始时间
+                    // "endDate": T.lodash.isUndefined(values.endDate) ? '' : values.endDate, //结束时间
+                    // "base": T.lodash.isUndefined(values.base) ? '' : values.base, //被调查人基本情况
+                    // "status": T.lodash.isUndefined(values.status) ? '' : values.status, //身体状况
+                    // "head": T.lodash.isUndefined(values.head) ? '' : values.head, //摸排人
                 };
-                /* dispatch({
-                     type: 'metadataManage/getDataResourceManagementListAction',
-                     params,
-                 });*/
+                new Promise((resolve, reject) => {
+                    dispatch({
+                        type: 'checkRecord/fetchMemberInfoAction',
+                        params,
+                        resolve,
+                        reject,
+                    });
+                }).then(response => {
+                    console.log(response, 'response');
+                    const {currnets, member, touch, activities} = response.data;
+                    if (response.code === 0) {
+                        // self.setState({
+                        //     activities: T.lodash.isUndefined(activities[0]) ? {} : activities[0],
+                        //     currentInfo: T.lodash.isUndefined(currnets[0]) ? {} : currnets[0],
+                        //     member,
+                        //     touch: T.lodash.isUndefined(touch[0]) ? {} : touch[0],
+                        // })
+                    } else {
+                        T.prompt.error(response.msg);
+                    }
+                });
             }
         });
 
@@ -512,7 +540,8 @@ class CheckRecordList extends PureComponent {
             form: {getFieldDecorator, getFieldValue},
         } = this.props;
         // const {dataResourceLists, dataResourceTypeTreeList, dataSourceTypeTreeOldData} = metadataManage;
-        const {treeData, tableData, fakeData} = this.state;
+        const {treeData, tableData, fakeData, selectedArea} = this.state;
+        console.log(selectedArea,'selectedArea');
         const columns = [
             {
                 title: '序号',

@@ -5,7 +5,7 @@
  * @license dongfangdianzi
  */
 
-import {fetchMemberInfo} from '@/services/checkRecord/checkRecord';
+import {fetchMemberInfo, fetchCheckRecordList} from '@/services/checkRecord/checkRecord';
 import T from '../../utils/T';
 
 export default {
@@ -31,20 +31,22 @@ export default {
 
     effects: {
         //获取人员基本信息
+        * fetchCheckRecordListAction({params, resolve, reject}, {call, put}) {
+            try {
+                const response = yield call(fetchCheckRecordList, params);
+                resolve(response);
+            } catch (error) {
+                reject(error);
+            }
+        },
+        //查看详情页面
         * fetchMemberInfoAction({id, resolve, reject}, {call, put}) {
             try {
                 const response = yield call(fetchMemberInfo, id);
                 resolve(response);
-                // if (response.code === 0) {
-                //     yield put({
-                //         type: 'setStatisticsList',   //这里的getDataTree对应的reducer里的getDataTree名字
-                //         statisticsList: response.data,
-                //     });
-                // }
             } catch (error) {
                 reject(error);
             }
-
         },
     },
 

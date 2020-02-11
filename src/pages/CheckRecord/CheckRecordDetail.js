@@ -127,23 +127,40 @@ class CheckRecordDetail extends PureComponent {
     }
 
     render() {
+        const {fetchStatus} = this.props;
         const {
             activities,
             currentInfo,
             member,
             touch,
         } = this.state;
+        const breadcrumbDetail = [
+            {
+                name: '首页',
+            },
+            {
+                linkTo: '/checkRecord',
+                name: '摸排记录查询',
+            },
+            {
+                name: '疫情防控调查详情查看',
+            },
+        ];
         return (
             <PageHeaderWrapper
                 title={"疫情防控调查详情查看"}
                 isSpecialBreadcrumb={true}
+                breadcrumbName={<CustomBreadcrumb dataSource={breadcrumbDetail}/>}
             >
                 <div>
                     <div className={styles.detailItem}>
                         <div className={styles.detailTitleName}>
                             人员基本信息
                         </div>
-                        <Card style={{marginBottom: 20}}>
+                        <Card
+                            style={{marginBottom: 20}}
+                            loading={fetchStatus}
+                        >
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>县市区：</span>
@@ -218,7 +235,10 @@ class CheckRecordDetail extends PureComponent {
                         <div className={styles.detailTitleName}>
                             人员活动信息
                         </div>
-                        <Card style={{marginBottom: 20}}>
+                        <Card
+                            style={{marginBottom: 20}}
+                            loading={fetchStatus}
+                        >
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>从何地来烟(返烟)：</span>
@@ -257,7 +277,10 @@ class CheckRecordDetail extends PureComponent {
                         <div className={styles.detailTitleName}>
                             人员接触信息
                         </div>
-                        <Card style={{marginBottom: 20}}>
+                        <Card
+                            style={{marginBottom: 20}}
+                            loading={fetchStatus}
+                        >
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>是否与确诊、疑似病例密切接触过：</span>
@@ -316,13 +339,13 @@ class CheckRecordDetail extends PureComponent {
                                 <Col span={6} className={styles.detailBtns}>
                                     <span>接触时间：</span>
                                     <span>
-                                        {touch.hasOwnProperty('intimateTime') ? touch.intimateTime  : '---'}
+                                        {touch.hasOwnProperty('intimateTime') ? touch.intimateTime : '---'}
                                     </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>接触地点：</span>
                                     <span>
-                                        {touch.hasOwnProperty('intimatePoint') ? touch.intimatePoint  : '---'}
+                                        {touch.hasOwnProperty('intimatePoint') ? touch.intimatePoint : '---'}
                                     </span>
                                 </Col>
                             </Row>
@@ -330,7 +353,7 @@ class CheckRecordDetail extends PureComponent {
                                 <Col span={6}>
                                     <span>是否与重点疫区人员接触过：</span>
                                     <span>
-                                        {touch.hasOwnProperty('isTouchInfector') ? touch.isTouchInfector  : '---'}
+                                        {touch.hasOwnProperty('isTouchInfector') ? touch.isTouchInfector : '---'}
                                     </span>
                                 </Col>
                             </Row>
@@ -338,25 +361,25 @@ class CheckRecordDetail extends PureComponent {
                                 <Col span={6}>
                                     <span>接触者姓名：</span>
                                     <span>
-                                        {touch.hasOwnProperty('infectorName') ? touch.infectorName  : '---'}
+                                        {touch.hasOwnProperty('infectorName') ? touch.infectorName : '---'}
                                     </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>接触者身份证号：</span>
                                     <span>
-                                        {touch.hasOwnProperty('infectorIdCard') ? touch.infectorIdCard  : '---'}
+                                        {touch.hasOwnProperty('infectorIdCard') ? touch.infectorIdCard : '---'}
                                     </span>
                                 </Col>
                                 <Col span={6} className={styles.detailBtns}>
                                     <span>接触时间：</span>
                                     <span>
-                                        {touch.hasOwnProperty('infectorTime') ? touch.infectorTime  : '---'}
+                                        {touch.hasOwnProperty('infectorTime') ? touch.infectorTime : '---'}
                                     </span>
                                 </Col>
                                 <Col span={6}>
                                     <span>接触地点：</span>
                                     <span>
-                                        {touch.hasOwnProperty('infectorPoint') ? touch.infectorPoint  : '---'}
+                                        {touch.hasOwnProperty('infectorPoint') ? touch.infectorPoint : '---'}
                                     </span>
                                 </Col>
                             </Row>
@@ -364,7 +387,10 @@ class CheckRecordDetail extends PureComponent {
                         <div className={styles.detailTitleName}>
                             人员当前状态
                         </div>
-                        <Card style={{marginBottom: 20}}>
+                        <Card
+                            style={{marginBottom: 20}}
+                            loading={fetchStatus}
+                        >
                             <Row className={styles.detailTitle}>
                                 <Col span={6}>
                                     <span>身体状况：</span>
@@ -385,7 +411,7 @@ class CheckRecordDetail extends PureComponent {
                                     </span>
                                 </Col>
                                 <Col span={6}>
-                                    <span>就医时间</span>
+                                    <span>就医时间：</span>
                                     <span>
                                         {currentInfo.hasOwnProperty('seekTime') ? currentInfo.seekTime : '---'}
                                     </span>

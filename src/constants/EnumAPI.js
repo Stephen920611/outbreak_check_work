@@ -44,7 +44,8 @@ const EnumAPI = {
    | 张-app-摸排统计页面-相关的API地址
    |----------------------------------------------------------------
    */
-    fetchMemberInfo: (id) => processDataList('/member/get/'+ id),//管理元数据-保存元数据
+    fetchCheckRecordList: _processAPI('/member/pageByArea'),//获取摸排记录查询列表
+    fetchMemberInfo: (id) => processDataList('/member/get/'+ id),//查看详情页面
     /*
     |----------------------------------------------------------------
     | 首页-相关的API地址

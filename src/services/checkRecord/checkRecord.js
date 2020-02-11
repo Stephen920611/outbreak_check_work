@@ -11,3 +11,7 @@ import T from './../../utils/T';
 export async function fetchMemberInfo(id) {
     return get(EnumAPI.fetchMemberInfo(id) );
 }
+
+export async function fetchCheckRecordList(params = {}) {
+    return get(EnumAPI.fetchCheckRecordList, params);
+}
