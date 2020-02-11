@@ -46,7 +46,15 @@ const EnumAPI = {
    */
     fetchCheckRecordList: _processAPI('/member/pageByArea'),//获取摸排记录查询列表
     fetchSelectInfo: _processAPI('/dict/getByType'),//获取下拉选项
-    fetchMemberInfo: (id) => processDataList('/member/get/'+ id),//查看详情页面
+    fetchMemberInfo: (id) => processDataList('/member/get/' + id),//查看详情页面
+
+    /*
+   |----------------------------------------------------------------
+   | 张-app-摸排工作统计页面-相关的API地址
+   |----------------------------------------------------------------
+   */
+    fetchJobStatisticsList: _processAPI('/static/getStaticSum'),//获取摸排工作统计列表
+
     /*
     |----------------------------------------------------------------
     | 首页-相关的API地址
@@ -79,7 +87,7 @@ const EnumAPI = {
     getDataSourceTypeTreeServices: _processAPI('dataSource/types/treeData'),//数据源管理-新增数据源- 获取数据源类型树
     saveQuickRegister: _processAPI('dataSource'), //数据源管理-新增数据源 - 添加数据源配置
     updateDataSourceConfigServices: _processAPI('dataSource'), //数据源管理-编辑更新数据源
-    deleteDataSourceServices:(id) => processDataList('dataSource/' + id), //数据源管理-删除数据源
+    deleteDataSourceServices: (id) => processDataList('dataSource/' + id), //数据源管理-删除数据源
     /*------------ 数据资源管理 ----------------*/
     getDataResourceTreeServices: _processAPI('dataResource/category/treeData'),//数据资源管理- 获取数据资源树
     getDataResourceManagementListServices: _processAPI('dataResource/listData'),//数据资源管理-获取数据资源列表
@@ -90,8 +98,8 @@ const EnumAPI = {
     /*------------ 管理元数据 ----------------*/
     getMetaDataTree: _processAPI('dataResource/treeData'),//管理元数据-获取数据源树类型
     // mataDataAutoExploration: _processAPI('matadata/exploration'),//管理元数据-自动探查功能
-    mataDataAutoExploration: (params) => processDataList('dataSource/'+ params.id + '/'+ params.name + '/describe'),//管理元数据-自动探查功能
-    saveResourceMetaData: (id) => processDataList('dataResource/'+ id),//管理元数据-保存元数据
+    mataDataAutoExploration: (params) => processDataList('dataSource/' + params.id + '/' + params.name + '/describe'),//管理元数据-自动探查功能
+    saveResourceMetaData: (id) => processDataList('dataResource/' + id),//管理元数据-保存元数据
 
     /*
 	 |----------------------------------------------------------------
@@ -150,9 +158,9 @@ const EnumAPI = {
     // dataSyncSaveQuickRegisterDestination
     // saveSinkConfig: _processAPI('dist/destination'),  // 保存数据目的地配置
     saveSinkConfig: _processAPI('sink/'),  // 保存数据目的地配置
-    getDestinationDetail:(uuid) => processDataList('sink/' + uuid + '/status'),//分发目的地详情页-获取分发目的地详情(本地)
+    getDestinationDetail: (uuid) => processDataList('sink/' + uuid + '/status'),//分发目的地详情页-获取分发目的地详情(本地)
     getInfoFormSource: (uuid) => processDataList('sink/' + uuid + '/list'), //获取数据分发列表（本地）
-    restartDestinationChild:({id,taskId}) => processDataList('sink/' + id + '/tasks/' + taskId + '/restart'),//分发目的地详情页-重启运行状态里的任务（本地）
+    restartDestinationChild: ({id, taskId}) => processDataList('sink/' + id + '/tasks/' + taskId + '/restart'),//分发目的地详情页-重启运行状态里的任务（本地）
     searchDistribute: ({uuid, name}) => processDataList('sink/' + uuid + '/' + name),//数据分发目的地列表页-查询数据分发目的地（本地）
     activateSinkProcessor: (uuid) => processDataList('sink/activate/' + uuid),//激活数据目的地（本地）
 
@@ -172,7 +180,6 @@ const EnumAPI = {
     getDetailLineDataBySinkId: (uuid) => processDataList('monitor/' + uuid + '/consumerAllRate'),//根据数据分发id获取每分钟速率
 
 
-
     getInfoFormClusterSource: (uuid) => processDataList('cluster/sink/processor/' + uuid + '/list'), //获取数据分发列表（远程）
     addClusterDestination: _processAPI('cluster/sink/processor/'), //新增(更新)数据分发目的地，put方法是更新，post方法是新增(远程)
     getClusterDestination: (uuid) => processDataList('cluster/sink/processor/' + uuid),//数据分发目的地列表页-查看数据分发基本信息(远程)
@@ -182,10 +189,9 @@ const EnumAPI = {
     resumeClusterDestination: (uuid) => processDataList('cluster/sink/processor/' + uuid + '/resume'),//数据分发目的地列表页-点击恢复（恢复某个数据分发目的地）（远程）
     restartClusterDestination: (uuid) => processDataList('cluster/sink/processor/' + uuid + '/restart'),//数据分发目的地列表页-点击重启（重启某个数据分发目的地）（远程）
 
-    getClusterDestinationDetail:(uuid) => processDataList('cluster/sink/processor/' + uuid + '/status'),//分发目的地详情页-获取分发目的地详情（远程）
-    restartClusterDestinationChild:({id,taskId}) => processDataList('cluster/sink/' + id + '/tasks/' + taskId + '/restart'),//分发目的地详情页-重启运行状态里的任务（远程）
+    getClusterDestinationDetail: (uuid) => processDataList('cluster/sink/processor/' + uuid + '/status'),//分发目的地详情页-获取分发目的地详情（远程）
+    restartClusterDestinationChild: ({id, taskId}) => processDataList('cluster/sink/' + id + '/tasks/' + taskId + '/restart'),//分发目的地详情页-重启运行状态里的任务（远程）
     searchClusterDistribute: ({uuid, name}) => processDataList('cluster/sink/processor/' + uuid + '/' + name),//数据分发目的地列表页-查询数据分发目的地（远程）
-
 
 
     /*

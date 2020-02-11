@@ -43,19 +43,19 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper'; // @ 表示相�
 
 //数据分发页面
 /* eslint react/no-multi-comp:0 */
-@connect(({metadataManage, loading}) => ({
-    metadataManage,
-    loading: loading.models.metadataManageList,
-    fetchTreeStatus: loading.effects['metadataManage/getDataResourceTreeAction'],
+@connect(({jobStatistics, loading}) => ({
+    jobStatistics,
+    fetchJobStatisticsListStatus: loading.effects['jobStatistics/fetchJobStatisticsListAction'],
 }))
 // class JobStatisticsList
 @Form.create()
 class JobStatisticsList extends PureComponent {
-    cacheOriginData = {};
     state = {
         currentPage: EnumDataSyncPageInfo.defaultPage,//分页
         selectRows: [], //选择的数据列
-        selectedKey: '',//树节点默认选中的值
+        selectedKey: 'GA',//树节点默认选中的值
+        selectedArea: '烟台市',//树节点默认选中的地区名字，用来后台获取参数
+        tableData: [],  //表格数据
         treeData: [
             {
                 children: [
@@ -202,47 +202,58 @@ class JobStatisticsList extends PureComponent {
 
     componentDidMount() {
         const {dispatch, location} = this.props;
-        //判断是不是从详情页跳转的
+        this.fetchDataList();
     }
-
 
     //获取当前页数数据
     fetchDataList = () => {
-        const {dispatch, form, metadataManage} = this.props;
-        const {dataSourceTypeTreeOldData} = metadataManage;
-        const {currentPage} = this.state;
+        const {dispatch, form} = this.props;
+        const {currentPage, selectedArea} = this.state;
+        let self = this;
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                //数据资源分类
-                let categoryCode = '';
-                dataSourceTypeTreeOldData.map(val => {
-                    if (values.resourceType === val.name) {
-                        categoryCode = val.id;
+                let params = {
+                    // current: currentPage,
+                    // size: EnumDataSyncPageInfo.defaultPageSize,
+                    date: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
+                    area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
+                };
+                console.log(params, 'params');
+                new Promise((resolve, reject) => {
+                    dispatch({
+                        type: 'jobStatistics/fetchJobStatisticsListAction',
+                        params,
+                        resolve,
+                        reject,
+                    });
+                }).then(response => {
+                    console.log(response, 'response');
+                    if (response.code === 0) {
+                        let endData = response.data.map( (val,idx) => {
+                            return {
+                                ...val,
+                                key: idx + 1,
+                                index: idx + 1,
+                            }
+                        });
+                        self.setState({
+                            tableData: endData,
+                        })
+                    } else {
+                        T.prompt.error(response.msg);
                     }
-                });
-                dispatch({
-                    type: 'metadataManage/getDataResourceManagementListAction',
-                    params: {
-                        page: currentPage,
-                        pageSize: EnumDataSyncPageInfo.defaultPageSize,
-                        "dataSourceId": T.lodash.isUndefined(values.dataSourceName) ? '' : values.dataSourceName, //数据源ID 非必填
-                        "categoryCode": categoryCode, //数据资源分类 非必填
-                        "code": T.lodash.isUndefined(values.resourceCode) ? '' : values.resourceCode, //资源编码 非必填
-                        "name": T.lodash.isUndefined(values.resourceName) ? '' : values.resourceName, //资源名称 非必填
-                        "status": T.lodash.isUndefined(values.status) ? '' : values.status, //资源名称 非必填
-                    },
                 });
             }
         });
-
     };
+
     handleMapChange(e, fieldName, key) {
-        const {dataSource} = this.state;
-        const newData = dataSource.map(item => ({...item}));
+        const {tableData} = this.state;
+        const newData = tableData.map(item => ({...item}));
         const target = this.getRowByKey(key, newData);
         if (target) {
             target[fieldName] = e.target.value;
-            this.setState({dataSource: newData});
+            this.setState({tableData: newData});
         }
     };
 
@@ -250,6 +261,7 @@ class JobStatisticsList extends PureComponent {
         const {dataSource} = this.state;
         return (newData || dataSource).filter(item => item.key === key)[0];
     }
+
     handleKeyPress(e,fieldName,key){
         const {dataSource} = this.state;
         const newData = dataSource.map(item => ({...item}));
@@ -285,10 +297,10 @@ class JobStatisticsList extends PureComponent {
 
     //重置表单
     resetDataSource = () => {
+        // this.props.form.setFieldsValue({
+        //     startDate: "",
+        // });
         this.props.form.resetFields();
-        this.setState({
-            selectedKey: ''
-        });
         this.fetchDataList();
     };
 
@@ -296,13 +308,13 @@ class JobStatisticsList extends PureComponent {
     onSelect = (keys, event) => {
         //点击选中事件，属性可以打印查看
         const eventData = event.node.props;
-        this.props.form.setFieldsValue({
-            resourceType: eventData.name
-        });
+        let self = this;
         this.setState({
-            selectedKey: keys[0]
+            selectedKey: keys[0],
+            selectedArea: eventData.name
+        }, () => {
+            self.fetchDataList()
         });
-        this.fetchDataList();
     };
 
     //渲染树节点
@@ -334,26 +346,11 @@ class JobStatisticsList extends PureComponent {
         });
     };
 
-
     //查询
     searchDataSource = (e) => {
         const {dispatch, form} = this.props;
         e.preventDefault();
-        this.setState({
-            currentPage: EnumDataSyncPageInfo.defaultPage,
-        }, () => {
-            this.fetchDataList();
-        });
-        // this.fetchDataList();
-    };
-
-    //页码变换
-    pageChange = page => {
-        this.setState({
-            currentPage: page,
-        }, () => {
-            this.fetchDataList();
-        });
+        this.fetchDataList();
     };
 
     //导出
@@ -370,50 +367,21 @@ class JobStatisticsList extends PureComponent {
         }
     };
 
-
-    //查看详情
-    showMetadataManage = (e, key) => {
-        router.push({
-            pathname: '/checkRecord/showDetail',
-            params: {
-                isRouterPush: true,
-                key: key
-            },
-        });
-    };
-
     //树选择
-
     onTreeChange = (e, node) => {
         this.setState({
             selectedKey: node.props.id,
         });
     };
-    //查询-数据库类型 渲染下拉选项
-    renderSelectOption = (selectDataSource) => {
-        let arrKeys = T.lodash.keys(selectDataSource);
-        return (
-            arrKeys.map(item => {
-                return (
-                    <Option key={item} value={item}>
-                        {EnumDataSourceStatus[item]["label"]}
-                    </Option>
-                )
-            })
-        )
-
-    };
 
     render() {
         const {
             fetchTreeStatus,
-            savingStatus,
-            testStatus,
-            metadataManage,
+            fetchJobStatisticsListStatus,
             form: {getFieldDecorator, getFieldValue},
         } = this.props;
-        // const {dataResourceLists, dataResourceTypeTreeList, dataSourceTypeTreeOldData} = metadataManage;
-        const {treeData, tableData} = this.state;
+        const {treeData, currentPage, selectedKey, tableData} = this.state;
+
         const columns = [
             {
                 title: '序号',
@@ -421,77 +389,97 @@ class JobStatisticsList extends PureComponent {
                 key: 'key',
             },
             {
+                title: '地区',
+                dataIndex: 'area',
+            },
+            {
                 title: '摸排总人数',
-                dataIndex: 'totalNum',
+                dataIndex: 'sum',
             },
             {
                 title: '来烟（返烟）人数',
-                dataIndex: 'returnNum',
+                dataIndex: 'backSum',
             },
             {
                 title: '与确诊、疑似病例有过密切接触的人数',
-                dataIndex: 'closeContactsNum',
+                dataIndex: 'touchSuspectSum',
             },
             {
                 title: '与密切接触者有过共同生活、工作、学习、聚会的人数',
-                dataIndex: 'partyNum',
+                dataIndex: 'touchIntimateSum',
             },
             {
                 title: '与重点疫区人员有过接触的人数',
-                dataIndex: 'keyEpidemicAreasNum',
+                dataIndex: 'touchInfectorSum',
             },
             {
                 title: '身体状况异常的人数',
-                dataIndex: 'abnormalPhysicalConditionsNum',
+                dataIndex: 'bodyAbnormalSum',
             },
             {
                 title: '当日集中隔离人数',
-                dataIndex: 'quarantinedOnThatDayNum',
+                dataIndex: 'currentIsolateSum',
             },
             {
                 title: '累计集中隔离人数（1月24日至今）',
-                dataIndex: 'isolatedTotalNum',
+                dataIndex: 'isolateSum',
                 render: (text, record) => {
-                    if (record.isolatedTotalNumEdit && record.isolatedTotalNumFirst) {
-                        return (
-                            <Input
-                                value={text}
-                                autoFocus
-                                onChange={e => this.handleMapChange(e, 'isolatedTotalNum', record.key)}
-                                // onKeyPress={e => this.handleKeyPress(e, record.key)}
-                                onBlur={e => this.handleKeyPress(e, 'isolatedTotalNum',record.key)}
-                                placeholder="初始值录入"
-                            />
-                        );
-                    }
+                    // if (record.isolatedTotalNumEdit && record.isolatedTotalNumFirst) {
+                    //     return (
+                    //         <Input
+                    //             value={text}
+                    //             autoFocus
+                    //             onChange={e => this.handleMapChange(e, 'isolatedTotalNum', record.key)}
+                    //             // onKeyPress={e => this.handleKeyPress(e, record.key)}
+                    //             onBlur={e => this.handleKeyPress(e, 'isolatedTotalNum',record.key)}
+                    //             placeholder="初始值录入"
+                    //         />
+                    //     );
+                    // }
                     return (
-                        <a onClick={(e) => this.showEdit(e,'isolatedTotalNum',record.key)}>{text}</a>
-                    );
+                        <Input
+                            value={text}
+                            autoFocus
+                            onChange={e => this.handleMapChange(e, 'isolateSum', record.key)}
+                            placeholder="请输入人数"
+                        />
+                    )
+                    // return (
+                    //     <a onClick={(e) => this.showEdit(e,'isolatedTotalNum',record.key)}>{text}</a>
+                    // );
                 },
             },
             {
                 title: '当日居家隔离人数',
-                dataIndex: 'quarantinedAtHomeOnThatDayNum',
+                dataIndex: 'currentIsolateHomeSum',
             },
             {
                 title: '累计居家隔离人数（1月24日至今）',
-                dataIndex: 'atHomeTotalNum',
+                dataIndex: 'isolateHomeSum',
                 render: (text, record) => {
-                    if (record.atHomeTotalNumEdit && record.atHomeTotalNumFirst) {
-                        return (
-                            <Input
-                                value={text}
-                                autoFocus
-                                onChange={e => this.handleMapChange(e, 'atHomeTotalNum', record.key)}
-                                // onKeyPress={e => this.handleKeyPress(e, record.key)}
-                                onBlur={e => this.handleKeyPress(e, 'atHomeTotalNum',record.key)}
-                                placeholder="初始值录入"
-                            />
-                        );
-                    }
+                    // if (record.atHomeTotalNumEdit && record.atHomeTotalNumFirst) {
+                    //     return (
+                    //         <Input
+                    //             value={text}
+                    //             autoFocus
+                    //             onChange={e => this.handleMapChange(e, 'atHomeTotalNum', record.key)}
+                    //             // onKeyPress={e => this.handleKeyPress(e, record.key)}
+                    //             onBlur={e => this.handleKeyPress(e, 'atHomeTotalNum',record.key)}
+                    //             placeholder="初始值录入"
+                    //         />
+                    //     );
+                    // }
+                    // return (
+                    //     <a onClick={(e) => this.showEdit(e,'atHomeTotalNum',record.key)}>{text}</a>
+                    // );
                     return (
-                        <a onClick={(e) => this.showEdit(e,'atHomeTotalNum',record.key)}>{text}</a>
-                    );
+                        <Input
+                            value={text}
+                            autoFocus
+                            onChange={e => this.handleMapChange(e, 'isolateHomeSum', record.key)}
+                            placeholder="请输入人数"
+                        />
+                    )
                 },
             },
 
@@ -508,7 +496,6 @@ class JobStatisticsList extends PureComponent {
                 name: record.name,
             }),
         };
-        const {currentPage, selectedKey,dataSource} = this.state;
         return (
             <PageHeaderWrapper title="摸排工作统计">
                 <Row gutter={24}>
@@ -535,7 +522,6 @@ class JobStatisticsList extends PureComponent {
                         </Card>
                     </Col>
                     <Col xl={19} lg={19} md={19} sm={24} xs={24} className={styles.dataSourceTableList}>
-
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>
@@ -543,13 +529,14 @@ class JobStatisticsList extends PureComponent {
                                     <Form.Item
                                         label='查询时间'
                                     >
-
                                         {getFieldDecorator('startDate', {
-                                            rules: [
-                                                {
-                                                    message:'请选择查询时间'
-                                                },
-                                            ],
+                                            // rules: [
+                                            //     {
+                                            //         // required: true,
+                                            //         // message:'请选择查询时间'
+                                            //     },
+                                            // ],
+                                            initialValue: T.moment(new Date().getTime()),
                                         })(
                                             <DatePicker/>
                                         )}
@@ -575,19 +562,15 @@ class JobStatisticsList extends PureComponent {
                              style={{marginBottom: 10}}>
                             统计结果
                         </Row>
-
                         <Row>
                             <Card bordered={false}>
                                 <Table
+                                    loading={fetchJobStatisticsListStatus}
                                     columns={columns}
-                                    dataSource={dataSource}
+                                    dataSource={tableData}
                                     rowSelection={rowSelection}
-                                    pagination={{
-                                        current: currentPage,
-                                        onChange: this.pageChange,
-                                        pageSize: EnumDataSyncPageInfo.defaultPageSize,
-                                        // total: sourceProcessorsList.hasOwnProperty('total') ? Number(sourceProcessorsList.total) + 1 : 0,
-                                    }}
+                                    pagination={false}
+                                    scroll={{ y: 480 }}
                                     // rowClassName={record => (record.editable ? styles.editable : '')}
                                 />
                             </Card>

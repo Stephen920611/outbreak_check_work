@@ -397,11 +397,12 @@ class CheckRecordList extends PureComponent {
             if (response.code === 0) {
                 self.setState({
                     bodyConditionSelect: response.data
-                })
+                });
             } else {
                 T.prompt.error(response.msg);
             }
         });
+        this.fetchDataList();
     }
 
     //获取当前页数数据
@@ -424,8 +425,8 @@ class CheckRecordList extends PureComponent {
                 let params = {
                     current: currentPage,
                     size: EnumDataSyncPageInfo.defaultPageSize,
-                    startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
-                    endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate,'YYYY-MM-DD'),        //结束时间
+                    startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate),      //开始时间
+                    endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate),        //结束时间
                     area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
                     name: T.lodash.isUndefined(values.person) ? '' : values.person,           //被调查人姓名
                     gender: T.lodash.isUndefined(values.sex) ? '' : values.sex,         //性别
@@ -560,6 +561,7 @@ class CheckRecordList extends PureComponent {
             selectedKey: node.props.id,
         });
     };
+
     //查询-数据库类型 渲染下拉选项
     renderSelectOption = (selectDataSource) => {
         let arrKeys = T.lodash.keys(selectDataSource);
@@ -748,9 +750,11 @@ class CheckRecordList extends PureComponent {
                                     >
                                         {getFieldDecorator('startDate', {
                                             rules: [{required: true, message: '请选择开始时间！'}],
-                                            initialValue: T.moment(new Date().getTime()),
+                                            initialValue: T.moment(new Date(new Date(new Date().toLocaleDateString()).getTime()).getTime()),
                                         })(
-                                            <DatePicker/>
+                                            <DatePicker
+                                                showTime={true}
+                                            />
                                         )}
                                     </Form.Item>
                                 </Col>
@@ -763,7 +767,9 @@ class CheckRecordList extends PureComponent {
                                             rules: [{required: true, message: '请选择结束时间！'}],
                                             initialValue: T.moment(new Date().getTime()),
                                         })(
-                                            <DatePicker/>
+                                            <DatePicker
+                                                showTime={true}
+                                            />
                                         )}
                                     </Form.Item>
                                 </Col>
