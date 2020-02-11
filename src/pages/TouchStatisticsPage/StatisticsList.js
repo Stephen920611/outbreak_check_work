@@ -151,6 +151,10 @@ class StatisticsList extends PureComponent {
         const {dataSource, currentPage, pageSize, inputValue, clusterActiveColor, platformExpand} = this.state;
         const columns = [
             {
+                title: '县市区',
+                dataIndex: 'city',
+            },
+            {
                 title: '摸排总人数',
                 dataIndex: 'totalNum',
             },
@@ -237,7 +241,7 @@ class StatisticsList extends PureComponent {
                         <span>芝罘区</span>
                     </Col>
                     <Col span={12}>
-                        <span>填报日期：</span>
+                        <span>截止日期：</span>
                         <span>1192.23.23</span>
                     </Col>
                 </Row>

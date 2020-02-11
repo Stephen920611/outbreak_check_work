@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f2fcb3a5-df2d-47af-8708-6a8e2fb7ce07" name="Default" comment="修改公共东西">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.temp/ant-design-pro.less" afterPath="$PROJECT_DIR$/.temp/ant-design-pro.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants/EnumPageInfo.js" afterPath="$PROJECT_DIR$/src/constants/EnumPageInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js" afterPath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" afterPath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" afterPath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.less" afterPath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js" afterPath="$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -59,8 +57,8 @@
       <file leaf-file-name="StatisticsList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+            <state relative-caret-position="1153">
+              <caret line="170" column="38" lean-forward="true" selection-start-line="170" selection-start-column="38" selection-end-line="170" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -76,13 +74,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckRecordList.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CheckRecordList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="191" column="12" lean-forward="true" selection-start-line="191" selection-start-column="12" selection-end-line="191" selection-end-column="12" />
+            <state relative-caret-position="-616">
+              <caret line="649" column="37" lean-forward="false" selection-start-line="649" selection-start-column="37" selection-end-line="649" selection-end-column="37" />
               <folding>
                 <element signature="e#1597#5509#0" expanded="false" />
+                <element signature="e#5529#11404#0" expanded="false" />
+                <element signature="e#11425#11704#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckRecordDetail.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="117" column="27" lean-forward="true" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="27" />
+              <folding>
+                <element signature="e#1018#3991#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -93,16 +105,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
               <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckRecordDetail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5425">
-              <caret line="240" column="27" lean-forward="false" selection-start-line="240" selection-start-column="27" selection-end-line="240" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -124,8 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pathname</find>
-      <find>createNewMissionAction</find>
       <find>router.push</find>
       <find>handleMapChange</find>
       <find>router</find>
@@ -152,8 +152,10 @@
       <find>selectedKey</find>
       <find>tableData</find>
       <find>EnumDataSyncPageInfo</find>
-      <find>fakeData</find>
       <find>CheckRecordList</find>
+      <find>填报日期</find>
+      <find>fakeData</find>
+      <find>isSpecialBreadcrumb</find>
     </findStrings>
     <replaceStrings>
       <replace>CheckRecordDetail</replace>
@@ -179,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/pages/TouchStatisticsPage/DataDistributionList.js" />
         <option value="$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.less" />
         <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.less" />
-        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js" />
         <option value="$PROJECT_DIR$/src/services/api.js" />
         <option value="$PROJECT_DIR$/src/models/login.js" />
         <option value="$PROJECT_DIR$/src/config/ENV.js" />
@@ -193,11 +194,12 @@
         <option value="$PROJECT_DIR$/src/locales/zh-CN.js" />
         <option value="$PROJECT_DIR$/src/locales/zh-CN/menu.js" />
         <option value="$PROJECT_DIR$/config/router.config.js" />
-        <option value="$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js" />
         <option value="$PROJECT_DIR$/src/constants/EnumPageInfo.js" />
-        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
         <option value="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.less" />
         <option value="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" />
+        <option value="$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js" />
+        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
+        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js" />
       </list>
     </option>
   </component>
@@ -317,9 +319,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\pages\CheckRecord" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\pages\JobStatistics" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\locales\zh-CN" />
-      <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\pages\CheckRecord" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\services\touchStatisticsPage" />
       <recent name="E:\company(dongfangdianzi)\project\testCheckWork\src\models\touchStatisticsPage" />
     </key>
@@ -348,12 +350,12 @@
       <updated>1581324711144</updated>
       <workItem from="1581324714474" duration="2007000" />
       <workItem from="1581331932383" duration="2656000" />
-      <workItem from="1581381749425" duration="4529000" />
+      <workItem from="1581381749425" duration="11050000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32265000" />
+    <option name="totallyTimeSpent" value="38786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -362,10 +364,11 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17702845" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -374,7 +377,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -695,14 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5425">
-          <caret line="240" column="27" lean-forward="false" selection-start-line="240" selection-start-column="27" selection-end-line="240" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -731,14 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="919">
           <caret line="566" column="17" lean-forward="true" selection-start-line="566" selection-start-column="17" selection-end-line="566" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -780,12 +766,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/TouchStatisticsPage/StatisticsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1153">
+          <caret line="170" column="38" lean-forward="true" selection-start-line="170" selection-start-column="38" selection-end-line="170" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="191" column="12" lean-forward="true" selection-start-line="191" selection-start-column="12" selection-end-line="191" selection-end-column="12" />
+        <state relative-caret-position="-616">
+          <caret line="649" column="37" lean-forward="false" selection-start-line="649" selection-start-column="37" selection-end-line="649" selection-end-column="37" />
           <folding>
             <element signature="e#1597#5509#0" expanded="false" />
+            <element signature="e#5529#11404#0" expanded="false" />
+            <element signature="e#11425#11704#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="117" column="27" lean-forward="true" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="27" />
+          <folding>
+            <element signature="e#1018#3991#0" expanded="false" />
           </folding>
         </state>
       </provider>

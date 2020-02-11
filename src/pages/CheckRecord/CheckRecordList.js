@@ -414,9 +414,6 @@ class CheckRecordList extends PureComponent {
     //重置表单
     resetDataSource = () => {
         this.props.form.resetFields();
-        this.setState({
-            selectedKey: ''
-        });
         // this.fetchDataList();
     };
 
@@ -461,7 +458,6 @@ class CheckRecordList extends PureComponent {
                                         isLeaf/>;
         });
     };
-
 
     //查询
     searchDataSource = (e) => {
@@ -550,8 +546,8 @@ class CheckRecordList extends PureComponent {
             },
             {
                 title: '县市区',
-                dataIndex: '',
-                key: 'address',
+                dataIndex: 'area',
+                key: 'area',
             },
             {
                 title: '姓名',
@@ -565,24 +561,24 @@ class CheckRecordList extends PureComponent {
             },
             {
                 title: '性别',
-                dataIndex: 'sex',
-                key: 'sex',
+                dataIndex: 'gender',
+                key: 'gender',
             },
             {
                 title: '创建时间',
-                dataIndex: 'createDate',
-                key: 'createDate',
+                dataIndex: 'createTime',
+                key: 'createTime',
             },
             {
                 title: '身份证号',
-                dataIndex: 'pId',
-                key: 'pId',
+                dataIndex: 'idCard',
+                key: 'idCard',
             },
 
             {
                 title: '被调查人基本情况',
-                dataIndex: 'base',
-                key: 'base',
+                dataIndex: 'baseInfo',
+                key: 'baseInfo',
             },
             {
                 title: '身体状况',
@@ -591,8 +587,8 @@ class CheckRecordList extends PureComponent {
             },
             {
                 title: '摸排人',
-                dataIndex: 'head',
-                key: 'head',
+                dataIndex: 'fillUserName',
+                key: 'fillUserName',
             },
             {
                 title: '操作',
@@ -600,14 +596,10 @@ class CheckRecordList extends PureComponent {
                 // width: '15%',
                 render: (text, record) => {
                     return (
-                        <span>
-
-              <a onClick={e => this.showMetadataManage(e, record)}>查看详情</a>
-            </span>
+                        <span><a onClick={e => this.showMetadataManage(e, record)}>查看详情</a></span>
                     );
                 },
             }
-
         ];
         const rowSelection = {
             //多选所选择的key值
@@ -656,7 +648,6 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.person.label"/>}
                                     >
-
                                         {getFieldDecorator('person', {
                                             rules: [
                                                 {
