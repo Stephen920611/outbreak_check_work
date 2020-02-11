@@ -56,8 +56,8 @@ class CheckRecordList extends PureComponent {
     state = {
         currentPage: EnumDataSyncPageInfo.defaultPage,//分页
         selectRows: [], //选择的数据列
-        selectedKey: '',//树节点默认选中的值
-        selectedArea: '',//树节点默认选中的地区名字，用来后台获取参数
+        selectedKey: 'GA',//树节点默认选中的值
+        selectedArea: '烟台市',//树节点默认选中的地区名字，用来后台获取参数
         baseInfoSelect: [],     //被调查人基本情况
         bodyConditionSelect: [],     //身体状况
         treeData: [
@@ -183,6 +183,8 @@ class CheckRecordList extends PureComponent {
                 title: "烟台市",
             }
         ],
+        total: 0,
+        members: [],
         fakeData: {
             "total": 11,
             "pages": null,
@@ -443,12 +445,18 @@ class CheckRecordList extends PureComponent {
                 }).then(response => {
                     console.log(response, 'response');
                     if (response.code === 0) {
-                        // self.setState({
-                        //     activities: T.lodash.isUndefined(activities[0]) ? {} : activities[0],
-                        //     currentInfo: T.lodash.isUndefined(currnets[0]) ? {} : currnets[0],
-                        //     member,
-                        //     touch: T.lodash.isUndefined(touch[0]) ? {} : touch[0],
-                        // })
+                        const { total, members } = response.data;
+                        let endData = members.map( (val,idx) => {
+                            return {
+                                ...val,
+                                key: (currentPage-1) * 10 + idx + 1,
+                                index: (currentPage-1) * 10 + idx + 1,
+                            }
+                        });
+                        self.setState({
+                            total,
+                            members: endData,
+                        })
                     } else {
                         T.prompt.error(response.msg);
                     }
@@ -471,9 +479,12 @@ class CheckRecordList extends PureComponent {
         // this.props.form.setFieldsValue({
         //     resourceType: eventData.name
         // });
+        let self = this;
         this.setState({
             selectedKey: keys[0],
             selectedArea: eventData.name
+        }, () => {
+            self.fetchDataList()
         });
     };
 
@@ -532,14 +543,13 @@ class CheckRecordList extends PureComponent {
 
     };
 
-
     //查看详情
     showMetadataManage = (e, key) => {
         router.push({
             pathname: '/checkRecord/showDetail',
             params: {
                 isRouterPush: true,
-                key: key
+                data: key
             },
         });
     };
@@ -580,20 +590,30 @@ class CheckRecordList extends PureComponent {
     render() {
         const {
             fetchTreeStatus,
+            fetchCheckRecordListStatus,
             savingStatus,
             testStatus,
             metadataManage,
             form: {getFieldDecorator, getFieldValue},
         } = this.props;
         // const {dataResourceLists, dataResourceTypeTreeList, dataSourceTypeTreeOldData} = metadataManage;
-        const {treeData, tableData, fakeData, selectedArea, currentPage, selectedKey, bodyConditionSelect, baseInfoSelect} = this.state;
+        const {
+            treeData,
+            members,
+            tableData,
+            total,
+            selectedArea,
+            currentPage,
+            selectedKey,
+            bodyConditionSelect,
+            baseInfoSelect
+        } = this.state;
 
-        console.log(selectedArea, 'selectedArea');
         const columns = [
             {
                 title: '序号',
-                dataIndex: 'key',
-                key: 'key',
+                dataIndex: 'index',
+                key: 'index',
             },
             {
                 title: '县市区',
@@ -714,7 +734,7 @@ class CheckRecordList extends PureComponent {
                                             id="checkRecord.resourceList.sex.label"/>}
                                     >
                                         {getFieldDecorator('sex', {})(
-                                            <Radio.Group onChange={this.onChange} value={this.state.value}>
+                                            <Radio.Group onChange={this.onChange}>
                                                 <Radio value={"男"}>男</Radio>
                                                 <Radio value={"女"}>女</Radio>
                                             </Radio.Group>
@@ -817,19 +837,20 @@ class CheckRecordList extends PureComponent {
                         </Form>
                         <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                              style={{marginBottom: 10}}>
-                            检索结果：{fakeData.hasOwnProperty("total") ? fakeData.total : '-----'}
+                            检索结果：{total}
                         </Row>
                         <Row>
                             <Card bordered={false}>
                                 <Table
                                     columns={columns}
-                                    dataSource={fakeData.hasOwnProperty("members") ? fakeData.members : []}
+                                    dataSource={members}
                                     rowSelection={rowSelection}
+                                    loading={fetchCheckRecordListStatus}
                                     pagination={{
                                         current: currentPage,
                                         onChange: this.pageChange,
                                         pageSize: EnumDataSyncPageInfo.defaultPageSize,
-                                        total: fakeData.hasOwnProperty('total') ? Number(fakeData.total) + 1 : 0,
+                                        total: Number(total) + 1,
                                     }}
                                     // rowClassName={record => (record.editable ? styles.editable : '')}
                                 />

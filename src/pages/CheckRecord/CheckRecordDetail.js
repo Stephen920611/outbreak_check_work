@@ -102,28 +102,32 @@ class CheckRecordDetail extends PureComponent {
     }
 
     componentDidMount() {
-        const {dispatch} = this.props;
+        const {dispatch, location} = this.props;
         let self = this;
-        new Promise((resolve, reject) => {
-            dispatch({
-                type: 'checkRecord/fetchMemberInfoAction',
-                id: 2476,
-                resolve,
-                reject,
+        //验证是否刷新页面
+        T.auth.returnSpecialMainPage(location, '/checkRecord');
+        if (location.hasOwnProperty("params") && location["params"].hasOwnProperty("data")) {
+            new Promise((resolve, reject) => {
+                dispatch({
+                    type: 'checkRecord/fetchMemberInfoAction',
+                    id: location["params"]["data"]["id"],
+                    resolve,
+                    reject,
+                });
+            }).then(response => {
+                const {currnets, member, touch, activities} = response.data;
+                if (response.code === 0) {
+                    self.setState({
+                        activities: T.lodash.isUndefined(activities[0]) ? {} : activities[0],
+                        currentInfo: T.lodash.isUndefined(currnets[0]) ? {} : currnets[0],
+                        member,
+                        touch: T.lodash.isUndefined(touch[0]) ? {} : touch[0],
+                    })
+                } else {
+                    T.prompt.error(response.msg);
+                }
             });
-        }).then(response => {
-            const {currnets, member, touch, activities} = response.data;
-            if (response.code === 0) {
-                self.setState({
-                    activities: T.lodash.isUndefined(activities[0]) ? {} : activities[0],
-                    currentInfo: T.lodash.isUndefined(currnets[0]) ? {} : currnets[0],
-                    member,
-                    touch: T.lodash.isUndefined(touch[0]) ? {} : touch[0],
-                })
-            } else {
-                T.prompt.error(response.msg);
-            }
-        });
+        }
     }
 
     render() {
