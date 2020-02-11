@@ -24,7 +24,7 @@ export default [
         Routes: ['src/pages/Authorized'],
         routes: [
             // dashboard
-            {path: '/', redirect: '/touchStatisticsPage', authority: ['admin', 'user']},
+            {path: '/', redirect: '/jobStatistics', authority: ['admin', 'user']},
             /*----------------- 首页 -------------------*/
             // {
             //     path: '/dashboard',
@@ -32,24 +32,7 @@ export default [
             //     icon: 'home',
             //     component: './Dashboard/Index',
             // },
-            /*----------------- 摸排工作统计表 -------------------*/
-            {
-                path: '/touchStatisticsPage',
-                name: 'touchStatisticsPage',
-                icon: 'home',
-                component: './TouchStatisticsPage/StatisticsList',
-            },
-            /*----------------- 摸排记录查询 -------------------*/
-            {
-                path: '/checkRecord',
-                name: 'checkRecord',
-                icon: 'home',
-                component: './CheckRecord/CheckRecordList',
-            },
-            {
-                path: '/checkRecord/showDetail',
-                component: './CheckRecord/CheckRecordDetail',
-            },
+
             /*----------------- 摸排工作统计 -------------------*/
             {
                 path: '/jobStatistics',
@@ -61,6 +44,25 @@ export default [
                 path: '/checkRecord/showDetail',
                 component: './CheckRecord/CheckRecordDetail',
             },
+
+            /*----------------- 摸排记录查询 -------------------*/
+            {
+                path: '/checkRecord',
+                name: 'checkRecord',
+                icon: 'home',
+                component: './CheckRecord/CheckRecordList',
+            },
+            {
+                path: '/checkRecord/showDetail',
+                component: './CheckRecord/CheckRecordDetail',
+            },
+            /*----------------- 摸排工作统计表 -------------------*/
+            // {
+            //     path: '/touchStatisticsPage',
+            //     name: 'touchStatisticsPage',
+            //     icon: 'home',
+            //     component: './TouchStatisticsPage/StatisticsList',
+            // },
             // /*----------------- 元数据管理 -------------------*/
             // {
             //     path: '/metadataManage',
