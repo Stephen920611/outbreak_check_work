@@ -434,7 +434,6 @@ class CheckRecordList extends PureComponent {
                     bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status,         //身体状况
                     fillUserName: T.lodash.isUndefined(values.head) ? '' : values.head,   //摸排人
                 };
-                console.log(params, 'params');
                 new Promise((resolve, reject) => {
                     dispatch({
                         type: 'checkRecord/fetchCheckRecordListAction',

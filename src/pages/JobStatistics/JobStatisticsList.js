@@ -215,10 +215,9 @@ class JobStatisticsList extends PureComponent {
                 let params = {
                     // current: currentPage,
                     // size: EnumDataSyncPageInfo.defaultPageSize,
-                    date: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
+                    date: T.lodash.isUndefined(values.startDate) ? '' : values.startDate === null ?  '' :T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
                     area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
                 };
-                console.log(params, 'params');
                 new Promise((resolve, reject) => {
                     dispatch({
                         type: 'jobStatistics/fetchJobStatisticsListAction',
@@ -297,7 +296,7 @@ class JobStatisticsList extends PureComponent {
     //重置表单
     resetDataSource = () => {
         this.props.form.setFieldsValue({
-            startDate: T.moment(""),
+            startDate: null,
         });
         // this.props.form.resetFields();
         this.fetchDataList();
