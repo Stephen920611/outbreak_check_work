@@ -17,6 +17,7 @@ export default {
     effects: {
         * login({payload}, {call, put}) {
             const response = yield call(accountLogin, payload);
+            console.log(response,'response');
             //先默认清除登录信息
             T.auth.clearLoginInfo();
             //登录失败提示信息
@@ -24,10 +25,12 @@ export default {
                 T.prompt.error(response.msg)
             }
             //如果是管理员账户，那就给最高权限
-            // if(response.user.userCode === 'system'){
-            //     response["currentAuthority"] = "admin";
-            // }
-            response["currentAuthority"] = "admin";
+            if(response.data.static_auth === 0){
+                response["currentAuthority"] = "user";
+            }else if (response.data.static_auth === 1){
+                response["currentAuthority"] = "admin";
+            }
+
             //类似于reducer，
             yield put({
                 type: 'changeLoginStatus',
@@ -57,7 +60,7 @@ export default {
                     }
                 }
                 yield put(routerRedux.replace({
-                    pathname:redirect || '/',
+                    pathname: redirect || (response.data.static_auth === 0 ? '/addInfo':'/'),
                     loginInfo: response
                 }));
             }

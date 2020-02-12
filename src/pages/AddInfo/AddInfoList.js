@@ -40,8 +40,19 @@ class AddInfoList extends PureComponent {
                 },
                 wrapperCol: {
                     xs: {span: 24},
-                    sm: {span: 15},
-                    md: {span: 15},
+                    sm: {span: 16},
+                    md: {span: 16},
+                },
+            },
+            formItemHalf: {
+                labelCol: {
+                    xs: {span: 24},
+                    sm: {span: 12},
+                },
+                wrapperCol: {
+                    xs: {span: 24},
+                    sm: {span: 12},
+                    md: {span: 12},
                 },
             },
             submitFormLayout: {
@@ -135,8 +146,7 @@ class AddInfoList extends PureComponent {
 
     componentDidMount() {
         const {dispatch, location} = this.props;
-        let loginInfo = T.auth.getLoginInfo();
-        console.log(loginInfo,'loginInfo');
+
         let self = this;
         //获取被调查人基本情况
         new Promise((resolve, reject) => {
@@ -204,7 +214,7 @@ class AddInfoList extends PureComponent {
                     },
                     memberActivity: {
                         backFromWhere: T.lodash.isUndefined(values.backFromWhere) ? '' : values.backFromWhere,
-                        backTime:T.lodash.isUndefined(values.backTime) ? '' : values.backTime,
+                        backTime: T.lodash.isUndefined(values.backTime) ? '' : T.helper.dateFormat(values.backTime),
                         backType:T.lodash.isUndefined(values.backType) ? '' : values.backType,
                         carNum:T.lodash.isUndefined(values.carNum) ? '' : values.carNum,
                         wayCity:T.lodash.isUndefined(values.wayCity) ? '' : values.wayCity,
@@ -214,19 +224,19 @@ class AddInfoList extends PureComponent {
                         isTouchSuspect: T.lodash.isUndefined(values.isTouchSuspect) ? '' : values.isTouchSuspect,	  //是否
                         suspectName:T.lodash.isUndefined(values.suspectName) ? '' : values.suspectName,
                         suspectIdCard:T.lodash.isUndefined(values.suspectIdCard) ? '' : values.suspectIdCard,
-                        suspectTime:T.lodash.isUndefined(values.suspectTime) ? '' : values.suspectTime,
+                        suspectTime: T.lodash.isUndefined(values.suspectTime) ? '' : T.helper.dateFormat(values.suspectTime),
                         suspectPoint:T.lodash.isUndefined(values.suspectPoint) ? '' : values.suspectPoint,
 
                         isTouchIntimate: T.lodash.isUndefined(values.isTouchIntimate) ? '' : values.isTouchIntimate,	  //是否
                         intimateName:T.lodash.isUndefined(values.intimateName) ? '' : values.intimateName,
                         intimateIdCard:T.lodash.isUndefined(values.intimateIdCard) ? '' : values.intimateIdCard,
-                        intimateTime:T.lodash.isUndefined(values.intimateTime) ? '' : values.intimateTime,
+                        intimateTime: T.lodash.isUndefined(values.intimateTime) ? '' : T.helper.dateFormat(values.intimateTime),
                         intimatePoint:T.lodash.isUndefined(values.intimatePoint) ? '' : values.intimatePoint,
 
                         isTouchInfector: T.lodash.isUndefined(values.isTouchInfector) ? '' : values.isTouchInfector,	  //是否
                         infectorName:T.lodash.isUndefined(values.infectorName) ? '' : values.infectorName,
                         infectorIdCard:T.lodash.isUndefined(values.infectorIdCard) ? '' : values.infectorIdCard,
-                        infectorTime:T.lodash.isUndefined(values.infectorTime) ? '' : values.infectorTime,
+                        infectorTime: T.lodash.isUndefined(values.infectorTime) ? '' : T.helper.dateFormat(values.infectorTime),
                         infectorPoint:T.lodash.isUndefined(values.infectorPoint) ? '' : values.infectorPoint,
 
                         fillUserId: userId  //后端返回
@@ -235,9 +245,9 @@ class AddInfoList extends PureComponent {
                         bodyCondition: T.lodash.isUndefined(values.bodyCondition) ? '' : values.bodyCondition,	//名字
                         hasSeek: T.lodash.isUndefined(values.hasSeek) ? '' : values.hasSeek,	//名字
                         seekHospital: T.lodash.isUndefined(values.seekHospital) ? '' : values.seekHospital,	//名字
-                        seekTime: T.lodash.isUndefined(values.seekTime) ? '' : values.seekTime,	//名字
+                        seekTime: T.lodash.isUndefined(values.seekTime) ? '' : T.helper.dateFormat(values.seekTime),	//名字
                         controlMeasures: T.lodash.isUndefined(values.controlMeasures) ? '' : values.controlMeasures,	//名字
-                        controlTime: T.lodash.isUndefined(values.controlTime) ? '' : values.controlTime,	//名字
+                        controlTime: T.lodash.isUndefined(values.controlTime) ? '' : T.helper.dateFormat(values.controlTime),	//名字
                         nextMeasures: T.lodash.isUndefined(values.nextMeasures) ? '' : values.nextMeasures,	//名字
                         fillUserId: userId  //后端返回
                     },
@@ -251,7 +261,7 @@ class AddInfoList extends PureComponent {
                     });
                 }).then(response => {
                     if (response.code === 0) {
-                        T.prompt.success(response.msg);
+                        T.prompt.success("提交成功");
                         self.resetForm();
                     } else {
                         T.prompt.error(response.msg);
@@ -290,10 +300,12 @@ class AddInfoList extends PureComponent {
             member,
             touch,
             formItemLayout,
+            formItemHalf,
             submitFormLayout,
             bodyConditionSelect,
             baseInfoSelect
         } = this.state;
+        let loginInfo = T.auth.getLoginInfo();
 
         let areaSelect = [
             {
@@ -441,6 +453,7 @@ class AddInfoList extends PureComponent {
                                                             message: "请选择县市区",
                                                         },
                                                     ],
+                                                    initialValue: T.auth.getLoginInfo().data.area
                                                 }
                                             )(
                                                 <Select
@@ -744,7 +757,7 @@ class AddInfoList extends PureComponent {
                                     </Col>
                                 </Row>
                                 <Row className={styles.detailTitle}>
-                                    <Col span={8}>
+                                    <Col span={12}>
                                         <Form.Item
                                             {...formItemLayout}
                                             label='期间还到过哪些城市'
@@ -770,9 +783,9 @@ class AddInfoList extends PureComponent {
                                 loading={fetchStatus}
                             >
                                 <Row className={styles.detailTitle}>
-                                    <Col span={20}>
+                                    <Col span={12}>
                                         <Form.Item
-                                            {...formItemLayout}
+                                            {...formItemHalf}
                                             label='是否与确诊、疑似病例密切接触过：'
                                         >
                                             {getFieldDecorator('isTouchSuspect', {
@@ -856,9 +869,9 @@ class AddInfoList extends PureComponent {
                                     </Col>
                                 </Row>
                                 <Row className={styles.detailTitle}>
-                                    <Col span={20}>
+                                    <Col span={12}>
                                         <Form.Item
-                                            {...formItemLayout}
+                                            {...formItemHalf}
                                             label='是否与密切接触者共同生活、工作、学习、聚会过：'
                                         >
                                             {getFieldDecorator('isTouchIntimate', {
@@ -921,7 +934,7 @@ class AddInfoList extends PureComponent {
                                             {getFieldDecorator('intimateTime', {
                                                 }
                                             )(
-                                                <DatePicker/>
+                                                <DatePicker showTime={true}/>
                                             )}
                                         </Form.Item>
                                     </Col>
@@ -943,9 +956,9 @@ class AddInfoList extends PureComponent {
                                     </Col>
                                 </Row>
                                 <Row className={styles.detailTitle}>
-                                    <Col span={20}>
+                                    <Col span={12}>
                                         <Form.Item
-                                            {...formItemLayout}
+                                            {...formItemHalf}
                                             label='是否与重点疫区人员接触过：'
                                         >
                                             {getFieldDecorator('isTouchInfector', {
@@ -1001,7 +1014,7 @@ class AddInfoList extends PureComponent {
                                             {getFieldDecorator('infectorTime', {
                                                 }
                                             )(
-                                                <DatePicker/>
+                                                <DatePicker showTime={true}/>
                                             )}
                                         </Form.Item>
                                     </Col>

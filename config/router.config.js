@@ -1,3 +1,4 @@
+
 export default [
     // user
     {
@@ -24,7 +25,7 @@ export default [
         Routes: ['src/pages/Authorized'],
         routes: [
             // dashboard
-            {path: '/', redirect: '/jobStatistics', authority: ['admin', 'user']},
+            {path: '/', redirect: '/jobStatistics', authority: ['admin']},
             /*----------------- 首页 -------------------*/
             // {
             //     path: '/dashboard',
@@ -39,10 +40,12 @@ export default [
                 name: 'jobStatistics',
                 icon: 'home',
                 component: './JobStatistics/JobStatisticsList',
+                authority: ['admin']
             },
             {
                 path: '/checkRecord/showDetail',
                 component: './CheckRecord/CheckRecordDetail',
+                authority: ['admin']
             },
 
             /*----------------- 摸排记录查询 -------------------*/
@@ -51,10 +54,12 @@ export default [
                 name: 'checkRecord',
                 icon: 'home',
                 component: './CheckRecord/CheckRecordList',
+                authority: ['admin']
             },
             {
                 path: '/checkRecord/showDetail',
                 component: './CheckRecord/CheckRecordDetail',
+                authority: ['admin']
             },
             /*----------------- 摸排记录查询 -------------------*/
             {
@@ -62,6 +67,7 @@ export default [
                 name: 'addInfo',
                 icon: 'home',
                 component: './AddInfo/AddInfoList',
+                authority: ['user']
             },
             /*----------------- 摸排工作统计表 -------------------*/
             // {
