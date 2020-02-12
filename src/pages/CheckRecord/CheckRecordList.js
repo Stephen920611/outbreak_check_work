@@ -427,7 +427,7 @@ class CheckRecordList extends PureComponent {
                     size: EnumDataSyncPageInfo.defaultPageSize,
                     startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
                     endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate,'YYYY-MM-DD'),        //结束时间
-                    area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
+                    area: T.auth.isAdmin() ? selectedArea === "烟台市" ? '' : selectedArea : loginInfo.data.area,           //县市区(烟台市传空)
                     name: T.lodash.isUndefined(values.person) ? '' : values.person,           //被调查人姓名
                     gender: T.lodash.isUndefined(values.sex) ? '' : values.sex === 'all' ? '' : values.sex,         //性别
                     // idCard: "",         //身份证号
@@ -688,29 +688,35 @@ class CheckRecordList extends PureComponent {
         return (
             <PageHeaderWrapper title="摸排记录查询">
                 <Row gutter={24}>
-                    <Col xl={5} lg={5} md={5} sm={24} xs={24}>
-                        <Card
-                            title="资源列表"
-                            bordered={false}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                            }}
-                        >
-                            {
-                                fetchTreeStatus ? <Spin/> :
-                                    <DirectoryTree
-                                        multiple
-                                        defaultExpandAll={true}
-                                        onSelect={this.onSelect.bind(this)}
-                                        selectedKeys={[selectedKey]}
-                                    >
-                                        {this.renderTreeNodes(treeData)}
-                                    </DirectoryTree>
-                            }
-                        </Card>
-                    </Col>
-                    <Col xl={19} lg={19} md={19} sm={24} xs={24} className={styles.dataSourceTableList}>
+                    {
+                        T.auth.isAdmin() ?
+                            <Col xl={5} lg={5} md={5} sm={24} xs={24}>
+                                <Card
+                                    title="资源列表"
+                                    bordered={false}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                    }}
+                                >
+                                    {
+                                        fetchTreeStatus ? <Spin/> :
+                                            <DirectoryTree
+                                                multiple
+                                                defaultExpandAll={true}
+                                                onSelect={this.onSelect.bind(this)}
+                                                selectedKeys={[selectedKey]}
+                                            >
+                                                {this.renderTreeNodes(treeData)}
+                                            </DirectoryTree>
+                                    }
+                                </Card>
+                            </Col>
+                            :
+                            null
+                    }
+
+                    <Col xl={T.auth.isAdmin() ? 19: 24} lg={T.auth.isAdmin() ? 19: 24} md={T.auth.isAdmin() ? 19: 24} sm={24} xs={24} className={styles.dataSourceTableList}>
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>

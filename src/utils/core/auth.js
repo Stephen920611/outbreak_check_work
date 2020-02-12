@@ -48,6 +48,16 @@ class Auth {
      * 获取当前sessionid
      * @returns {{}}
      */
+    isAdmin(){
+        const info = store.getStorage(window.ENV.login.loginInfoKey);
+        let isYT = (info.data.area === '' || info.data.area === null) && (info.data.static_auth === 1);
+        return isYT
+    }
+
+    /**
+     * 获取当前sessionid
+     * @returns {{}}
+     */
     getCurrentSessionId(){
         const info = store.getStorage(window.ENV.login.loginInfoKey);
         return {

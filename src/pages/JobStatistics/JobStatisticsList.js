@@ -203,6 +203,10 @@ class JobStatisticsList extends PureComponent {
     componentDidMount() {
         const {dispatch, location} = this.props;
         this.fetchDataList();
+        let loginInfo = T.auth.getLoginInfo();
+
+        console.log(loginInfo,'loginInfo');
+        console.log(T.auth.isAdmin(),'sss');
     }
 
     //获取当前页数数据
@@ -212,11 +216,13 @@ class JobStatisticsList extends PureComponent {
         let self = this;
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
+                let loginInfo = T.auth.getLoginInfo();
+
                 let params = {
                     // current: currentPage,
                     // size: EnumDataSyncPageInfo.defaultPageSize,
                     date: T.lodash.isUndefined(values.startDate) ? '' : values.startDate === null ?  '' :T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
-                    area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
+                    area: T.auth.isAdmin() ? selectedArea === "烟台市" ? '' : selectedArea : loginInfo.data.area,           //县市区(烟台市传空)
                 };
                 new Promise((resolve, reject) => {
                     dispatch({
@@ -497,29 +503,34 @@ class JobStatisticsList extends PureComponent {
         return (
             <PageHeaderWrapper title="摸排工作统计">
                 <Row gutter={24}>
-                    <Col xl={5} lg={5} md={5} sm={24} xs={24}>
-                        <Card
-                            title="资源列表"
-                            bordered={false}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                            }}
-                        >
-                            {
-                                fetchTreeStatus ? <Spin/> :
-                                    <DirectoryTree
-                                        multiple
-                                        defaultExpandAll={true}
-                                        onSelect={this.onSelect.bind(this)}
-                                        selectedKeys={[selectedKey]}
-                                    >
-                                        {this.renderTreeNodes(treeData)}
-                                    </DirectoryTree>
-                            }
-                        </Card>
-                    </Col>
-                    <Col xl={19} lg={19} md={19} sm={24} xs={24} className={styles.dataSourceTableList}>
+                    {
+                        T.auth.isAdmin() ?
+                            <Col xl={5} lg={5} md={5} sm={24} xs={24}>
+                                <Card
+                                    title="资源列表"
+                                    bordered={false}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                    }}
+                                >
+                                    {
+                                        fetchTreeStatus ? <Spin/> :
+                                            <DirectoryTree
+                                                multiple
+                                                defaultExpandAll={true}
+                                                onSelect={this.onSelect.bind(this)}
+                                                selectedKeys={[selectedKey]}
+                                            >
+                                                {this.renderTreeNodes(treeData)}
+                                            </DirectoryTree>
+                                    }
+                                </Card>
+                            </Col>
+                            :
+                            null
+                    }
+                    <Col xl={T.auth.isAdmin() ? 19: 24} lg={T.auth.isAdmin() ? 19: 24} md={T.auth.isAdmin() ? 19: 24} sm={24} xs={24} className={styles.dataSourceTableList}>
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>
