@@ -795,7 +795,6 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.status.label"/>}
                                     >
-
                                         {getFieldDecorator('status')(
                                             <Select
                                                 getPopupContainer={triggerNode => triggerNode.parentNode}

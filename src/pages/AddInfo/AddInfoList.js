@@ -23,8 +23,9 @@ const {Option} = Select;
 const {TextArea} = Input;
 
 /* eslint react/no-multi-comp:0 */
-@connect(({addInfo, loading}) => ({
+@connect(({addInfo, checkRecord, loading}) => ({
     addInfo,
+    checkRecord,
     // fetchStatus: loading.effects['checkRecord/fetchMemberInfoAction'],
 }))
 @Form.create()
@@ -49,6 +50,8 @@ class AddInfoList extends PureComponent {
                     sm: {span: 24, offset: 0},
                 },
             },
+            baseInfoSelect: [],     //被调查人基本情况
+            bodyConditionSelect: [],     //身体状况
             activities: {},
             currentInfo: {},
             member: {},
@@ -127,29 +130,153 @@ class AddInfoList extends PureComponent {
                 ]
             },
 
-
-            nextMeasuresValue: "",
         }
     }
 
     componentDidMount() {
         const {dispatch, location} = this.props;
+        let loginInfo = T.auth.getLoginInfo();
+        console.log(loginInfo,'loginInfo');
         let self = this;
+        //获取被调查人基本情况
+        new Promise((resolve, reject) => {
+            dispatch({
+                type: 'checkRecord/fetchSelectInfoAction',
+                params: {
+                    type: 'BASE_INFO'
+                },
+                resolve,
+                reject,
+            });
+        }).then(response => {
+            if (response.code === 0) {
+                self.setState({
+                    baseInfoSelect: response.data
+                })
+            } else {
+                T.prompt.error(response.msg);
+            }
+        });
+
+        //获取身体情况列表
+        new Promise((resolve, reject) => {
+            dispatch({
+                type: 'checkRecord/fetchSelectInfoAction',
+                params: {
+                    type: 'BODY_CONDITION'
+                },
+                resolve,
+                reject,
+            });
+        }).then(response => {
+            if (response.code === 0) {
+                self.setState({
+                    bodyConditionSelect: response.data
+                });
+            } else {
+                T.prompt.error(response.msg);
+            }
+        });
     }
+
+    //提交功能
     onSubmitData = (e) => {
         let self = this;
         const {dispatch, form, addRow} = this.props;
         e.preventDefault();
         form.validateFieldsAndScroll((err, values) => {
-            console.log('values',values);
             if (!err) {
+                let loginInfo = T.auth.getLoginInfo();
+                console.log(loginInfo,'loginInfo');
+                let userId = loginInfo.data.id;
+                let params = {
+                    member: {
+                        area: values.area,	//县市区名字
+                        name: T.lodash.isUndefined(values.name) ? '' : values.name,
+                        age: T.lodash.isUndefined(values.age) ? '' : values.age,
+                        gender: T.lodash.isUndefined(values.gender) ? '' : values.gender,
+                        nativePlace: T.lodash.isUndefined(values.nativePlace) ? '' : values.nativePlace,
+                        address: T.lodash.isUndefined(values.address) ? '' : values.address,
+                        idCard: T.lodash.isUndefined(values.idCard) ? '' : values.idCard,
+                        phoneNum:T.lodash.isUndefined(values.phoneNum) ? '' : values.phoneNum,
+                        baseInfo:T.lodash.isUndefined(values.baseInfo) ? '' : values.baseInfo,	//名字
+                        fillUserId: userId  //后端返回
+                    },
+                    memberActivity: {
+                        backFromWhere: T.lodash.isUndefined(values.backFromWhere) ? '' : values.backFromWhere,
+                        backTime:T.lodash.isUndefined(values.backTime) ? '' : values.backTime,
+                        backType:T.lodash.isUndefined(values.backType) ? '' : values.backType,
+                        carNum:T.lodash.isUndefined(values.carNum) ? '' : values.carNum,
+                        wayCity:T.lodash.isUndefined(values.wayCity) ? '' : values.wayCity,
+                        fillUserId: userId  //后端返回
+                    },
+                    memberTouch: {
+                        isTouchSuspect: T.lodash.isUndefined(values.isTouchSuspect) ? '' : values.isTouchSuspect,	  //是否
+                        suspectName:T.lodash.isUndefined(values.suspectName) ? '' : values.suspectName,
+                        suspectIdCard:T.lodash.isUndefined(values.suspectIdCard) ? '' : values.suspectIdCard,
+                        suspectTime:T.lodash.isUndefined(values.suspectTime) ? '' : values.suspectTime,
+                        suspectPoint:T.lodash.isUndefined(values.suspectPoint) ? '' : values.suspectPoint,
 
+                        isTouchIntimate: T.lodash.isUndefined(values.isTouchIntimate) ? '' : values.isTouchIntimate,	  //是否
+                        intimateName:T.lodash.isUndefined(values.intimateName) ? '' : values.intimateName,
+                        intimateIdCard:T.lodash.isUndefined(values.intimateIdCard) ? '' : values.intimateIdCard,
+                        intimateTime:T.lodash.isUndefined(values.intimateTime) ? '' : values.intimateTime,
+                        intimatePoint:T.lodash.isUndefined(values.intimatePoint) ? '' : values.intimatePoint,
+
+                        isTouchInfector: T.lodash.isUndefined(values.isTouchInfector) ? '' : values.isTouchInfector,	  //是否
+                        infectorName:T.lodash.isUndefined(values.infectorName) ? '' : values.infectorName,
+                        infectorIdCard:T.lodash.isUndefined(values.infectorIdCard) ? '' : values.infectorIdCard,
+                        infectorTime:T.lodash.isUndefined(values.infectorTime) ? '' : values.infectorTime,
+                        infectorPoint:T.lodash.isUndefined(values.infectorPoint) ? '' : values.infectorPoint,
+
+                        fillUserId: userId  //后端返回
+                    },
+                    memberCurstate: {
+                        bodyCondition: T.lodash.isUndefined(values.bodyCondition) ? '' : values.bodyCondition,	//名字
+                        hasSeek: T.lodash.isUndefined(values.hasSeek) ? '' : values.hasSeek,	//名字
+                        seekHospital: T.lodash.isUndefined(values.seekHospital) ? '' : values.seekHospital,	//名字
+                        seekTime: T.lodash.isUndefined(values.seekTime) ? '' : values.seekTime,	//名字
+                        controlMeasures: T.lodash.isUndefined(values.controlMeasures) ? '' : values.controlMeasures,	//名字
+                        controlTime: T.lodash.isUndefined(values.controlTime) ? '' : values.controlTime,	//名字
+                        nextMeasures: T.lodash.isUndefined(values.nextMeasures) ? '' : values.nextMeasures,	//名字
+                        fillUserId: userId  //后端返回
+                    },
+                };
+                new Promise((resolve, reject) => {
+                    dispatch({
+                        type: 'addInfo/addInfoAction',
+                        params,
+                        resolve,
+                        reject,
+                    });
+                }).then(response => {
+                    if (response.code === 0) {
+                        T.prompt.success(response.msg);
+                        self.resetForm();
+                    } else {
+                        T.prompt.error(response.msg);
+                    }
+                });
             }
         })
     };
+
     //重置功能
     resetForm = () => {
         this.props.form.resetFields();
+    };
+
+    //渲染不同的下拉框
+    renderSelect = (dataSource) => {
+        return (
+            dataSource.map((item,idx) => {
+                return (
+                    <Option key={idx} value={item.name}>
+                        {item.name}
+                    </Option>
+                )
+            })
+        )
     };
 
     render() {
@@ -163,8 +290,125 @@ class AddInfoList extends PureComponent {
             member,
             touch,
             formItemLayout,
-            submitFormLayout
+            submitFormLayout,
+            bodyConditionSelect,
+            baseInfoSelect
         } = this.state;
+
+        let areaSelect = [
+            {
+                id: "GA001",
+                key: "GA001",
+                name: "芝罘区",
+                pId: "GA",
+                title: "芝罘区",
+            },
+            {
+                id: "GA002",
+                key: "GA002",
+                name: "福山区",
+                pId: "GA",
+                value: "福山区",
+            },
+            {
+                id: "GA003",
+                key: "GA003",
+                name: "莱山区",
+                pId: "GA",
+                value: "莱山区",
+            },
+            {
+                id: "GA004",
+                key: "GA004",
+                name: "牟平区",
+                pId: "GA",
+                value: "牟平区",
+            },
+            {
+                id: "GA005",
+                key: "GA005",
+                name: "海阳市",
+                pId: "GA",
+                value: "海阳市",
+            },
+            {
+                id: "GA006",
+                key: "GA006",
+                name: "莱阳市",
+                pId: "GA",
+                value: "莱阳市",
+            },
+            {
+                id: "GA007",
+                key: "GA007",
+                name: "栖霞市",
+                pId: "GA",
+                value: "栖霞市",
+            },
+            {
+                id: "GA008",
+                key: "GA008",
+                name: "蓬莱市",
+                pId: "GA",
+                value: "蓬莱市",
+            },
+            {
+                id: "GA009",
+                key: "GA009",
+                name: "长岛县",
+                pId: "GA",
+                value: "长岛县",
+            },
+            {
+                id: "GA010",
+                key: "GA010",
+                name: "龙口市",
+                pId: "GA",
+                value: "龙口市",
+            },
+            {
+                id: "GA011",
+                key: "GA011",
+                name: "招远市",
+                pId: "GA",
+                value: "招远市",
+            },
+            {
+                id: "GA012",
+                key: "GA012",
+                name: "莱州市",
+                pId: "GA",
+                value: "莱州市",
+            },
+            {
+                id: "GA013",
+                key: "GA013",
+                name: "开发区",
+                pId: "GA",
+                value: "开发区",
+            },
+            {
+                id: "GA014",
+                key: "GA014",
+                name: "高新区",
+                pId: "GA",
+                value: "高新区",
+            },
+            {
+                id: "GA015",
+                key: "GA015",
+                name: "保税港区",
+                pId: "GA",
+                value: "保税港区",
+            },
+            {
+                id: "GA016",
+                key: "GA016",
+                name: "昆嵛山保护区",
+                pId: "GA",
+                value: "昆嵛山保护区",
+            },
+        ];
 
         return (
             <PageHeaderWrapper
@@ -176,7 +420,6 @@ class AddInfoList extends PureComponent {
                         <Form
                             onSubmit={this.onSubmitData}
                             hideRequiredMark
-
                         >
                             <div className={styles.detailTitleName}>
                                 人员基本信息
@@ -206,9 +449,9 @@ class AddInfoList extends PureComponent {
                                                     getPopupContainer={triggerNode => triggerNode.parentNode}
                                                     placeholder="请选择县市区"
                                                 >
-                                                    <Option value="create" key="create">
-                                                        芝罘区
-                                                    </Option>
+                                                    {
+                                                        this.renderSelect(areaSelect)
+                                                    }
                                                 </Select>
                                             )}
                                         </Form.Item>
@@ -328,7 +571,7 @@ class AddInfoList extends PureComponent {
                                             {getFieldDecorator('idCard', {
                                                     rules: [
                                                         {
-                                                            required: true,
+                                                            // required: true,
                                                             message: "请输入身份证号码",
                                                         },
                                                     ],
@@ -364,7 +607,7 @@ class AddInfoList extends PureComponent {
                                     </Col>
                                 </Row>
                                 <Row className={styles.detailTitle}>
-                                    <Col span={12}>
+                                    <Col span={6}>
                                         <Form.Item
                                             {...formItemLayout}
                                             label='被调查人基本情况：'
@@ -382,9 +625,9 @@ class AddInfoList extends PureComponent {
                                                     getPopupContainer={triggerNode => triggerNode.parentNode}
                                                     placeholder="请选择被调查人基本情况"
                                                 >
-                                                    <Option value="create" key="create">
-                                                        正常
-                                                    </Option>
+                                                    {
+                                                        this.renderSelect(baseInfoSelect)
+                                                    }
                                                     {/*{this.renderSelectOption(metadataManageUrlList)}*/}
                                                 </Select>
                                             )}
@@ -705,7 +948,7 @@ class AddInfoList extends PureComponent {
                                             {...formItemLayout}
                                             label='是否与重点疫区人员接触过：'
                                         >
-                                            {getFieldDecorator('isTouchIntimate', {
+                                            {getFieldDecorator('isTouchInfector', {
                                                     initialValue:'否'
                                                 }
                                             )(
@@ -794,20 +1037,15 @@ class AddInfoList extends PureComponent {
                                             label='身体状况：'
                                         >
                                             {getFieldDecorator('bodyCondition', {
-                                                    initialValue:'normal'
                                                 }
                                             )(
                                                 <Select
                                                     getPopupContainer={triggerNode => triggerNode.parentNode}
                                                     placeholder="请选择身体状况"
                                                 >
-                                                    <Option value="normal" key="normal">
-                                                        正常
-                                                    </Option>
-                                                    <Option value="n" key="n">
-                                                        否
-                                                    </Option>
-                                                    {/*{this.renderSelectOption(metadataManageUrlList)}*/}
+                                                    {
+                                                        this.renderSelect(bodyConditionSelect)
+                                                    }
                                                 </Select>
                                             )}
                                         </Form.Item>
@@ -863,7 +1101,7 @@ class AddInfoList extends PureComponent {
                                             {...formItemLayout}
                                             label='是否采取过防护措施：'
                                         >
-                                            {getFieldDecorator('hasSeek', {
+                                            {getFieldDecorator('controlMeasures', {
                                                     // initialValue:'n'
                                                 }
                                             )(
