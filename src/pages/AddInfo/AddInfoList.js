@@ -273,7 +273,7 @@ class AddInfoList extends PureComponent {
     //验证年龄
     checkAge = (rule, value, callback) => {
         // const { getFieldValue } = this.props.form;
-        let reg=/^(?:[1-9][0-9]?|0[01][0-9]|200)$/;//年龄是1-120之间有
+        let reg=/^(?:[0-9][0-9]?|1[01][0-9]|200)$/;//年龄是0-200之间有
         if(!reg.test(value)){
             callback("年龄输入不合法！");
             return;
