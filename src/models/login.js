@@ -60,6 +60,7 @@ export default {
                     }
                 }
                 yield put(routerRedux.replace({
+                    // pathname: redirect || (response.data.static_auth === 0 ? '/addInfo': (response.data.static_auth === 1) ? '/jobStatistics':'/'),
                     pathname: redirect || (response.data.static_auth === 0 ? '/addInfo':'/'),
                     loginInfo: response
                 }));
@@ -80,17 +81,20 @@ export default {
             });
             reloadAuthorized();
             const {redirect} = getPageQuery();
+            // console.log(redirect,'redirect');
             // redirect
             if (window.location.pathname !== '/user/login' && !redirect) {
+                // console.log(window.location.href,'window.location.href');
+                // console.log(window.location.pathname,'window.location.pathname');
                 T.auth.clearLoginInfo();
                 T.storage.clearStorage('taskId');
                 T.storage.clearStorage('HtmlType');
                 yield put(
                     routerRedux.replace({
                         pathname: '/user/login',
-                        search: stringify({
-                            redirect: window.location.href,
-                        }),
+                        // search: stringify({
+                        //     redirect: window.location.href,
+                        // }),
                     })
                 );
             }

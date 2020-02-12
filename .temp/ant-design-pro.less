@@ -2312,6 +2312,71 @@ font.weak {
 }
 
 /*
+  Convert to from  src/pages/AddInfo/AddInfo.less
+*/
+//数据分发列表页头部样式
+.antd-pro-pages-add-info-add-info-dataSourceTitle {
+  width: 100%;
+  margin-bottom: 24px;
+  background: none;
+  .antd-pro-pages-add-info-add-info-dataSourceInput {
+    width: 50%;
+    margin-left: 3%;
+  }
+  .antd-pro-pages-add-info-add-info-dataSourceBtns {
+    button:nth-child(1) {
+      margin-right: 3%;
+    }
+  }
+  .ant-card-body {
+    padding: 0;
+  }
+
+  .ant-select-dropdown {
+    z-index: 10;
+  }
+  .ant-form-item {
+    display: flex;
+    margin-right: 0;
+    margin-bottom: 24px;
+    > .ant-form-item-label {
+      width: auto;
+      padding-right: 8px;
+      line-height: 32px;
+    }
+    .ant-form-item-control {
+      line-height: 32px;
+    }
+  }
+  .ant-form-item-control-wrapper {
+    flex: 1;
+    padding-right: 8px;
+  }
+}
+.antd-pro-pages-add-info-add-info-dataSourceTableList {
+  .ant-card-body {
+    padding: 0;
+  }
+  .ant-table-pagination,
+  .ant-pagination {
+    float: none;
+    text-align: center !important;
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .tableListForm :global(.ant-form-item) {
+    margin-right: 24px;
+  }
+}
+
+@media screen and (max-width: @screen-md) {
+  .tableListForm :global(.ant-form-item) {
+    margin-right: 8px;
+  }
+}
+
+/*
   Convert to from  src/pages/AddInfo/AddInfoList.less
 */
 .antd-pro-pages-add-info-add-info-list-missionDetailWrapper {

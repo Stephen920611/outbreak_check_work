@@ -66,8 +66,15 @@ export default [
                 path: '/addInfo',
                 name: 'addInfo',
                 icon: 'home',
+                component: './AddInfo/AddInfo',
+                authority: ['user','admin'],
+                // authority: ['user'],
+            },
+            {
+                path: '/addInfo/addInfoList',
                 component: './AddInfo/AddInfoList',
-                authority: ['user']
+                authority: ['user','admin'],
+                // authority: ['user'],
             },
             /*----------------- 摸排工作统计表 -------------------*/
             // {
