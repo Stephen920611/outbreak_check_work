@@ -534,7 +534,7 @@ class JobStatisticsList extends PureComponent {
                                             //         // message:'请选择查询时间'
                                             //     },
                                             // ],
-                                            initialValue: T.moment(new Date().getTime()),
+                                            initialValue: T.moment(new Date().getTime()-24*60*60*1000),
                                         })(
                                             <DatePicker/>
                                         )}

@@ -6,56 +6,22 @@
  */
 
 import {
-    fetchMemberInfo,
-    fetchCheckRecordList,
-    fetchSelectInfo
-} from '@/services/checkRecord/checkRecord';
+    addInfo
+} from '@/services/addInfo/addInfo';
 import T from '../../utils/T';
 
 export default {
     namespace: 'addInfo',//要唯一
 
     state: {
-        statisticsList: [
-            {
-                key: 1,
-                totalNum: 10,
-                returnNum: 20,
-                closeContactsNum: 30,
-                partyNum: 40,
-                keyEpidemicAreasNum: 50,
-                abnormalPhysicalConditionsNum: 60,
-                quarantinedOnThatDayNum: 70,
-                isolatedTotalNum: 80,
-                quarantinedAtHomeOnThatDayNum: 90,
-                atHomeTotalNum: 100,
-            }
-        ],//插件管理表格
+
     },
 
     effects: {
-        //获取摸排记录列表页面
-        * fetchCheckRecordListAction({params, resolve, reject}, {call, put}) {
+        //信息录入
+        * addInfoAction({params, resolve, reject}, {call, put}) {
             try {
-                const response = yield call(fetchCheckRecordList, params);
-                resolve(response);
-            } catch (error) {
-                reject(error);
-            }
-        },
-        //获取下拉选项
-        * fetchSelectInfoAction({params, resolve, reject}, {call, put}) {
-            try {
-                const response = yield call(fetchSelectInfo, params);
-                resolve(response);
-            } catch (error) {
-                reject(error);
-            }
-        },
-        //查看详情页面
-        * fetchMemberInfoAction({id, resolve, reject}, {call, put}) {
-            try {
-                const response = yield call(fetchMemberInfo, id);
+                const response = yield call(addInfo, params);
                 resolve(response);
             } catch (error) {
                 reject(error);
@@ -64,11 +30,6 @@ export default {
     },
 
     reducers: {
-        setStatisticsList(state, {statisticsList}) {
-            return {
-                ...state,
-                statisticsList
-            };
-        },
+
     },
 };
