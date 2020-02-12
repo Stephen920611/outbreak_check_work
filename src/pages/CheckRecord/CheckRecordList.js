@@ -645,7 +645,7 @@ class CheckRecordList extends PureComponent {
                 key: 'gender',
             },
             {
-                title: '创建时间',
+                title: '填报日期',
                 dataIndex: 'createTime',
                 key: 'createTime',
             },
@@ -698,7 +698,7 @@ class CheckRecordList extends PureComponent {
                 <Row gutter={24}>
                     {
                         T.auth.isAdmin() ?
-                            <Col xl={5} lg={5} md={5} sm={24} xs={24}>
+                            <Col xl={4} lg={4} md={4} sm={24} xs={24}>
                                 <Card
                                     title="资源列表"
                                     bordered={false}
@@ -723,8 +723,7 @@ class CheckRecordList extends PureComponent {
                             :
                             null
                     }
-
-                    <Col xl={T.auth.isAdmin() ? 19: 24} lg={T.auth.isAdmin() ? 19: 24} md={T.auth.isAdmin() ? 19: 24} sm={24} xs={24} className={styles.dataSourceTableList}>
+                    <Col xl={T.auth.isAdmin() ? 20: 24} lg={T.auth.isAdmin() ? 20: 24} md={T.auth.isAdmin() ? 20: 24} sm={24} xs={24} className={styles.dataSourceTableList}>
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>

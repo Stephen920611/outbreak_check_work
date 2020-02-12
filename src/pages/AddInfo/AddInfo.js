@@ -655,7 +655,7 @@ class AddInfo extends PureComponent {
                 key: 'gender',
             },
             {
-                title: '创建时间',
+                title: '填报日期',
                 dataIndex: 'createTime',
                 key: 'createTime',
             },

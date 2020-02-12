@@ -387,42 +387,52 @@ class JobStatisticsList extends PureComponent {
                 title: '序号',
                 dataIndex: 'key',
                 key: 'key',
+                width: '5%',
             },
             {
                 title: '地区',
                 dataIndex: 'area',
+                width: '8%',
             },
             {
                 title: '摸排总人数',
                 dataIndex: 'sum',
+                width: '8%',
             },
             {
                 title: '来烟（返烟）人数',
                 dataIndex: 'backSum',
+                width: '8%',
             },
             {
                 title: '与确诊、疑似病例有过密切接触的人数',
                 dataIndex: 'touchSuspectSum',
+                width: '12%',
             },
             {
                 title: '与密切接触者有过共同生活、工作、学习、聚会的人数',
                 dataIndex: 'touchIntimateSum',
+                width: '12%',
             },
             {
                 title: '与重点疫区人员有过接触的人数',
                 dataIndex: 'touchInfectorSum',
+                width: '12%',
             },
             {
                 title: '身体状况异常的人数',
                 dataIndex: 'bodyAbnormalSum',
+                width: '8%',
             },
             {
                 title: '当日集中隔离人数',
                 dataIndex: 'currentIsolateSum',
+                width: '8%',
             },
             {
                 title: '累计集中隔离人数（1月24日至今）',
                 dataIndex: 'isolateSum',
+                width: '12%',
                 render: (text, record) => {
                     // if (record.isolatedTotalNumEdit && record.isolatedTotalNumFirst) {
                     //     return (
@@ -452,10 +462,12 @@ class JobStatisticsList extends PureComponent {
             {
                 title: '当日居家隔离人数',
                 dataIndex: 'currentIsolateHomeSum',
+                width: '8%',
             },
             {
                 title: '累计居家隔离人数（1月24日至今）',
                 dataIndex: 'isolateHomeSum',
+                width: '12%',
                 render: (text, record) => {
                     // if (record.atHomeTotalNumEdit && record.atHomeTotalNumFirst) {
                     //     return (
@@ -501,7 +513,7 @@ class JobStatisticsList extends PureComponent {
                 <Row gutter={24}>
                     {
                         T.auth.isAdmin() ?
-                            <Col xl={5} lg={5} md={5} sm={24} xs={24}>
+                            <Col xl={4} lg={4} md={4} sm={24} xs={24}>
                                 <Card
                                     title="资源列表"
                                     bordered={false}
@@ -526,7 +538,7 @@ class JobStatisticsList extends PureComponent {
                             :
                             null
                     }
-                    <Col xl={T.auth.isAdmin() ? 19: 24} lg={T.auth.isAdmin() ? 19: 24} md={T.auth.isAdmin() ? 19: 24} sm={24} xs={24} className={styles.dataSourceTableList}>
+                    <Col xl={T.auth.isAdmin() ? 20: 24} lg={T.auth.isAdmin() ? 20: 24} md={T.auth.isAdmin() ? 20: 24} sm={24} xs={24} className={styles.dataSourceTableList}>
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>

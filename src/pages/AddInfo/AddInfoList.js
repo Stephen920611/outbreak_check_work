@@ -270,6 +270,18 @@ class AddInfoList extends PureComponent {
         })
     };
 
+    //验证年龄
+    checkAge = (rule, value, callback) => {
+        // const { getFieldValue } = this.props.form;
+        let reg=/^(?:[1-9][0-9]?|0[01][0-9]|200)$/;//年龄是1-120之间有
+        if(!reg.test(value)){
+            callback("年龄输入不合法！");
+            return;
+        }
+        // Note: 必须总是返回一个 callback，否则 validateFieldsAndScroll 无法响应
+        callback()
+    };
+
     //重置功能
     resetForm = () => {
         this.props.form.resetFields();
@@ -506,14 +518,16 @@ class AddInfoList extends PureComponent {
                                             label='年龄：'
                                         >
                                             {getFieldDecorator('age', {
-                                                    rules: [
-                                                        {
-                                                            required: false,
-                                                            message: "请输入年龄",
-                                                        },
-                                                    ],
-                                                }
-                                            )(
+                                                rules: [
+                                                    {
+                                                        required: false,
+                                                        message: "请输入年龄",
+                                                    },
+                                                    {
+                                                        validator: this.checkAge
+                                                    }
+                                                ],
+                                            })(
                                                 <Input
                                                     autoComplete="off"
                                                     placeholder="请输入年龄"
