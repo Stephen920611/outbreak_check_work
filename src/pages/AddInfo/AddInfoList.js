@@ -10,17 +10,45 @@ import {
     Row,
     Col,
     Card,
+    Form,
+    Input,
+    Select,
+    DatePicker,
+    Button,
+    Radio,
 } from 'antd';
+
+const FormItem = Form.Item;
+const {Option} = Select;
+const {TextArea} = Input;
 
 /* eslint react/no-multi-comp:0 */
 @connect(({addInfo, loading}) => ({
     addInfo,
     // fetchStatus: loading.effects['checkRecord/fetchMemberInfoAction'],
 }))
+@Form.create()
 class AddInfoList extends PureComponent {
     constructor() {
         super();
         this.state = {
+            formItemLayout: {
+                labelCol: {
+                    xs: {span: 24},
+                    sm: {span: 6},
+                },
+                wrapperCol: {
+                    xs: {span: 24},
+                    sm: {span: 15},
+                    md: {span: 15},
+                },
+            },
+            submitFormLayout: {
+                wrapperCol: {
+                    xs: {span: 24, offset: 0},
+                    sm: {span: 24, offset: 0},
+                },
+            },
             activities: {},
             currentInfo: {},
             member: {},
@@ -97,7 +125,10 @@ class AddInfoList extends PureComponent {
                         "fillUserName": "测试刘"
                     }
                 ]
-            }
+            },
+
+
+            nextMeasuresValue: "",
         }
     }
 
@@ -105,15 +136,36 @@ class AddInfoList extends PureComponent {
         const {dispatch, location} = this.props;
         let self = this;
     }
+    onSubmitData = (e) => {
+        let self = this;
+        const {dispatch, form, addRow} = this.props;
+        e.preventDefault();
+        form.validateFieldsAndScroll((err, values) => {
+            console.log('values',values);
+            if (!err) {
+
+            }
+        })
+    };
+    //重置功能
+    resetForm = () => {
+        this.props.form.resetFields();
+    };
 
     render() {
-        const {fetchStatus} = this.props;
+        const {
+            fetchStatus,
+            form: {getFieldDecorator, getFieldValue},
+        } = this.props;
         const {
             activities,
             currentInfo,
             member,
             touch,
+            formItemLayout,
+            submitFormLayout
         } = this.state;
+
         return (
             <PageHeaderWrapper
                 title={"信息录入"}
@@ -121,305 +173,774 @@ class AddInfoList extends PureComponent {
             >
                 <div>
                     <div className={styles.detailItem}>
-                        <div className={styles.detailTitleName}>
-                            人员基本信息
-                        </div>
-                        <Card
-                            style={{marginBottom: 20}}
-                            loading={fetchStatus}
-                        >
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>县市区：</span>
-                                    <span>
-                                        {
-                                            member.hasOwnProperty('area') ? member.area : '---'
-                                        }
-                                    </span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>姓名：</span>
-                                    <span>
-                                        {
-                                            member.hasOwnProperty('name') ? member.name : '---'
-                                        }
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>年龄：</span>
-                                    <span>
-                                        {
-                                            member.hasOwnProperty('age') ? member.age : '---'
-                                        }
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>性别：</span>
-                                    <span>
-                                        {
-                                            member.hasOwnProperty('gender') ? member.gender : '---'
-                                        }
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>籍贯：</span>
-                                    <span>
-                                        {
-                                            member.hasOwnProperty('nativePlace') ? member.nativePlace : '---'
-                                        }
-                                    </span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>住址：</span>
-                                    <span>
-                                        {member.hasOwnProperty('address') ? member.address : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>身份证号码：</span>
-                                    <span>
-                                        {member.hasOwnProperty('idCard') ? member.idCard : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>联系电话：</span>
-                                    <span>
-                                        {member.hasOwnProperty('phoneNum') ? member.phoneNum : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>被调查人基本情况：</span>
-                                    <span>
-                                        {member.hasOwnProperty('baseInfo') ? member.baseInfo : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                        </Card>
-                        <div className={styles.detailTitleName}>
-                            人员活动信息
-                        </div>
-                        <Card
-                            style={{marginBottom: 20}}
-                            loading={fetchStatus}
-                        >
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>从何地来烟(返烟)：</span>
-                                    <span>
-                                        {activities.hasOwnProperty('backFromWhere') ? activities.backFromWhere : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>来烟(返烟)时间：</span>
-                                    <span>
-                                        {activities.hasOwnProperty('backTime') ? activities.backTime : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>来烟(返烟)方式：</span>
-                                    <span>
-                                        {activities.hasOwnProperty('backType') ? activities.backType : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>航班/车次/船次/车牌号：</span>
-                                    <span>
-                                        {activities.hasOwnProperty('carNum') ? activities.carNum : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>期间还到过哪些城市：</span>
-                                    <span>
-                                        {activities.hasOwnProperty('wayCity') ? activities.wayCity : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                        </Card>
-                        <div className={styles.detailTitleName}>
-                            人员接触信息
-                        </div>
-                        <Card
-                            style={{marginBottom: 20}}
-                            loading={fetchStatus}
-                        >
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>是否与确诊、疑似病例密切接触过：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('isTouchSuspect') ? touch.isTouchSuspect : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>接触者姓名：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('suspectName') ? touch.suspectName : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>接触者身份证号：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('suspectIdCard') ? touch.suspectIdCard : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>接触时间：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('suspectTime') ? touch.suspectTime : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>接触地点：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('suspectPoint') ? touch.suspectPoint : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>是否与密切接触者共同生活、工作、学习、聚会过：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('isTouchIntimate') ? touch.isTouchIntimate : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>接触者姓名：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('intimateName') ? touch.intimateName : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>接触者身份证号：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('intimateIdCard') ? touch.intimateIdCard : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>接触时间：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('intimateTime') ? touch.intimateTime : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>接触地点：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('intimatePoint') ? touch.intimatePoint : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>是否与重点疫区人员接触过：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('isTouchInfector') ? touch.isTouchInfector : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>接触者姓名：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('infectorName') ? touch.infectorName : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>接触者身份证号：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('infectorIdCard') ? touch.infectorIdCard : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>接触时间：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('infectorTime') ? touch.infectorTime : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>接触地点：</span>
-                                    <span>
-                                        {touch.hasOwnProperty('infectorPoint') ? touch.infectorPoint : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                        </Card>
-                        <div className={styles.detailTitleName}>
-                            人员当前状态
-                        </div>
-                        <Card
-                            style={{marginBottom: 20}}
-                            loading={fetchStatus}
-                        >
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>身体状况：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('bodyCondition') ? currentInfo.bodyCondition : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6} className={styles.detailBtns}>
-                                    <span>是否就医：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('hasSeek') ? currentInfo.hasSeek : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>就医医院：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('seekHospital') ? currentInfo.seekHospital : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>就医时间：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('seekTime') ? currentInfo.seekTime : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>是否采取过防护措施：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('controlMeasures') ? currentInfo.controlMeasures : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={12} className={styles.detailBtns}>
-                                    <span>什么时间内采取的防护措施：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('controlTime') ? currentInfo.controlTime : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>下步拟采取措施：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('nextMeasures') ? currentInfo.nextMeasures : '---'}
-                                    </span>
-                                </Col>
+                        <Form
+                            onSubmit={this.onSubmitData}
+                            hideRequiredMark
 
-                            </Row>
-                            <Row className={styles.detailTitle}>
-                                <Col span={6}>
-                                    <span>填报日期：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('createTime') ? currentInfo.createTime : '---'}
-                                    </span>
-                                </Col>
-                                <Col span={6}>
-                                    <span>摸排人：</span>
-                                    <span>
-                                        {currentInfo.hasOwnProperty('fillUserName') ? currentInfo.fillUserName : '---'}
-                                    </span>
-                                </Col>
-                            </Row>
-                        </Card>
+                        >
+                            <div className={styles.detailTitleName}>
+                                人员基本信息
+                            </div>
+                            <Card
+                                style={{marginBottom: 20}}
+                                loading={fetchStatus}
+                            >
+                                <Row className={styles.detailTitle}>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='县市区：'
+                                        >
+                                            {getFieldDecorator('area', {
+                                                    rules: [
+                                                        {
+                                                            required: true,
+                                                            message: "请选择县市区",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Select
+                                                    // onChange={this.onChangeConnectionUrl.bind(this, "dataOrigin", "connectionUrl")}
+                                                    // onSelect={this.selectDataSource.bind(this, 'FTP')}
+                                                    getPopupContainer={triggerNode => triggerNode.parentNode}
+                                                    placeholder="请选择县市区"
+                                                >
+                                                    <Option value="create" key="create">
+                                                        芝罘区
+                                                    </Option>
+                                                </Select>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='姓名：'
+                                        >
+                                            {getFieldDecorator('name', {
+                                                    rules: [
+                                                        {
+                                                            required: true,
+                                                            message: "请输入姓名",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入姓名"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='年龄：'
+                                        >
+                                            {getFieldDecorator('age', {
+                                                    rules: [
+                                                        {
+                                                            required: false,
+                                                            message: "请输入年龄",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入年龄"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='性别：'
+                                        >
+                                            {getFieldDecorator('gender', {
+                                                    rules: [
+                                                        {
+                                                            required: false,
+                                                            message: "请选择性别",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Radio.Group >
+                                                    <Radio value={"男"}>男</Radio>
+                                                    <Radio value={"女"}>女</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='籍贯：'
+                                        >
+                                            {getFieldDecorator('nativePlace', {
+                                                    rules: [
+                                                        {
+                                                            required: false,
+                                                            message: "请输入籍贯",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入籍贯"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='住址：'
+                                        >
+                                            {getFieldDecorator('address', {
+                                                    rules: [
+                                                        {
+                                                            required: true,
+                                                            message: "请输入住址",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入住址"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='身份证号码：'
+                                        >
+                                            {getFieldDecorator('idCard', {
+                                                    rules: [
+                                                        {
+                                                            required: true,
+                                                            message: "请输入身份证号码",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入身份证号码"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='联系电话：'
+                                        >
+                                            {getFieldDecorator('phoneNum', {
+                                                    rules: [
+                                                        {
+                                                            required: true,
+                                                            message: "请输入联系电话",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入联系电话"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={12}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='被调查人基本情况：'
+                                        >
+                                            {getFieldDecorator('baseInfo', {
+                                                    rules: [
+                                                        {
+                                                            required: true,
+                                                            message: "请选择被调查人基本情况",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Select
+                                                    getPopupContainer={triggerNode => triggerNode.parentNode}
+                                                    placeholder="请选择被调查人基本情况"
+                                                >
+                                                    <Option value="create" key="create">
+                                                        正常
+                                                    </Option>
+                                                    {/*{this.renderSelectOption(metadataManageUrlList)}*/}
+                                                </Select>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                            </Card>
+                            <div className={styles.detailTitleName}>
+                                人员活动信息
+                            </div>
+                            <Card
+                                style={{marginBottom: 20}}
+                                loading={fetchStatus}
+                            >
+                                <Row className={styles.detailTitle}>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='从何地来烟(返烟)：'
+                                        >
+                                            {getFieldDecorator('backFromWhere', {
+                                                    rules: [
+                                                        {
+                                                            required: false,
+                                                            message: "请选择从何地来烟(返烟)",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Radio.Group>
+                                                    <Radio value={"武汉"}>武汉</Radio>
+                                                    <Radio value={"湖北"}>湖北</Radio>
+                                                    <Radio value={"外省"}>外省</Radio>
+                                                    <Radio value={"省内"}>省内</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='来烟(返烟)时间：'
+                                        >
+                                            {getFieldDecorator('backTime', {
+                                                    rules: [
+                                                        {
+                                                            required: false,
+                                                            message: "请选择来烟(返烟)时间",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <DatePicker showTime={true}/>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='来烟(返烟)方式：'
+                                        >
+                                            {getFieldDecorator('backType', {
+                                                    rules: [
+                                                        {
+                                                            required: false,
+                                                            message: "请选择来烟(返烟)方式",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Select
+                                                    getPopupContainer={triggerNode => triggerNode.parentNode}
+                                                    placeholder="请选择来烟(返烟)方式"
+                                                >
+                                                    <Option value="飞机" key="飞机">
+                                                        飞机
+                                                    </Option>
+                                                    <Option value="火车" key="火车">
+                                                        火车
+                                                    </Option>
+                                                    <Option value="船" key="船">
+                                                        船
+                                                    </Option>
+                                                    <Option value="客车" key="客车">
+                                                        客车
+                                                    </Option>
+                                                    <Option value="自驾" key="自驾">
+                                                        自驾
+                                                    </Option>
+                                                </Select>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='航班/车次/船次/车牌号：'
+                                        >
+                                            {getFieldDecorator('carNum', {
+                                                    rules: [
+                                                        {
+                                                            required: false,
+                                                            message: "请输入航班/车次/船次/车牌号",
+                                                        },
+                                                    ],
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入航班/车次/船次/车牌号"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={8}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='期间还到过哪些城市'
+                                        >
+                                            {getFieldDecorator('wayCity', {
+
+                                                }
+                                            )(
+                                                <TextArea
+                                                    placeholder="请输入期间还到过哪些城市"
+                                                    autoSize={{minRows: 2, maxRows: 6}}
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                            </Card>
+                            <div className={styles.detailTitleName}>
+                                人员接触信息
+                            </div>
+                            <Card
+                                style={{marginBottom: 20}}
+                                loading={fetchStatus}
+                            >
+                                <Row className={styles.detailTitle}>
+                                    <Col span={20}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='是否与确诊、疑似病例密切接触过：'
+                                        >
+                                            {getFieldDecorator('isTouchSuspect', {
+                                                    initialValue:'否',
+                                                    // rules: [
+                                                    //         {
+                                                    //             required: false,
+                                                    //             message: "请选择是否与确诊、疑似病例密切接触过",
+                                                    //         },
+                                                    //     ],
+                                                }
+                                            )(
+                                                <Radio.Group>
+                                                    <Radio value={"是"}>是</Radio>
+                                                    <Radio value={"否"}>否</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触者姓名：'
+                                        >
+                                            {getFieldDecorator('suspectName', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触者姓名"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触者身份证号：'
+                                        >
+                                            {getFieldDecorator('suspectIdCard', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触者身份证号"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触时间：'
+                                        >
+                                            {getFieldDecorator('suspectTime', {
+                                                }
+                                            )(
+                                                <DatePicker showTime={true}/>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触地点：'
+                                        >
+                                            {getFieldDecorator('suspectPoint', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触地点"
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={20}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='是否与密切接触者共同生活、工作、学习、聚会过：'
+                                        >
+                                            {getFieldDecorator('isTouchIntimate', {
+                                                    initialValue:'否',
+                                                    // rules: [
+                                                    //         {
+                                                    //             required: false,
+                                                    //             message: "请选择是否与确诊、疑似病例密切接触过",
+                                                    //         },
+                                                    //     ],
+                                                }
+                                            )(
+                                                <Radio.Group>
+                                                    <Radio value={"是"}>是</Radio>
+                                                    <Radio value={"否"}>否</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={6}>
+
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触者姓名：'
+                                        >
+                                            {getFieldDecorator('intimateName', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触者姓名"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触者身份证号：'
+                                        >
+                                            {getFieldDecorator('intimateIdCard', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触者身份证号"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触时间：'
+                                        >
+                                            {getFieldDecorator('intimateTime', {
+                                                }
+                                            )(
+                                                <DatePicker/>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触地点：'
+                                        >
+                                            {getFieldDecorator('intimatePoint', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触地点"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={20}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='是否与重点疫区人员接触过：'
+                                        >
+                                            {getFieldDecorator('isTouchIntimate', {
+                                                    initialValue:'否'
+                                                }
+                                            )(
+                                                <Radio.Group>
+                                                    <Radio value={"是"}>是</Radio>
+                                                    <Radio value={"否"}>否</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触者姓名：'
+                                        >
+                                            {getFieldDecorator('infectorName', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触者姓名"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触者身份证号：'
+                                        >
+                                            {getFieldDecorator('infectorIdCard', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触者身份证号"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触时间：'
+                                        >
+                                            {getFieldDecorator('infectorTime', {
+                                                }
+                                            )(
+                                                <DatePicker/>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='接触地点：'
+                                        >
+                                            {getFieldDecorator('infectorPoint', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入接触地点"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                            </Card>
+                            <div className={styles.detailTitleName}>
+                                人员当前状态
+                            </div>
+                            <Card
+                                style={{marginBottom: 20}}
+                                loading={fetchStatus}
+                            >
+                                <Row className={styles.detailTitle}>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='身体状况：'
+                                        >
+                                            {getFieldDecorator('bodyCondition', {
+                                                    initialValue:'normal'
+                                                }
+                                            )(
+                                                <Select
+                                                    getPopupContainer={triggerNode => triggerNode.parentNode}
+                                                    placeholder="请选择身体状况"
+                                                >
+                                                    <Option value="normal" key="normal">
+                                                        正常
+                                                    </Option>
+                                                    <Option value="n" key="n">
+                                                        否
+                                                    </Option>
+                                                    {/*{this.renderSelectOption(metadataManageUrlList)}*/}
+                                                </Select>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='是否就医：'
+                                        >
+                                            {getFieldDecorator('hasSeek', {
+                                                    // initialValue:'n'
+                                                }
+                                            )(
+                                                <Radio.Group>
+                                                    <Radio value={"是"}>是</Radio>
+                                                    <Radio value={"否"}>否</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='就医医院：'
+                                        >
+                                            {getFieldDecorator('seekHospital', {
+                                                }
+                                            )(
+                                                <Input
+                                                    autoComplete="off"
+                                                    placeholder="请输入就医医院"
+
+                                                />
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='就医时间：'
+                                        >
+                                            {getFieldDecorator('seekTime', {
+                                                }
+                                            )(
+                                                <DatePicker showTime={true}/>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row className={styles.detailTitle}>
+                                    <Col span={12}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='是否采取过防护措施：'
+                                        >
+                                            {getFieldDecorator('hasSeek', {
+                                                    // initialValue:'n'
+                                                }
+                                            )(
+                                                <Radio.Group>
+                                                    <Radio value={"居家隔离"}>居家隔离</Radio>
+                                                    <Radio value={"集中隔离"}>集中隔离</Radio>
+                                                    <Radio value={"否"}>否</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6} className={styles.detailBtns}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='何时采取措施'
+                                        >
+                                            {getFieldDecorator('controlTime', {
+                                                }
+                                            )(
+                                                <DatePicker showTime={true}/>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={6}>
+                                        <Form.Item
+                                            {...formItemLayout}
+                                            label='下步拟采取措施：'
+                                        >
+                                            {getFieldDecorator('nextMeasures', {
+                                                    // initialValue:'n'
+                                                }
+                                            )(
+                                                <Radio.Group>
+                                                    <Radio value={"居家隔离"}>居家隔离</Radio>
+                                                    <Radio value={"集中隔离"}>集中隔离</Radio>
+                                                </Radio.Group>
+                                            )}
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                {/*<Row className={styles.detailTitle}>*/}
+                                    {/*<Col span={6}>*/}
+                                        {/*<Form.Item*/}
+                                            {/*{...formItemLayout}*/}
+                                            {/*label='摸排人：'*/}
+                                        {/*>*/}
+                                            {/*{getFieldDecorator('fillUserName', {*/}
+                                                {/*}*/}
+                                            {/*)(*/}
+                                                {/*<Input*/}
+                                                    {/*autoComplete="off"*/}
+                                                    {/*placeholder="请输入摸排人"*/}
+                                                {/*/>*/}
+                                            {/*)}*/}
+                                        {/*</Form.Item>*/}
+                                    {/*</Col>*/}
+                                {/*</Row>*/}
+                            </Card>
+                            <FormItem {...submitFormLayout} style={{marginTop: 32, paddingBottom: 24,textAlign:'center'}}>
+                                <Button
+                                    style={{marginLeft: 16}}
+                                    type="primary"
+                                    htmlType="submit"
+                                    // loading={savingStatus}
+                                >
+                                    保存
+                                </Button>
+                                <Button
+                                    style={{marginLeft: 8}}
+                                    type="primary"
+                                    onClick={this.resetForm}
+                                >
+                                    清空
+                                </Button>
+                            </FormItem>
+                        </Form>
+
                     </div>
                 </div>
             </PageHeaderWrapper>
