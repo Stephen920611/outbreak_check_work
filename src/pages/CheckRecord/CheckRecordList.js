@@ -848,9 +848,9 @@ class CheckRecordList extends PureComponent {
                                         <Button onClick={this.resetDataSource} type="primary" style={{marginRight: 10}}>
                                             <FormattedMessage id="checkRecord.btn.reset"/>
                                         </Button>
-                                        <Button onClick={this.exportData} type="primary">
-                                            <FormattedMessage id="checkRecord.btn.output"/>
-                                        </Button>
+                                        {/*<Button onClick={this.exportData} type="primary">*/}
+                                            {/*<FormattedMessage id="checkRecord.btn.output"/>*/}
+                                        {/*</Button>*/}
                                     </Form.Item>
                                 </Col>
                             </Row>

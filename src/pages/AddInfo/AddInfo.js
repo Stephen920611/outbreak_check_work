@@ -852,9 +852,9 @@ class AddInfo extends PureComponent {
                                         <Button onClick={this.resetDataSource} type="primary" style={{marginRight: 10}}>
                                             <FormattedMessage id="checkRecord.btn.reset"/>
                                         </Button>
-                                        <Button onClick={this.exportData} type="primary" style={{marginRight: 10}}>
-                                            <FormattedMessage id="checkRecord.btn.output"/>
-                                        </Button>
+                                        {/*<Button onClick={this.exportData} type="primary" style={{marginRight: 10}}>*/}
+                                            {/*<FormattedMessage id="checkRecord.btn.output"/>*/}
+                                        {/*</Button>*/}
                                         <Button onClick={this.addInfoBtn} type="primary">
                                             新增
                                         </Button>

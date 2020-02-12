@@ -203,10 +203,6 @@ class JobStatisticsList extends PureComponent {
     componentDidMount() {
         const {dispatch, location} = this.props;
         this.fetchDataList();
-        let loginInfo = T.auth.getLoginInfo();
-
-        console.log(loginInfo,'loginInfo');
-        console.log(T.auth.isAdmin(),'sss');
     }
 
     //获取当前页数数据
@@ -559,9 +555,9 @@ class JobStatisticsList extends PureComponent {
                                         <Button onClick={this.resetDataSource} type="primary" style={{marginRight: 10}}>
                                             重置
                                         </Button>
-                                        <Button onClick={this.exportData} type="primary">
-                                            导出
-                                        </Button>
+                                        {/*<Button onClick={this.exportData} type="primary">*/}
+                                            {/*导出*/}
+                                        {/*</Button>*/}
                                     </Form.Item>
                                 </Col>
                             </Row>
