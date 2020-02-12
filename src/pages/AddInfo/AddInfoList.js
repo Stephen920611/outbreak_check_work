@@ -197,7 +197,6 @@ class AddInfoList extends PureComponent {
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 let loginInfo = T.auth.getLoginInfo();
-                console.log(loginInfo,'loginInfo');
                 let userId = loginInfo.data.id;
                 let params = {
                     member: {

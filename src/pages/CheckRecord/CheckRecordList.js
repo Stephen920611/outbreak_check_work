@@ -420,6 +420,7 @@ class CheckRecordList extends PureComponent {
                         categoryCode = val.id;
                     }
                 });
+                let loginInfo = T.auth.getLoginInfo();
 
                 let params = {
                     current: currentPage,
@@ -433,6 +434,7 @@ class CheckRecordList extends PureComponent {
                     baseInfo: T.lodash.isUndefined(values.base) ? '' : values.base,         //被调查人基本情况
                     bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status,         //身体状况
                     fillUserName: T.lodash.isUndefined(values.head) ? '' : values.head,   //摸排人
+                    fillUserId: loginInfo.data.static_auth === 0 ? loginInfo.data.id : ''   //摸排人id
                 };
                 new Promise((resolve, reject) => {
                     dispatch({

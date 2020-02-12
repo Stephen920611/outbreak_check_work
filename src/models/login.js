@@ -17,7 +17,7 @@ export default {
     effects: {
         * login({payload}, {call, put}) {
             const response = yield call(accountLogin, payload);
-            console.log(response,'response');
+            // console.log(response,'response');
             //先默认清除登录信息
             T.auth.clearLoginInfo();
             //登录失败提示信息
