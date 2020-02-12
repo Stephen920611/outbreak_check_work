@@ -375,6 +375,10 @@ class CheckRecordList extends PureComponent {
             });
         }).then(response => {
             if (response.code === 0) {
+                response.data.unshift({
+                    name: "全部",
+                    value: "全部"
+                });
                 self.setState({
                     baseInfoSelect: response.data
                 })
@@ -395,6 +399,10 @@ class CheckRecordList extends PureComponent {
             });
         }).then(response => {
             if (response.code === 0) {
+                response.data.unshift({
+                    name: "全部",
+                    value: "全部"
+                });
                 self.setState({
                     bodyConditionSelect: response.data
                 });
@@ -431,8 +439,8 @@ class CheckRecordList extends PureComponent {
                     name: T.lodash.isUndefined(values.person) ? '' : values.person,           //被调查人姓名
                     gender: T.lodash.isUndefined(values.sex) ? '' : values.sex === 'all' ? '' : values.sex,         //性别
                     // idCard: "",         //身份证号
-                    baseInfo: T.lodash.isUndefined(values.base) ? '' : values.base,         //被调查人基本情况
-                    bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status,         //身体状况
+                    baseInfo: T.lodash.isUndefined(values.base) ? '' : values.base === '全部' ? '' : values.base,         //被调查人基本情况
+                    bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status === '全部' ? '' : values.status,         //身体状况
                     fillUserName: T.lodash.isUndefined(values.head) ? '' : values.head,   //摸排人
                     fillUserId: loginInfo.data.static_auth === 0 ? loginInfo.data.id : ''   //摸排人id
                 };
@@ -652,11 +660,11 @@ class CheckRecordList extends PureComponent {
                 dataIndex: 'baseInfo',
                 key: 'baseInfo',
             },
-            {
-                title: '身体状况',
-                dataIndex: 'status',
-                key: 'status',
-            },
+            // {
+            //     title: '身体状况',
+            //     dataIndex: 'status',
+            //     key: 'status',
+            // },
             {
                 title: '摸排人',
                 dataIndex: 'fillUserName',
@@ -786,8 +794,9 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.base.label"/>}
                                     >
-
-                                        {getFieldDecorator('base')(
+                                        {getFieldDecorator('base',{
+                                            initialValue: "全部"
+                                        })(
                                             <Select
                                                 getPopupContainer={triggerNode => triggerNode.parentNode}
                                             >
@@ -803,7 +812,9 @@ class CheckRecordList extends PureComponent {
                                         label={<FormattedMessage
                                             id="checkRecord.resourceList.status.label"/>}
                                     >
-                                        {getFieldDecorator('status')(
+                                        {getFieldDecorator('status',{
+                                            initialValue: "全部"
+                                        })(
                                             <Select
                                                 getPopupContainer={triggerNode => triggerNode.parentNode}
                                             >

@@ -141,15 +141,15 @@ class AddInfoDetail extends PureComponent {
         const breadcrumbDetail = [
             {
                 linkTo: '/addInfo',
-                name: '信息录入',
+                name: '信息管理',
             },
             {
-                name: '信息录入详情查看',
+                name: '详情查看',
             },
         ];
         return (
             <PageHeaderWrapper
-                title={"信息录入详情查看"}
+                title={"详情查看"}
                 isSpecialBreadcrumb={true}
                 breadcrumbName={<CustomBreadcrumb dataSource={breadcrumbDetail}/>}
             >

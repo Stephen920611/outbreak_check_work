@@ -424,7 +424,7 @@ class AddInfoList extends PureComponent {
         const breadcrumbDetail = [
             {
                 linkTo: '/addInfo',
-                name: '信息录入',
+                name: '信息管理',
             },
             {
                 name: '新增信息',
