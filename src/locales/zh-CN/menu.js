@@ -7,6 +7,7 @@ export default {
     'menu.touchStatisticsPage': '摸排统计页面',
     'menu.checkRecord': '摸排记录查询',
     'menu.jobStatistics': '摸排工作统计',
+    'menu.addInfo': '信息录入',
     'menu.metadataManage': '元数据管理',
     'menu.metadataManage.dataSourceManagement': '数据源管理',
     'menu.metadataManage.dataSourceManagement.dataSourceManagementIndex': '数据源管理1',

@@ -56,6 +56,13 @@ export default [
                 path: '/checkRecord/showDetail',
                 component: './CheckRecord/CheckRecordDetail',
             },
+            /*----------------- 摸排记录查询 -------------------*/
+            {
+                path: '/addInfo',
+                name: 'addInfo',
+                icon: 'home',
+                component: './AddInfo/AddInfoList',
+            },
             /*----------------- 摸排工作统计表 -------------------*/
             // {
             //     path: '/touchStatisticsPage',
