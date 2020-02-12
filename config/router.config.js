@@ -67,14 +67,19 @@ export default [
                 name: 'addInfo',
                 icon: 'home',
                 component: './AddInfo/AddInfo',
-                authority: ['user','admin'],
-                // authority: ['user'],
+                // authority: ['user','admin'],
+                authority: ['user'],
             },
             {
                 path: '/addInfo/addInfoList',
                 component: './AddInfo/AddInfoList',
-                authority: ['user','admin'],
-                // authority: ['user'],
+                // authority: ['user','admin'],
+                authority: ['user'],
+            },
+            {
+                path: '/addInfo/addInfoDetail',
+                component: './AddInfo/AddInfoDetail',
+                authority: ['user']
             },
             /*----------------- 摸排工作统计表 -------------------*/
             // {

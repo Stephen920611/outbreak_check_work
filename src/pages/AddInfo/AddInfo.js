@@ -556,7 +556,7 @@ class AddInfo extends PureComponent {
     //查看详情
     showMetadataManage = (e, key) => {
         router.push({
-            pathname: '/checkRecord/showDetail',
+            pathname: '/addInfo/addInfoDetail',
             params: {
                 isRouterPush: true,
                 data: key
