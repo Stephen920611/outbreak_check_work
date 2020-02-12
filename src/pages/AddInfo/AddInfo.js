@@ -706,7 +706,7 @@ class AddInfo extends PureComponent {
         return (
             <PageHeaderWrapper title="信息管理">
                 <Row gutter={24}>
-                    <Col xl={5} lg={5} md={5} sm={24} xs={24}>
+                    {/*<Col xl={5} lg={5} md={5} sm={24} xs={24}>
                         <Card
                             title="资源列表"
                             bordered={false}
@@ -727,8 +727,8 @@ class AddInfo extends PureComponent {
                                     </DirectoryTree>
                             }
                         </Card>
-                    </Col>
-                    <Col xl={19} lg={19} md={19} sm={24} xs={24} className={styles.dataSourceTableList}>
+                    </Col>*/}
+                    <Col xl={24} lg={24} md={24} sm={24} xs={24} className={styles.dataSourceTableList}>
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>
