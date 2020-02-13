@@ -576,22 +576,18 @@ class CheckRecordList extends PureComponent {
     };
 
     handleOk = e => {
-        console.log(e);
         const {
             total,
             startPageNum,
             endPageNum,
             maxPageSize
         } = this.state;
-        console.log(startPageNum,'startPageNum');
-        console.log(endPageNum,'endPageNum');
         // this.setState({
         //     visible: false,
         // });
     };
 
     handleCancel = e => {
-        console.log(e);
         this.setState({
             visible: false,
             startPageNum: '',
@@ -722,7 +718,6 @@ class CheckRecordList extends PureComponent {
     };
 
     onEndPageCheck = (e) => {
-
         const {
             total,
             startPageNum,
@@ -730,7 +725,6 @@ class CheckRecordList extends PureComponent {
             maxPageSize
         } = this.state;
         let currentNum = Number(endPageNum);
-        console.log(currentNum,'currentNum');
         let endNum;
         if(currentNum <= 0){
             endNum = '';
@@ -738,9 +732,9 @@ class CheckRecordList extends PureComponent {
             endNum = startPageNum;
         }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && (maxPageSize + startPageNum) <= total){
             endNum = currentNum;
-        }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) > total){
+        }else if(currentNum > startPageNum && currentNum <= (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) > total){
             endNum = currentNum;
-        }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) < total){
+        }else if(currentNum > startPageNum && currentNum <= (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) < total){
             endNum = currentNum;
         }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) > total){
             endNum = total;
@@ -837,7 +831,6 @@ class CheckRecordList extends PureComponent {
 
         let loginInfo = T.auth.getLoginInfo();
         let formTimeValue = getFieldsValue();
-        console.log(formTimeValue,'formTimeValue');
         // let params = {
         //     current: currentPage,
         //     size: EnumDataSyncPageInfo.defaultPageSize,
