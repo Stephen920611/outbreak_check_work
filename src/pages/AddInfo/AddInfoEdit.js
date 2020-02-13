@@ -200,7 +200,6 @@ class AddInfoList extends PureComponent {
                     reject,
                 });
             }).then(response => {
-                console.log(response.data,'response.data');
 
                 if (response.code === 0) {
                     const {currnets, member, touch, activities} = response.data;
