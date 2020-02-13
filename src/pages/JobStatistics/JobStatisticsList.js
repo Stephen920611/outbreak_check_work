@@ -354,7 +354,8 @@ class JobStatisticsList extends PureComponent {
     };
 
     //导出
-    exportData = () => {
+    exportData = (e) => {
+        e.preventDefault();
         const {selectRows} = this.state;
         if (selectRows.length > 0) {
             let ids = selectRows.map(val => {
@@ -567,8 +568,8 @@ class JobStatisticsList extends PureComponent {
                                         <Button onClick={this.resetDataSource} type="primary" style={{marginRight: 10}}>
                                             重置
                                         </Button>
-                                        {/*<Button onClick={this.exportData} type="primary">*/}
-                                            {/*导出*/}
+                                        {/*<Button type="primary">*/}
+                                            {/*<a href="/excel/staticNum" target="_blank" onClick={this.exportData.bind(this)}>导出</a>*/}
                                         {/*</Button>*/}
                                     </Form.Item>
                                 </Col>
