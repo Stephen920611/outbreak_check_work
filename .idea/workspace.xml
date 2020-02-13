@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" line="582" />
+    <bookmark url="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" line="771" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2fcb3a5-df2d-47af-8708-6a8e2fb7ce07" name="Default" comment="修改公共东西">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/asset-manifest.json" afterPath="$PROJECT_DIR$/dist/asset-manifest.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/layouts__BasicLayout.async.js" afterPath="$PROJECT_DIR$/dist/layouts__BasicLayout.async.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/p__User__Login.async.js" afterPath="$PROJECT_DIR$/dist/p__User__Login.async.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/p__User__Register.async.js" afterPath="$PROJECT_DIR$/dist/p__User__Register.async.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/p__User__Register.chunk.css" afterPath="$PROJECT_DIR$/dist/p__User__Register.chunk.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/p__User__RegisterResult.async.js" afterPath="$PROJECT_DIR$/dist/p__User__RegisterResult.async.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/p__User__models__register.js.async.js" afterPath="$PROJECT_DIR$/dist/p__User__models__register.js.async.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/umi.js" afterPath="$PROJECT_DIR$/dist/umi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vendors.async.js" afterPath="$PROJECT_DIR$/dist/vendors.async.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vendors.chunk.css" afterPath="$PROJECT_DIR$/dist/vendors.chunk.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/ENV.js" afterPath="$PROJECT_DIR$/src/config/ENV.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js" afterPath="$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js" afterPath="$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" afterPath="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" afterPath="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,12 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="router.config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/router.config.js">
+      <file leaf-file-name="CheckRecordList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1325">
-              <caret line="81" column="47" lean-forward="false" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
-              <folding />
+            <state relative-caret-position="544">
+              <caret line="800" column="42" lean-forward="false" selection-start-line="800" selection-start-column="28" selection-end-line="800" selection-end-column="42" />
+              <folding>
+                <element signature="e#16#59#0" expanded="true" />
+                <element signature="e#1699#5611#0" expanded="false" />
+                <element signature="e#5747#11443#0" expanded="false" />
+                <element signature="e#11564#11843#0" expanded="false" />
+                <element signature="e#12107#12348#0" expanded="false" />
+                <element signature="e#12787#13033#0" expanded="false" />
+                <element signature="e#29814#31458#0" expanded="false" />
+                <element signature="e#33356#42926#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,28 +58,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addInfo.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/addInfo/addInfo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="26" column="29" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-              <folding>
-                <element signature="e#116#189#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AddInfoEdit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="346" column="53" lean-forward="true" selection-start-line="346" selection-start-column="53" selection-end-line="346" selection-end-column="53" />
+            <state relative-caret-position="1257">
+              <caret line="361" column="14" lean-forward="true" selection-start-line="361" selection-start-column="14" selection-end-line="361" selection-end-column="14" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#1913#4886#0" expanded="false" />
                 <element signature="e#5704#5950#0" expanded="false" />
-                <element signature="e#17757#20560#0" expanded="false" />
+                <element signature="e#18046#20849#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -86,8 +76,8 @@
       <file leaf-file-name="ENV.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/config/ENV.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="400">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,45 +86,23 @@
       <file leaf-file-name="JobStatisticsList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="572" column="52" lean-forward="false" selection-start-line="570" selection-start-column="43" selection-end-line="572" selection-end-column="52" />
+            <state relative-caret-position="594">
+              <caret line="532" column="54" lean-forward="true" selection-start-line="532" selection-start-column="54" selection-end-line="532" selection-end-column="54" />
               <folding>
                 <element signature="e#1619#5326#0" expanded="false" />
                 <element signature="e#5511#6138#0" expanded="false" />
+                <element signature="e#12436#16655#0" expanded="false" />
+                <element signature="e#16686#17087#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddInfoDetail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoDetail.js">
+      <file leaf-file-name="jobStatistics.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/jobStatistics/jobStatistics.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="111" column="55" lean-forward="false" selection-start-line="111" selection-start-column="55" selection-end-line="111" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SourceStep3.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/DataSync/StepForm/SourceStep3.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="424" column="14" lean-forward="false" selection-start-line="424" selection-start-column="14" selection-end-line="424" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/core/helper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="275" column="39" lean-forward="false" selection-start-line="275" selection-start-column="39" selection-end-line="275" selection-end-column="39" />
+            <state relative-caret-position="75">
+              <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -143,13 +111,45 @@
       <file leaf-file-name="AddInfoList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3383">
-              <caret line="444" column="0" lean-forward="false" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
+            <state relative-caret-position="319">
+              <caret line="295" column="115" lean-forward="false" selection-start-line="295" selection-start-column="56" selection-end-line="295" selection-end-column="115" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#1880#4853#0" expanded="false" />
                 <element signature="e#5592#5838#0" expanded="false" />
-                <element signature="e#12592#15395#0" expanded="false" />
+                <element signature="e#12699#15502#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jobStatistics.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/jobStatistics/jobStatistics.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="12" column="35" lean-forward="false" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumAPI.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/EnumAPI.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckRecordDetail.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="17" column="60" lean-forward="false" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,20 +159,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>AddInfoPage</find>
-      <find>.</find>
-      <find>新增</find>
-      <find>T</find>
-      <find>烟台市疫情防控调查系统摸排数据平台</find>
-      <find>摸排数据平台</find>
-      <find>CustomBreadcrumb</find>
-      <find>信息录入</find>
-      <find>Table</find>
-      <find>导出</find>
-      <find>创建时间</find>
-      <find>CheckRecordDetail</find>
-      <find>showMetadataManage</find>
-      <find>Popconfirm</find>
       <find>editBtn</find>
       <find>checkRecord</find>
       <find>response</find>
@@ -183,12 +169,26 @@
       <find>showQuickJumper: trued</find>
       <find>提交成功</find>
       <find>router</find>
-      <find>编辑</find>
       <find>dateFo</find>
       <find>console</find>
+      <find>selectedKey</find>
       <find>deleteInfoAction</find>
-      <find>checkAge</find>
+      <find>编辑</find>
+      <find>visible</find>
+      <find>导出</find>
+      <find>startPageNum</find>
+      <find>total</find>
       <find>exportData</find>
+      <find>handleCancel</find>
+      <find>fetchJobStatisticsListAction</find>
+      <find>fetchJobStatisticsList</find>
+      <find>selectedArea</find>
+      <find>apiHref</find>
+      <find>DirectoryTree</find>
+      <find>area</find>
+      <find>areaSelect</find>
+      <find>checkAge</find>
+      <find>endDate</find>
     </findStrings>
     <replaceStrings>
       <replace>CheckRecordDetail</replace>
@@ -251,16 +251,16 @@
         <option value="$PROJECT_DIR$/src/utils/core/helper.js" />
         <option value="$PROJECT_DIR$/src/utils/core/auth.js" />
         <option value="$PROJECT_DIR$/src/locales/zh-CN/menu.js" />
-        <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js" />
         <option value="$PROJECT_DIR$/src/components/Login/index.js" />
         <option value="$PROJECT_DIR$/src/layouts/UserLayout.js" />
         <option value="$PROJECT_DIR$/src/constants/EnumAPI.js" />
-        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
         <option value="$PROJECT_DIR$/src/services/addInfo/addInfo.js" />
         <option value="$PROJECT_DIR$/src/models/addInfo/addInfo.js" />
         <option value="$PROJECT_DIR$/config/router.config.js" />
         <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfoDetail.js" />
         <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js" />
+        <option value="$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js" />
+        <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js" />
         <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js" />
         <option value="$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js" />
         <option value="$PROJECT_DIR$/src/config/ENV.js" />
@@ -277,9 +277,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1688" />
+    <option name="x" value="-1687" />
     <option name="y" value="13" />
-    <option name="width" value="1696" />
+    <option name="width" value="1694" />
     <option name="height" value="1026" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -346,6 +346,19 @@
               <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
               <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="jobStatistics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -381,6 +394,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
               <item name="addInfo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="testCheckWork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="testCheckWork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="jobStatistics" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -438,12 +458,12 @@
       <workItem from="1581381749425" duration="18301000" />
       <workItem from="1581468222252" duration="41683000" />
       <workItem from="1581562434134" duration="1122000" />
-      <workItem from="1581564249059" duration="20392000" />
+      <workItem from="1581564249059" duration="37595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129192000" />
+    <option name="totallyTimeSpent" value="146395000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -510,7 +530,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -629,20 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/jobStatistics/jobStatistics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="35" column="38" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/jobStatistics/jobStatistics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -668,13 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="75" />
         </state>
       </provider>
     </entry>
@@ -751,29 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="872" column="61" lean-forward="false" selection-start-line="872" selection-start-column="61" selection-end-line="872" selection-end-column="61" />
-          <folding>
-            <element signature="e#5749#11445#0" expanded="false" />
-            <element signature="e#11566#11845#0" expanded="false" />
-            <element signature="e#12007#12248#0" expanded="false" />
-            <element signature="e#12687#12933#0" expanded="false" />
-            <element signature="e#20165#21809#0" expanded="false" />
-            <element signature="e#22509#23566#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/EnumAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="63" column="14" lean-forward="false" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/addInfo/addInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -826,19 +802,7 @@
         <state relative-caret-position="157">
           <caret line="111" column="55" lean-forward="false" selection-start-line="111" selection-start-column="55" selection-end-line="111" selection-end-column="55" />
           <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="583" column="11" lean-forward="false" selection-start-line="583" selection-start-column="11" selection-end-line="583" selection-end-column="11" />
-          <folding>
-            <element signature="e#16#59#0" expanded="true" />
-            <element signature="e#907#943#0" expanded="true" />
-            <element signature="e#5670#11543#0" expanded="false" />
+            <element signature="e#0#53#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -861,15 +825,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js">
+    <entry file="file://$PROJECT_DIR$/config/router.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3383">
-          <caret line="444" column="0" lean-forward="false" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
+        <state relative-caret-position="1325">
+          <caret line="81" column="47" lean-forward="false" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="60" lean-forward="false" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
-            <element signature="e#1880#4853#0" expanded="false" />
-            <element signature="e#5592#5838#0" expanded="false" />
-            <element signature="e#12592#15395#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -879,47 +848,107 @@
         <state relative-caret-position="158">
           <caret line="26" column="29" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
           <folding>
-            <element signature="e#116#189#0" expanded="true" />
+            <element signature="e#116#189#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/router.config.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1325">
-          <caret line="81" column="47" lean-forward="false" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+        <state relative-caret-position="368">
+          <caret line="583" column="11" lean-forward="false" selection-start-line="583" selection-start-column="11" selection-end-line="583" selection-end-column="11" />
+          <folding>
+            <element signature="e#16#59#0" expanded="true" />
+            <element signature="e#907#943#0" expanded="true" />
+            <element signature="e#5670#11543#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/jobStatistics/jobStatistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/jobStatistics/jobStatistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="12" column="35" lean-forward="false" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/EnumAPI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CheckRecord/CheckRecordList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="800" column="42" lean-forward="false" selection-start-line="800" selection-start-column="28" selection-end-line="800" selection-end-column="42" />
+          <folding>
+            <element signature="e#16#59#0" expanded="true" />
+            <element signature="e#1699#5611#0" expanded="false" />
+            <element signature="e#5747#11443#0" expanded="false" />
+            <element signature="e#11564#11843#0" expanded="false" />
+            <element signature="e#12107#12348#0" expanded="false" />
+            <element signature="e#12787#13033#0" expanded="false" />
+            <element signature="e#29814#31458#0" expanded="false" />
+            <element signature="e#33356#42926#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="295" column="115" lean-forward="false" selection-start-line="295" selection-start-column="56" selection-end-line="295" selection-end-column="115" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+            <element signature="e#1880#4853#0" expanded="false" />
+            <element signature="e#5592#5838#0" expanded="false" />
+            <element signature="e#12699#15502#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="346" column="53" lean-forward="true" selection-start-line="346" selection-start-column="53" selection-end-line="346" selection-end-column="53" />
+        <state relative-caret-position="1257">
+          <caret line="361" column="14" lean-forward="true" selection-start-line="361" selection-start-column="14" selection-end-line="361" selection-end-column="14" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#1913#4886#0" expanded="false" />
             <element signature="e#5704#5950#0" expanded="false" />
-            <element signature="e#17757#20560#0" expanded="false" />
+            <element signature="e#18046#20849#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/JobStatistics/JobStatisticsList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="572" column="52" lean-forward="false" selection-start-line="570" selection-start-column="43" selection-end-line="572" selection-end-column="52" />
+        <state relative-caret-position="594">
+          <caret line="532" column="54" lean-forward="true" selection-start-line="532" selection-start-column="54" selection-end-line="532" selection-end-column="54" />
           <folding>
             <element signature="e#1619#5326#0" expanded="false" />
             <element signature="e#5511#6138#0" expanded="false" />
+            <element signature="e#12436#16655#0" expanded="false" />
+            <element signature="e#16686#17087#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/ENV.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="400">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>

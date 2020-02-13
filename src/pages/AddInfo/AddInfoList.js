@@ -289,10 +289,11 @@ class AddInfoList extends PureComponent {
 
     //渲染不同的下拉框
     renderSelect = (dataSource) => {
+        let loginInfo = T.auth.getLoginInfo();
         return (
             dataSource.map((item,idx) => {
                 return (
-                    <Option key={idx} value={item.name}>
+                    <Option key={idx} value={item.name} disabled={loginInfo.data.area === item.name ? false : true}>
                         {item.name}
                     </Option>
                 )

@@ -217,7 +217,8 @@ class JobStatisticsList extends PureComponent {
                 let params = {
                     // current: currentPage,
                     // size: EnumDataSyncPageInfo.defaultPageSize,
-                    date: T.lodash.isUndefined(values.startDate) ? '' : values.startDate === null ?  '' :T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
+                    start: T.lodash.isUndefined(values.startDate) ? '' : values.startDate === null ?  '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
+                    end: T.lodash.isUndefined(values.endDate) ? '' : values.endDate === null ?  '' : T.helper.dateFormat(values.endDate,'YYYY-MM-DD'),      //开始时间
                     area: T.auth.isAdmin() ? selectedArea === "烟台市" ? '' : selectedArea : loginInfo.data.area,           //县市区(烟台市传空)
                 };
                 new Promise((resolve, reject) => {
@@ -299,6 +300,7 @@ class JobStatisticsList extends PureComponent {
     resetDataSource = () => {
         this.props.form.setFieldsValue({
             startDate: null,
+            endDate: null,
         });
         // this.props.form.resetFields();
         this.fetchDataList();
@@ -356,16 +358,16 @@ class JobStatisticsList extends PureComponent {
     //导出
     exportData = (e) => {
         e.preventDefault();
-        const {selectRows} = this.state;
-        if (selectRows.length > 0) {
-            let ids = selectRows.map(val => {
-                return val.id
-            });
-            let key = ids.join(',');
-            this.removeData(key);
-        } else {
-            T.prompt.error("请选择需要删除的行");
-        }
+        // const {selectRows} = this.state;
+        // if (selectRows.length > 0) {
+        //     let ids = selectRows.map(val => {
+        //         return val.id
+        //     });
+        //     let key = ids.join(',');
+        //     this.removeData(key);
+        // } else {
+        //     T.prompt.error("请选择需要删除的行");
+        // }
     };
 
     //树选择
@@ -379,9 +381,9 @@ class JobStatisticsList extends PureComponent {
         const {
             fetchTreeStatus,
             fetchJobStatisticsListStatus,
-            form: {getFieldDecorator, getFieldValue},
+            form: {getFieldDecorator, getFieldValue, getFieldsValue},
         } = this.props;
-        const {treeData, currentPage, selectedKey, tableData} = this.state;
+        const {treeData, currentPage, selectedKey, tableData, selectedArea} = this.state;
 
         const columns = [
             {
@@ -509,6 +511,15 @@ class JobStatisticsList extends PureComponent {
                 name: record.name,
             }),
         };
+        let loginInfo = T.auth.getLoginInfo();
+
+        //获取表单的value
+        let formTimeValue = getFieldsValue();
+
+        let formStart = T.lodash.isUndefined(formTimeValue.startDate) ? '' : formTimeValue.startDate === null ?  '' : T.helper.dateFormat(formTimeValue.startDate,'YYYY-MM-DD');
+        let formEnd = T.lodash.isUndefined(formTimeValue.endDate) ? '' : formTimeValue.endDate === null ?  '' : T.helper.dateFormat(formTimeValue.endDate,'YYYY-MM-DD');
+
+        let apiHref = window.ENV.apiDomain + "/excel/staticNum?area=" + (T.auth.isAdmin() ? selectedArea === "烟台市" ? '' : selectedArea : loginInfo.data.area) + "&start=" + formStart + "&end=" + formEnd;
         return (
             <PageHeaderWrapper title="摸排工作统计">
                 <Row gutter={24}>
@@ -543,9 +554,9 @@ class JobStatisticsList extends PureComponent {
                         <Form layout="inline" onSubmit={this.searchDataSource}>
                             <Row className={`${styles.dataSourceTitle} ${styles.tableListForms}`}
                                  style={{marginBottom: 10}}>
-                                <Col xl={6} lg={6} md={6} sm={6} xs={24}>
+                                <Col xl={5} lg={5} md={5} sm={5} xs={24}>
                                     <Form.Item
-                                        label='查询时间'
+                                        label='起始时间'
                                     >
                                         {getFieldDecorator('startDate', {
                                             // rules: [
@@ -554,7 +565,25 @@ class JobStatisticsList extends PureComponent {
                                             //         // message:'请选择查询时间'
                                             //     },
                                             // ],
-                                            initialValue: T.moment(new Date().getTime()-24*60*60*1000),
+                                            initialValue: T.moment(new Date().getTime()),
+                                        })(
+                                            <DatePicker/>
+                                        )}
+                                    </Form.Item>
+                                </Col>
+                                <Col xl={5} lg={5} md={5} sm={5} xs={24}>
+                                    <Form.Item
+                                        label='结束时间'
+                                    >
+                                        {getFieldDecorator('endDate', {
+                                            // rules: [
+                                            //     {
+                                            //         // required: true,
+                                            //         // message:'请选择查询时间'
+                                            //     },
+                                            // ],
+                                            // initialValue: T.moment(new Date().getTime()-24*60*60*1000),
+                                            initialValue: T.moment(new Date().getTime()),
                                         })(
                                             <DatePicker/>
                                         )}
@@ -568,9 +597,9 @@ class JobStatisticsList extends PureComponent {
                                         <Button onClick={this.resetDataSource} type="primary" style={{marginRight: 10}}>
                                             重置
                                         </Button>
-                                        {/*<Button type="primary">*/}
-                                            {/*<a href="/excel/staticNum" target="_blank" onClick={this.exportData.bind(this)}>导出</a>*/}
-                                        {/*</Button>*/}
+                                        <Button type="primary">
+                                            <a href={apiHref} target="_blank" >导出</a>
+                                        </Button>
                                     </Form.Item>
                                 </Col>
                             </Row>

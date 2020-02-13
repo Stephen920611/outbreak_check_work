@@ -25,7 +25,7 @@ import {
     Tree,
     Spin,
     Table,
-    Divider,
+    Modal,
     Popconfirm,
     TreeSelect,
     Collapse,
@@ -356,7 +356,11 @@ class CheckRecordList extends PureComponent {
                 status: '基本状况',
             },
 
-        ]
+        ],
+        visible: false,
+        startPageNum: '',
+        endPageNum: '',
+        maxPageSize: 9999,
     };
 
     componentDidMount() {
@@ -548,7 +552,9 @@ class CheckRecordList extends PureComponent {
 
     //导出
     exportData = () => {
-
+        this.setState({
+            visible: true,
+        });
     };
 
     //查看详情
@@ -569,18 +575,188 @@ class CheckRecordList extends PureComponent {
         });
     };
 
-    //查询-数据库类型 渲染下拉选项
-    renderSelectOption = (selectDataSource) => {
-        let arrKeys = T.lodash.keys(selectDataSource);
-        return (
-            arrKeys.map(item => {
-                return (
-                    <Option key={item} value={item}>
-                        {EnumDataSourceStatus[item]["label"]}
-                    </Option>
-                )
+    handleOk = e => {
+        console.log(e);
+        const {
+            total,
+            startPageNum,
+            endPageNum,
+            maxPageSize
+        } = this.state;
+        console.log(startPageNum,'startPageNum');
+        console.log(endPageNum,'endPageNum');
+        // this.setState({
+        //     visible: false,
+        // });
+    };
+
+    handleCancel = e => {
+        console.log(e);
+        this.setState({
+            visible: false,
+            startPageNum: '',
+            endPageNum: '',
+        });
+    };
+
+    onStartPageChange = (e) => {
+        let r = /^\+?[1-9][0-9]*$/;
+        if(!r.test(e.target.value)) {
+            T.prompt.error("请输入大于0的数字");
+            this.setState({
+                startPageNum: ''
             })
-        )
+        }else {
+            this.setState({
+                startPageNum: e.target.value === '' ? e.target.value : Number(e.target.value)
+            })
+        }
+        // const {
+        //     total,
+        //     endPageNum,
+        //     maxPageSize
+        // } = this.state;
+        // // console.log(e.target.value,'onStartPageChange');
+        // // console.log(Number(e.target.value),'Number(e.target.value)')
+        // let currentNum = Number(e.target.value);
+        // let startNum;
+        // // let startNum = Number(e.target.value) >= total ? total : Number(e.target.value);
+        // // if(currentNum >= total){
+        // //     startNum = total;
+        // // }else if ((endPageNum - maxPageSize) > currentNum ){
+        // //     startNum = endPageNum - maxPageSize;
+        // // }else {
+        // //     startNum = currentNum;
+        // // }
+        //
+        // if(currentNum >= total){
+        //     startNum = total;
+        // }else {
+        //     startNum = currentNum;
+        // }
+        // this.setState({
+        //     startPageNum: startNum
+        // })
+    };
+
+    onStartPageCheck = (e) => {
+        const {
+            total,
+            startPageNum,
+            endPageNum,
+            maxPageSize
+        } = this.state;
+        let currentNum = Number(startPageNum);
+        this.setState({
+            endPageNum: currentNum > 0 ? (currentNum + maxPageSize) : ''
+        })
+        // console.log(currentNum,'currentNum');
+        // let startNum;
+        // if(currentNum <= 0){
+        //     endNum = '';
+        // }else if(currentNum <= startPageNum && currentNum > 0){
+        //     endNum = startPageNum;
+        // }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && (maxPageSize + startPageNum) <= total){
+        //     endNum = currentNum;
+        // }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) > total){
+        //     endNum = currentNum;
+        // }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) < total){
+        //     endNum = currentNum;
+        // }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) > total){
+        //     endNum = total;
+        // }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) < total){
+        //     endNum = maxPageSize + startPageNum;
+        // }
+        // // else if(currentNum >= (maxPageSize + startPageNum)){
+        // //     endNum = maxPageSize + startPageNum;
+        // // }else if(currentNum > total && (maxPageSize + startPageNum) > total){
+        // //     endNum = total;
+        // // }else {
+        // //     endNum = currentNum;
+        // // }
+        // this.setState({
+        //     endPageNum: endNum
+        // })
+    };
+
+    onEndPageChange = (e) => {
+        const {
+            total,
+            startPageNum,
+            maxPageSize
+        } = this.state;
+        let currentNum = Number(e.target.value);
+        let endNum;
+
+        let r = /^\+?[1-9][0-9]*$/;
+        if(!r.test(e.target.value)) {
+            T.prompt.error("请输入大于0的数字");
+            this.setState({
+                endPageNum: ''
+            })
+        }else {
+            this.setState({
+                endPageNum: e.target.value === '' ? e.target.value : Number(e.target.value)
+            })
+        }
+        // if(currentNum >= total){
+        //     endNum = total;
+        // }else if (currentNum <= 0){
+        //     endNum = '';
+        // } else if (currentNum > 0 && currentNum < startPageNum){
+        //     endNum = startPageNum;
+        // } else {
+        //     if(currentNum > (startPageNum + maxPageSize)) {
+        //         endNum = startPageNum + maxPageSize;
+        //     }else {
+        //         endNum = currentNum;
+        //     }
+        // }
+        // //如果为空
+        // if(currentNum === ''){
+        //     endNum = currentNum
+        // }else {
+        //     endNum = Number(currentNum)
+        // }
+
+    };
+
+    onEndPageCheck = (e) => {
+
+        const {
+            total,
+            startPageNum,
+            endPageNum,
+            maxPageSize
+        } = this.state;
+        let currentNum = Number(endPageNum);
+        console.log(currentNum,'currentNum');
+        let endNum;
+        if(currentNum <= 0){
+            endNum = '';
+        }else if(currentNum <= startPageNum && currentNum > 0){
+            endNum = startPageNum;
+        }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && (maxPageSize + startPageNum) <= total){
+            endNum = currentNum;
+        }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) > total){
+            endNum = currentNum;
+        }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) < total){
+            endNum = currentNum;
+        }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) > total){
+            endNum = total;
+        }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) < total){
+            endNum = maxPageSize + startPageNum;
+        }
+        // else if(currentNum >= (maxPageSize + startPageNum)){
+        //     endNum = maxPageSize + startPageNum;
+        // }else if(currentNum > total && (maxPageSize + startPageNum) > total){
+        //     endNum = total;
+        // }else {
+        //     endNum = currentNum;
+        // }
+        this.setState({
+            endPageNum: endNum
+        })
     };
 
     //渲染不同的下拉框
@@ -603,7 +779,7 @@ class CheckRecordList extends PureComponent {
             savingStatus,
             testStatus,
             metadataManage,
-            form: {getFieldDecorator, getFieldValue},
+            form: {getFieldDecorator, getFieldValue, getFieldsValue},
         } = this.props;
         // const {dataResourceLists, dataResourceTypeTreeList, dataSourceTypeTreeOldData} = metadataManage;
         const {
@@ -615,8 +791,45 @@ class CheckRecordList extends PureComponent {
             currentPage,
             selectedKey,
             bodyConditionSelect,
-            baseInfoSelect
+            baseInfoSelect,
+            startPageNum,
+            endPageNum,
         } = this.state;
+        // console.log(Number(startPageNum),'startPageNum');
+
+        let loginInfo = T.auth.getLoginInfo();
+        let formTimeValue = getFieldsValue();
+        console.log(formTimeValue,'formTimeValue');
+        // let params = {
+        //     current: currentPage,
+        //     size: EnumDataSyncPageInfo.defaultPageSize,
+        //     startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
+        //     endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate,'YYYY-MM-DD'),        //结束时间
+        //     area: T.auth.isAdmin() ? selectedArea === "烟台市" ? '' : selectedArea : loginInfo.data.area,           //县市区(烟台市传空)
+        //     name: T.lodash.isUndefined(values.person) ? '' : values.person,           //被调查人姓名
+        //     gender: T.lodash.isUndefined(values.sex) ? '' : values.sex === 'all' ? '' : values.sex,         //性别
+        //     // idCard: "",         //身份证号
+        //     baseInfo: T.lodash.isUndefined(values.base) ? '' : values.base === '全部' ? '' : values.base,         //被调查人基本情况
+        //     bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status === '全部' ? '' : values.status,         //身体状况
+        //     fillUserName: T.lodash.isUndefined(values.head) ? '' : values.head,   //摸排人
+        //     fillUserId: loginInfo.data.static_auth === 0 ? loginInfo.data.id : ''   //摸排人id
+        // };
+
+        let formStartTime = T.lodash.isUndefined(formTimeValue.startDate) ? '' : T.helper.dateFormat(formTimeValue.startDate,'YYYY-MM-DD');
+        let formEndTime = T.lodash.isUndefined(formTimeValue.endDate) ? '' : T.helper.dateFormat(formTimeValue.endDate,'YYYY-MM-DD');
+        let formArea = T.auth.isAdmin() ? selectedArea === "烟台市" ? '' : selectedArea : loginInfo.data.area;
+        let formName = T.lodash.isUndefined(formTimeValue.person) ? '' : formTimeValue.person;
+        let formGender = T.lodash.isUndefined(formTimeValue.sex) ? '' : formTimeValue.sex === 'all' ? '' : formTimeValue.sex;
+        let formBaseInfo = T.lodash.isUndefined(formTimeValue.base) ? '' : formTimeValue.base === '全部' ? '' : formTimeValue.base;
+        // let formIdCard = '';
+        let formBodyCondition = T.lodash.isUndefined(formTimeValue.status) ? '' : formTimeValue.status === '全部' ? '' : formTimeValue.status;
+        let formFillUserId = loginInfo.data.static_auth === 0 ? loginInfo.data.id : '';
+        let formFillUserName = T.lodash.isUndefined(formTimeValue.head) ? '' : formTimeValue.head;
+        let formCurrent = startPageNum;
+        let formSize = endPageNum;
+
+        // let apiHref = `${window.ENV.apiDomain}` + "/excel/memberDetail?startTime=" + formStartTime + '&endTime=' + formEndTime + '&area=' + formArea + '';
+        let apiHref = `${window.ENV.apiDomain}/excel/memberDetail?startTime=${formStartTime}&endTime=${formEndTime}&area=${formArea}&name=${formName}&gender=${formGender}&baseInfo=${formBaseInfo}&bodyCondition=${formBodyCondition}&fillUserId=${formFillUserId}&fillUserName=${formFillUserName}&current=${formCurrent}&size=${formSize}`;
 
         const columns = [
             {
@@ -847,9 +1060,9 @@ class CheckRecordList extends PureComponent {
                                         <Button onClick={this.resetDataSource} type="primary" style={{marginRight: 10}}>
                                             <FormattedMessage id="checkRecord.btn.reset"/>
                                         </Button>
-                                        {/*<Button onClick={this.exportData} type="primary">*/}
-                                            {/*<FormattedMessage id="checkRecord.btn.output"/>*/}
-                                        {/*</Button>*/}
+                                        <Button onClick={this.exportData} type="primary">
+                                            <FormattedMessage id="checkRecord.btn.output"/>
+                                        </Button>
                                     </Form.Item>
                                 </Col>
                             </Row>
@@ -878,6 +1091,27 @@ class CheckRecordList extends PureComponent {
                         </Row>
                     </Col>
                 </Row>
+                <Modal
+                    title="导出功能"
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    footer={[
+                        <Button key="back" onClick={this.handleCancel}>
+                            取消
+                        </Button>,
+                        <Button key="submit" type="primary">
+                            <a href={apiHref} target="_blank" >确定</a>
+                        </Button>,
+                    ]}
+                >
+                    <div>
+                        起始序号：<Input placeholder="请输入起始序号" value={startPageNum} allowClear onChange={this.onStartPageChange} onBlur={this.onStartPageCheck}/>
+                    </div>
+                    <div style={{marginTop: 10}}>
+                        结束序号：<Input placeholder="请输入结束序号" value={endPageNum} allowClear onChange={this.onEndPageChange} onBlur={this.onEndPageCheck}/>
+                    </div>
+                </Modal>
             </PageHeaderWrapper>
         );
     }

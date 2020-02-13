@@ -282,7 +282,7 @@ class AddInfoList extends PureComponent {
                     },
                     memberActivity: {
                         backFromWhere: T.lodash.isUndefined(values.backFromWhere) ? '' : values.backFromWhere,
-                        backTime: T.lodash.isUndefined(values.backTime) ? '' : values.backTime === null ? '': T.helper.dateFormat(values.backTime),
+                        backTime: T.lodash.isUndefined(values.backTime) ? '' : (values.backTime === null || values.backTime === '') ? '': T.helper.dateFormat(values.backTime),
                         backType:T.lodash.isUndefined(values.backType) ? '' : values.backType,
                         carNum:T.lodash.isUndefined(values.carNum) ? '' : values.carNum,
                         wayCity:T.lodash.isUndefined(values.wayCity) ? '' : values.wayCity,
@@ -292,19 +292,19 @@ class AddInfoList extends PureComponent {
                         isTouchSuspect: T.lodash.isUndefined(values.isTouchSuspect) ? '' : values.isTouchSuspect,	  //是否
                         suspectName:T.lodash.isUndefined(values.suspectName) ? '' : values.suspectName,
                         suspectIdCard:T.lodash.isUndefined(values.suspectIdCard) ? '' : values.suspectIdCard,
-                        suspectTime: T.lodash.isUndefined(values.suspectTime) ? '' : values.suspectTime === null ? '': T.helper.dateFormat(values.suspectTime),
+                        suspectTime: T.lodash.isUndefined(values.suspectTime) ? '' : (values.suspectTime === null || values.suspectTime === '') ? '': T.helper.dateFormat(values.suspectTime),
                         suspectPoint:T.lodash.isUndefined(values.suspectPoint) ? '' : values.suspectPoint,
 
                         isTouchIntimate: T.lodash.isUndefined(values.isTouchIntimate) ? '' : values.isTouchIntimate,	  //是否
                         intimateName:T.lodash.isUndefined(values.intimateName) ? '' : values.intimateName,
                         intimateIdCard:T.lodash.isUndefined(values.intimateIdCard) ? '' : values.intimateIdCard,
-                        intimateTime: T.lodash.isUndefined(values.intimateTime) ? '' : values.intimateTime === null ? '': T.helper.dateFormat(values.intimateTime),
+                        intimateTime: T.lodash.isUndefined(values.intimateTime) ? '' : (values.intimateTime === null || values.intimateTime === '') ? '': T.helper.dateFormat(values.intimateTime),
                         intimatePoint:T.lodash.isUndefined(values.intimatePoint) ? '' : values.intimatePoint,
 
                         isTouchInfector: T.lodash.isUndefined(values.isTouchInfector) ? '' : values.isTouchInfector,	  //是否
                         infectorName:T.lodash.isUndefined(values.infectorName) ? '' : values.infectorName,
                         infectorIdCard:T.lodash.isUndefined(values.infectorIdCard) ? '' : values.infectorIdCard,
-                        infectorTime: T.lodash.isUndefined(values.infectorTime) ? '' : values.infectorTime === null ? '': T.helper.dateFormat(values.infectorTime),
+                        infectorTime: T.lodash.isUndefined(values.infectorTime) ? '' : (values.infectorTime === null || values.infectorTime === '') ? '': T.helper.dateFormat(values.infectorTime),
                         infectorPoint:T.lodash.isUndefined(values.infectorPoint) ? '' : values.infectorPoint,
 
                         fillUserId: userId  //后端返回
@@ -313,9 +313,9 @@ class AddInfoList extends PureComponent {
                         bodyCondition: T.lodash.isUndefined(values.bodyCondition) ? '' : values.bodyCondition,	//名字
                         hasSeek: T.lodash.isUndefined(values.hasSeek) ? '' : values.hasSeek,	//名字
                         seekHospital: T.lodash.isUndefined(values.seekHospital) ? '' : values.seekHospital,	//名字
-                        seekTime: T.lodash.isUndefined(values.seekTime) ? '' : values.seekTime === null ? '': T.helper.dateFormat(values.seekTime),	//名字
+                        seekTime: T.lodash.isUndefined(values.seekTime) ? '' : (values.seekTime === null || values.seekTime === '') ? '': T.helper.dateFormat(values.seekTime),	//名字
                         controlMeasures: T.lodash.isUndefined(values.controlMeasures) ? '' : values.controlMeasures,	//名字
-                        controlTime: T.lodash.isUndefined(values.controlTime) ? '' : values.controlTime === null ? '': T.helper.dateFormat(values.controlTime),	//名字
+                        controlTime: T.lodash.isUndefined(values.controlTime) ? '' : (values.controlTime === null || values.controlTime === '') ? '': T.helper.dateFormat(values.controlTime),	//名字
                         nextMeasures: T.lodash.isUndefined(values.nextMeasures) ? '' : values.nextMeasures,	//名字
                         fillUserId: userId  //后端返回
                     },
@@ -361,10 +361,11 @@ class AddInfoList extends PureComponent {
 
     //渲染不同的下拉框
     renderSelect = (dataSource) => {
+        let loginInfo = T.auth.getLoginInfo();
         return (
             dataSource.map((item,idx) => {
                 return (
-                    <Option key={idx} value={item.name}>
+                    <Option key={idx} value={item.name} disabled={loginInfo.data.area === item.name ? false : true}>
                         {item.name}
                     </Option>
                 )
