@@ -870,6 +870,7 @@ class CheckRecordList extends PureComponent {
                                         onChange: this.pageChange,
                                         pageSize: EnumDataSyncPageInfo.defaultPageSize,
                                         total: Number(total) + 1,
+                                        showQuickJumper: true
                                     }}
                                     // rowClassName={record => (record.editable ? styles.editable : '')}
                                 />

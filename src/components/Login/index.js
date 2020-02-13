@@ -7,6 +7,7 @@ import LoginTab from './LoginTab';
 import LoginSubmit from './LoginSubmit';
 import styles from './index.less';
 import LoginContext from './loginContext';
+import WeChat from './../../assets/wechat.png';
 
 class Login extends Component {
     static propTypes = {
@@ -122,6 +123,7 @@ class Login extends Component {
                         )}
                     </Form>
                 </div>
+
             </LoginContext.Provider>
         );
     }

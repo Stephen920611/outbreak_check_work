@@ -105,7 +105,7 @@ class AddInfoDetail extends PureComponent {
         const {dispatch, location} = this.props;
         let self = this;
         //验证是否刷新页面
-        T.auth.returnSpecialMainPage(location, '/checkRecord');
+        T.auth.returnSpecialMainPage(location, '/addInfo');
         if (location.hasOwnProperty("params") && location["params"].hasOwnProperty("data")) {
             new Promise((resolve, reject) => {
                 dispatch({

@@ -79,7 +79,14 @@ export default [
             {
                 path: '/addInfo/addInfoDetail',
                 component: './AddInfo/AddInfoDetail',
-                authority: ['user']
+                // authority: ['user','admin'],
+                authority: ['user'],
+            },
+            {
+                path: '/addInfo/addInfoEdit',
+                component: './AddInfo/AddInfoEdit',
+                // authority: ['user','admin'],
+                authority: ['user'],
             },
             /*----------------- 摸排工作统计表 -------------------*/
             // {

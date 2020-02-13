@@ -44,8 +44,9 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper'; // @ 表示相�
 
 //数据分发页面
 /* eslint react/no-multi-comp:0 */
-@connect(({checkRecord, loading}) => ({
+@connect(({checkRecord, addInfo, loading}) => ({
     checkRecord,
+    addInfo,
     // fetchTreeStatus: loading.effects['checkRecord/getDataResourceTreeAction'],
     fetchCheckRecordListStatus: loading.effects['checkRecord/fetchCheckRecordListAction'],
 }))
@@ -433,13 +434,13 @@ class AddInfo extends PureComponent {
                 let params = {
                     current: currentPage,
                     size: EnumDataSyncPageInfo.defaultPageSize,
-                    startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate,'YYYY-MM-DD'),      //开始时间
-                    endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate,'YYYY-MM-DD'),        //结束时间
+                    startTime: T.lodash.isUndefined(values.startDate) ? '' : T.helper.dateFormat(values.startDate, 'YYYY-MM-DD'),      //开始时间
+                    endTime: T.lodash.isUndefined(values.endDate) ? '' : T.helper.dateFormat(values.endDate, 'YYYY-MM-DD'),        //结束时间
                     area: selectedArea === "烟台市" ? '' : selectedArea,           //县市区(烟台市传空)
                     name: T.lodash.isUndefined(values.person) ? '' : values.person,           //被调查人姓名
                     gender: T.lodash.isUndefined(values.sex) ? '' : values.sex === 'all' ? '' : values.sex,         //性别
                     // idCard: "",         //身份证号
-                    baseInfo: T.lodash.isUndefined(values.base) ?  '' : values.base === '全部' ? '' : values.base,         //被调查人基本情况
+                    baseInfo: T.lodash.isUndefined(values.base) ? '' : values.base === '全部' ? '' : values.base,         //被调查人基本情况
                     bodyCondition: T.lodash.isUndefined(values.status) ? '' : values.status === '全部' ? '' : values.status,         //身体状况
                     fillUserName: T.lodash.isUndefined(values.head) ? '' : values.head,   //摸排人
                     fillUserId: loginInfo.data.static_auth === 0 ? loginInfo.data.id : ''   //摸排人id
@@ -453,12 +454,12 @@ class AddInfo extends PureComponent {
                     });
                 }).then(response => {
                     if (response.code === 0) {
-                        const { total, members } = response.data;
-                        let endData = members.map( (val,idx) => {
+                        const {total, members} = response.data;
+                        let endData = members.map((val, idx) => {
                             return {
                                 ...val,
-                                key: (currentPage-1) * 10 + idx + 1,
-                                index: (currentPage-1) * 10 + idx + 1,
+                                key: (currentPage - 1) * 10 + idx + 1,
+                                index: (currentPage - 1) * 10 + idx + 1,
                             }
                         });
                         self.setState({
@@ -572,6 +573,38 @@ class AddInfo extends PureComponent {
         });
     };
 
+    //编辑功能
+    editBtn = (e, key) => {
+        router.push({
+            pathname: '/addInfo/addInfoEdit',
+            params: {
+                isRouterPush: true,
+                data: key
+            },
+        });
+    };
+
+    //删除功能
+    deleteBtn = (e, key) => {
+        const {dispatch} = this.props;
+        let self = this;
+        new Promise((resolve, reject) => {
+            dispatch({
+                type: 'addInfo/deleteInfoAction',
+                id: key.id,
+                resolve,
+                reject,
+            });
+        }).then(response => {
+            if (response.code === 0) {
+                T.prompt.success("删除成功");
+                self.fetchDataList();
+            }else {
+                T.prompt.error(response.msg);
+            }
+        });
+    };
+
     //树选择
     onTreeChange = (e, node) => {
         this.setState({
@@ -596,7 +629,7 @@ class AddInfo extends PureComponent {
     //渲染不同的下拉框
     renderSelect = (dataSource) => {
         return (
-            dataSource.map((item,idx) => {
+            dataSource.map((item, idx) => {
                 return (
                     <Option key={item.value} value={item.name}>
                         {item.name}
@@ -686,7 +719,30 @@ class AddInfo extends PureComponent {
                 // width: '15%',
                 render: (text, record) => {
                     return (
-                        <span><a onClick={e => this.showMetadataManage(e, record)}>查看详情</a></span>
+                        <span>
+                            <Button onClick={e => this.showMetadataManage(e, record)} type="primary"
+                                    style={{marginRight: 10}}>
+                                查看详情
+                            </Button>
+                            <Button onClick={e => this.editBtn(e, record)} type="primary" style={{marginRight: 10}}>
+                                编辑
+                            </Button>
+                            <Popconfirm
+                                 title="确定要删除这条信息吗?"
+                                 onConfirm={e => this.deleteBtn(e, record)}
+                                 okText="是"
+                                 cancelText="否"
+                                 style={{marginRight: 10}}
+                            >
+                                <Button type="primary">
+                                    删除
+                                </Button>
+                            </Popconfirm>
+                            {/*<Button onClick={e => this.deleteBtn(e, record)} style={{marginRight: 10}}>*/}
+                            {/*删除*/}
+                            {/*</Button>*/}
+                            {/*<a onClick={e => this.showMetadataManage(e, record)}>查看详情</a>*/}
+                        </span>
                     );
                 },
             }
@@ -853,7 +909,7 @@ class AddInfo extends PureComponent {
                                             <FormattedMessage id="checkRecord.btn.reset"/>
                                         </Button>
                                         {/*<Button onClick={this.exportData} type="primary" style={{marginRight: 10}}>*/}
-                                            {/*<FormattedMessage id="checkRecord.btn.output"/>*/}
+                                        {/*<FormattedMessage id="checkRecord.btn.output"/>*/}
                                         {/*</Button>*/}
                                         <Button onClick={this.addInfoBtn} type="primary">
                                             新增
@@ -878,6 +934,7 @@ class AddInfo extends PureComponent {
                                         onChange: this.pageChange,
                                         pageSize: EnumDataSyncPageInfo.defaultPageSize,
                                         total: Number(total) + 1,
+                                        showQuickJumper: true
                                     }}
                                     // rowClassName={record => (record.editable ? styles.editable : '')}
                                 />
