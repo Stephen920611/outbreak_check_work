@@ -259,7 +259,7 @@ class AddInfoList extends PureComponent {
     //提交功能
     onSubmitData = (e) => {
         let self = this;
-        const {dispatch, form, addRow} = this.props;
+        const {dispatch, form, location} = this.props;
         e.preventDefault();
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
@@ -276,7 +276,8 @@ class AddInfoList extends PureComponent {
                         idCard: T.lodash.isUndefined(values.idCard) ? '' : values.idCard,
                         phoneNum:T.lodash.isUndefined(values.phoneNum) ? '' : values.phoneNum,
                         baseInfo:T.lodash.isUndefined(values.baseInfo) ? '' : values.baseInfo,	//名字
-                        fillUserId: userId  //后端返回
+                        fillUserId: userId,  //后端返回
+                        id: location["params"]["data"]["id"]
                     },
                     memberActivity: {
                         backFromWhere: T.lodash.isUndefined(values.backFromWhere) ? '' : values.backFromWhere,

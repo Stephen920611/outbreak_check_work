@@ -30,12 +30,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddInfo.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddInfo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            <state relative-caret-position="218">
+              <caret line="577" column="0" lean-forward="false" selection-start-line="577" selection-start-column="0" selection-end-line="577" selection-end-column="0" />
               <folding>
+                <element signature="e#16#59#0" expanded="true" />
                 <element signature="e#907#943#0" expanded="true" />
                 <element signature="e#5670#11543#0" expanded="false" />
               </folding>
@@ -58,13 +59,13 @@
       <file leaf-file-name="AddInfoEdit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+            <state relative-caret-position="218">
+              <caret line="261" column="29" lean-forward="false" selection-start-line="261" selection-start-column="29" selection-end-line="261" selection-end-column="29" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#1913#4886#0" expanded="false" />
                 <element signature="e#5704#5950#0" expanded="false" />
-                <element signature="e#17429#20232#0" expanded="false" />
+                <element signature="e#17493#20296#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -80,7 +81,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddInfoDetail.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddInfoDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoDetail.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="157">
@@ -130,7 +131,7 @@
       <file leaf-file-name="AddInfoList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="3383">
               <caret line="444" column="0" lean-forward="true" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
@@ -146,7 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CheckRecordList</find>
       <find>AddInfoPage</find>
       <find>.</find>
       <find>新增</find>
@@ -175,6 +175,7 @@
       <find>提交成功</find>
       <find>router</find>
       <find>deleteInfoAction</find>
+      <find>编辑</find>
       <find>console</find>
     </findStrings>
     <replaceStrings>
@@ -248,9 +249,9 @@
         <option value="$PROJECT_DIR$/src/services/addInfo/addInfo.js" />
         <option value="$PROJECT_DIR$/src/models/addInfo/addInfo.js" />
         <option value="$PROJECT_DIR$/config/router.config.js" />
-        <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js" />
         <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfoDetail.js" />
         <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js" />
+        <option value="$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js" />
       </list>
     </option>
   </component>
@@ -427,12 +428,12 @@
       <workItem from="1581381749425" duration="18301000" />
       <workItem from="1581468222252" duration="41683000" />
       <workItem from="1581562434134" duration="1122000" />
-      <workItem from="1581564249059" duration="14628000" />
+      <workItem from="1581564249059" duration="15843000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123428000" />
+    <option name="totallyTimeSpent" value="124643000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -866,33 +867,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding>
-            <element signature="e#907#943#0" expanded="true" />
-            <element signature="e#5670#11543#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+        <state relative-caret-position="157">
+          <caret line="111" column="55" lean-forward="false" selection-start-line="111" selection-start-column="55" selection-end-line="111" selection-end-column="55" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
-            <element signature="e#1913#4886#0" expanded="false" />
-            <element signature="e#5704#5950#0" expanded="false" />
-            <element signature="e#17429#20232#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
+        <state relative-caret-position="3383">
           <caret line="444" column="0" lean-forward="true" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
@@ -903,12 +890,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoDetail.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfoEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="111" column="55" lean-forward="false" selection-start-line="111" selection-start-column="55" selection-end-line="111" selection-end-column="55" />
+        <state relative-caret-position="218">
+          <caret line="261" column="29" lean-forward="false" selection-start-line="261" selection-start-column="29" selection-end-line="261" selection-end-column="29" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
+            <element signature="e#1913#4886#0" expanded="false" />
+            <element signature="e#5704#5950#0" expanded="false" />
+            <element signature="e#17493#20296#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/AddInfo/AddInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="577" column="0" lean-forward="false" selection-start-line="577" selection-start-column="0" selection-end-line="577" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#59#0" expanded="true" />
+            <element signature="e#907#943#0" expanded="true" />
+            <element signature="e#5670#11543#0" expanded="false" />
           </folding>
         </state>
       </provider>
