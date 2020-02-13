@@ -759,6 +759,43 @@ class CheckRecordList extends PureComponent {
         })
     };
 
+    sendParams = () => {
+        const {
+            form: {getFieldsValue},
+        } = this.props;
+        const {
+            selectedArea,
+            startPageNum,
+            endPageNum,
+            maxPageSize,
+        } = this.state;
+
+        let loginInfo = T.auth.getLoginInfo();
+        let formTimeValue = getFieldsValue();
+
+        let formStartTime = T.lodash.isUndefined(formTimeValue.startDate) ? '' : T.helper.dateFormat(formTimeValue.startDate,'YYYY-MM-DD');
+        let formEndTime = T.lodash.isUndefined(formTimeValue.endDate) ? '' : T.helper.dateFormat(formTimeValue.endDate,'YYYY-MM-DD');
+        let formArea = T.auth.isAdmin() ? selectedArea === "烟台市" ? '' : selectedArea : loginInfo.data.area;
+        let formName = T.lodash.isUndefined(formTimeValue.person) ? '' : formTimeValue.person;
+        let formGender = T.lodash.isUndefined(formTimeValue.sex) ? '' : formTimeValue.sex === 'all' ? '' : formTimeValue.sex;
+        let formBaseInfo = T.lodash.isUndefined(formTimeValue.base) ? '' : formTimeValue.base === '全部' ? '' : formTimeValue.base;
+        // let formIdCard = '';
+        let formBodyCondition = T.lodash.isUndefined(formTimeValue.status) ? '' : formTimeValue.status === '全部' ? '' : formTimeValue.status;
+        let formFillUserId = loginInfo.data.static_auth === 0 ? loginInfo.data.id : '';
+        let formFillUserName = T.lodash.isUndefined(formTimeValue.head) ? '' : formTimeValue.head;
+        let formCurrent = startPageNum;
+        let formSize = endPageNum;
+
+        // let apiHref = `${window.ENV.apiDomain}` + "/excel/memberDetail?startTime=" + formStartTime + '&endTime=' + formEndTime + '&area=' + formArea + '';
+        let apiHref = `${window.ENV.apiDomain}/excel/memberDetail?startTime=${formStartTime}&endTime=${formEndTime}&area=${formArea}&name=${formName}&gender=${formGender}&baseInfo=${formBaseInfo}&bodyCondition=${formBodyCondition}&fillUserId=${formFillUserId}&fillUserName=${formFillUserName}&current=${formCurrent}&size=${formSize}`;
+        if(endPageNum === '' || startPageNum === ''){
+            T.prompt.error('起始条数和结束条数不能为空！')
+        }else {
+            const w=window.open('about:blank');
+            w.location.href = apiHref;
+        }
+    };
+
     //渲染不同的下拉框
     renderSelect = (dataSource) => {
         return (
@@ -794,6 +831,7 @@ class CheckRecordList extends PureComponent {
             baseInfoSelect,
             startPageNum,
             endPageNum,
+            maxPageSize,
         } = this.state;
         // console.log(Number(startPageNum),'startPageNum');
 
@@ -1100,16 +1138,19 @@ class CheckRecordList extends PureComponent {
                         <Button key="back" onClick={this.handleCancel}>
                             取消
                         </Button>,
-                        <Button key="submit" type="primary">
-                            <a href={apiHref} target="_blank" >确定</a>
-                        </Button>,
+                        <Button key="submit" type="primary" onClick={this.sendParams}>
+                            确定
+                        </Button>
                     ]}
                 >
-                    <div>
-                        起始序号：<Input placeholder="请输入起始序号" value={startPageNum} allowClear onChange={this.onStartPageChange} onBlur={this.onStartPageCheck}/>
+                    <div style={{fontWeight: 'bold'}}>
+                        每次最多导出{maxPageSize + 1}条
                     </div>
                     <div style={{marginTop: 10}}>
-                        结束序号：<Input placeholder="请输入结束序号" value={endPageNum} allowClear onChange={this.onEndPageChange} onBlur={this.onEndPageCheck}/>
+                        起始条数：<Input placeholder="请输入起始条数" value={startPageNum} allowClear onChange={this.onStartPageChange} onBlur={this.onStartPageCheck}/>
+                    </div>
+                    <div style={{marginTop: 10}}>
+                        结束条数：<Input placeholder="请输入结束条数" value={endPageNum} allowClear onChange={this.onEndPageChange} onBlur={this.onEndPageCheck}/>
                     </div>
                 </Modal>
             </PageHeaderWrapper>
