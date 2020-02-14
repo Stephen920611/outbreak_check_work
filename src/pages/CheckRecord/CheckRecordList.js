@@ -644,7 +644,8 @@ class CheckRecordList extends PureComponent {
         } = this.state;
         let currentNum = Number(startPageNum);
         this.setState({
-            endPageNum: currentNum > 0 ? (currentNum + maxPageSize) : ''
+            // endPageNum: currentNum > 0 ? currentNum > (currentNum + maxPageSize) ? (currentNum + maxPageSize) : total : ''
+            endPageNum: (currentNum + maxPageSize) > total ? total : (currentNum + maxPageSize)
         })
         // console.log(currentNum,'currentNum');
         // let startNum;
@@ -725,22 +726,47 @@ class CheckRecordList extends PureComponent {
             maxPageSize
         } = this.state;
         let currentNum = Number(endPageNum);
+        // console.log(currentNum,'currentNum');
         let endNum;
+        // if(currentNum <= 0){
+        //     endNum = '';
+        // }else if(currentNum <= startPageNum && currentNum > 0){
+        //     endNum = startPageNum;
+        // }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && (maxPageSize + startPageNum) <= total){
+        //     endNum = currentNum;
+        // }else if(currentNum > startPageNum && currentNum <= (maxPageSize + startPageNum) && currentNum <= total && (maxPageSize + startPageNum) > total){
+        //     endNum = currentNum;
+        // }else if(currentNum > startPageNum && currentNum <= (maxPageSize + startPageNum) && currentNum <= total && (maxPageSize + startPageNum) < total){
+        //     endNum = currentNum;
+        // }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) > total){
+        //     endNum = total;
+        // }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) < total){
+        //     endNum = maxPageSize + startPageNum;
+        // }
+
         if(currentNum <= 0){
             endNum = '';
-        }else if(currentNum <= startPageNum && currentNum > 0){
-            endNum = startPageNum;
-        }else if(currentNum > startPageNum && currentNum < (maxPageSize + startPageNum) && (maxPageSize + startPageNum) <= total){
-            endNum = currentNum;
-        }else if(currentNum > startPageNum && currentNum <= (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) > total){
-            endNum = currentNum;
-        }else if(currentNum > startPageNum && currentNum <= (maxPageSize + startPageNum) && currentNum < total && (maxPageSize + startPageNum) < total){
-            endNum = currentNum;
-        }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) > total){
-            endNum = total;
-        }else if(currentNum > startPageNum && currentNum > (maxPageSize + startPageNum) && currentNum > total && (maxPageSize + startPageNum) < total){
-            endNum = maxPageSize + startPageNum;
+        }else {
+            if(currentNum <= startPageNum){
+                endNum = startPageNum;
+            }else {
+                if((maxPageSize + startPageNum)  <= total){
+                    if(currentNum <= (maxPageSize + startPageNum)){
+                        endNum = currentNum
+                    }else {
+                        endNum = maxPageSize + startPageNum
+                    }
+                }else {
+                    if(currentNum <= total){
+                        endNum = currentNum
+                    }else {
+                        endNum = total
+                    }
+                }
+            }
         }
+        // console.log(endNum,'endNum');
+
         // else if(currentNum >= (maxPageSize + startPageNum)){
         //     endNum = maxPageSize + startPageNum;
         // }else if(currentNum > total && (maxPageSize + startPageNum) > total){
