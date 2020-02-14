@@ -645,7 +645,7 @@ class CheckRecordList extends PureComponent {
         let currentNum = Number(startPageNum);
         this.setState({
             // endPageNum: currentNum > 0 ? currentNum > (currentNum + maxPageSize) ? (currentNum + maxPageSize) : total : ''
-            endPageNum: (currentNum + maxPageSize) > total ? total : (currentNum + maxPageSize)
+            endPageNum: currentNum > 0 ? (currentNum + maxPageSize) > total ? total : (currentNum + maxPageSize) : ''
         })
         // console.log(currentNum,'currentNum');
         // let startNum;
