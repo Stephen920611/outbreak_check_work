@@ -137,6 +137,7 @@ class DataSourceManagement extends PureComponent {
       }
     );
   };
+  
 
   //关闭弹窗
   closeAddMetadataModel = () => {
